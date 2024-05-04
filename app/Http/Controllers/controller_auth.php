@@ -11,7 +11,7 @@ class controller_auth extends Controller
     //
     public function show()
     {
-        return view('pengunjung.auth.login');
+        return view('siswa.auth.index');
     }
     public function login(Request $request)
     {
