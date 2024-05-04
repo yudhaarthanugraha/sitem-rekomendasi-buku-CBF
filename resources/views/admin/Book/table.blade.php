@@ -4,7 +4,7 @@
         <h2 class="font-bold text-lg mb-10">Tabel buku</h2>
 
         <!-- start a table -->
-        <table class="table-fixed w-full">
+        <table class="table-fixed w-full ">
 
             <!-- table head -->
             <thead class="text-left">

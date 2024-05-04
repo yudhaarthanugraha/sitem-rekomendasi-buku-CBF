@@ -11,7 +11,7 @@
       </button>
     </div>
     <!-- end logo -->   
-    
+
     <!-- navbar content toggle -->
     <button id="navbarToggle" class="hidden md:block md:fixed right-0 mr-6">
       <i class="fad fa-chevron-double-down"></i>
@@ -38,7 +38,7 @@
             </div> 
 
             <div class="ml-2 capitalize flex ">
-              <h1 class="text-sm text-gray-800 font-semibold m-0 p-0 leading-none">User</h1>
+              <h1 class="text-sm text-gray-800 font-semibold m-0 p-0 leading-none">{{ $user['username'] }}</h1>
               <i class="fad fa-chevron-down ml-2 text-xs leading-none"></i>
             </div>                        
           </button>
