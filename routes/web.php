@@ -29,6 +29,8 @@ Route::post('/login', [controller_auth::class, 'login'])->name('auth');
 // Rute yang memerlukan autentikasi di sini
 // Tambahkan rute lain yang memerlukan autentikasi di sini
 Route::get('/dashboard', [controller_dashboard::class, 'show'])->name('dashboard');
-Route::get('/kelola-book', [controller_buku::class, 'show']);
-Route::get('/kelola-kategori', [controller_kategori::class, 'show']);
+Route::get('/logout', [controller_auth::class, 'logout'])->name('logout');
+Route::get('/kelola/siswa', [controller_auth::class, 'logout'])->name('kelola-siswa');
+Route::get('/kelola-buku', [controller_buku::class, 'show'])->name('kelola-buku');
+Route::get('/kelola-kategori', [controller_kategori::class, 'show'])->name('kelola-kategori');;
 // });

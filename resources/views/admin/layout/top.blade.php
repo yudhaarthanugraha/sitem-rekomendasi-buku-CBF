@@ -8,7 +8,7 @@
     <meta name="description" content="au theme template">
     <meta name="keywords" content="au theme template">
     <!-- Title Page-->
-    {{-- <title>{{ $title }}</title> --}}
+    <title>{{ $title }}</title>
 
     <!-- Fontfaces CSS-->
     <link href="{{ asset('css/font-face.css') }}" rel="stylesheet" media="all">

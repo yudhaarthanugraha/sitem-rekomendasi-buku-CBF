@@ -49,5 +49,13 @@ class controller_auth extends Controller
             return back()->with('error', 'Username atau password salah.');
         }
     }
+    // Metode untuk melakukan logout
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        // Redirect ke halaman login setelah logout
+        return redirect()->route('login')->with('success', 'Anda sudah log out.');
+    }
 
 }
