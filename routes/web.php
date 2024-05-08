@@ -26,11 +26,17 @@ Route::post('/login', [controller_auth::class, 'login'])->name('auth');
 
 // admin routes
 // Route::middleware(['auth'])->group(function () {
-// Rute yang memerlukan autentikasi di sini
 // Tambahkan rute lain yang memerlukan autentikasi di sini
 Route::get('/dashboard', [controller_dashboard::class, 'show'])->name('dashboard');
 Route::get('/logout', [controller_auth::class, 'logout'])->name('logout');
-Route::get('/kelola/siswa', [controller_auth::class, 'logout'])->name('kelola-siswa');
+// route buku
 Route::get('/kelola-buku', [controller_buku::class, 'show'])->name('kelola-buku');
-Route::get('/kelola-kategori', [controller_kategori::class, 'show'])->name('kelola-kategori');;
+Route::post('/kelola-buku', [controller_buku::class, 'create'])->name('store_buku');
+Route::delete('/kelola-buku/{id}', [controller_buku::class, 'delete'])->name('delete_buku');
+
+// kelola siswa
+Route::get('/kelola/siswa', [controller_auth::class, 'logout'])->name('kelola_siswa');
+// route kategori
+Route::get('/kelola-kategori', [controller_kategori::class, 'show'])->name('kelola_kategori');;
+Route::delete('/kelola-kategori/{id}', [controller_kategori::class, 'delete'])->name('delete_kategori');
 // });

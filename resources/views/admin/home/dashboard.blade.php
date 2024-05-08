@@ -26,7 +26,7 @@
                                 Total Guru
                             </p>
                             <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                {{-- {{ $gurus->total() }} --}}
+                                {{ $gurus->total() }}
                             </p>
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                                 Total Kelas
                             </p>
                             <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                {{-- {{ $kelases->total() }} --}}
+                                {{ $kelases->total() }}
                             </p>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                                 Total Mapel
                             </p>
                             <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                {{-- {{ $mapels->total() }} --}}
+                                {{ $mapels->total() }}
                             </p>
                         </div>
                     </div>
@@ -81,7 +81,7 @@
                     </div>
                 </div>
 
-                     <!-- New Table -->
+                <!-- New Table -->
                 {{-- <div class="w-full overflow-hidden rounded-lg shadow-xs">
                     <div class="w-full overflow-x-auto">
                         <table class="w-full whitespace-no-wrap">
