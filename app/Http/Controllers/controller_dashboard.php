@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\M_buku;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,6 +13,8 @@ class controller_dashboard extends Controller
     {
         $user = Auth::user();
         $title = 'Dashboard';
-        return view('admin.dashboard.index', compact('user', 'title'));
+        $books = M_buku::paginate(100);
+        // $siswa = M_s::paginate(100);
+        return view('admin.dashboard.index', compact('user', 'title', 'books'));
     }
 }

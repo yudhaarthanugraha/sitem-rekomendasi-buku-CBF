@@ -15,9 +15,10 @@ class M_buku extends Model
     protected $fillable = [
         'judul',
         'penulis',
-        'sinopsis',
-        'kategori',
         'tahun_terbit',
         'gendre',
+        'sinopsis',
+        'kategori',
+        'kode_buku'
     ];
 }

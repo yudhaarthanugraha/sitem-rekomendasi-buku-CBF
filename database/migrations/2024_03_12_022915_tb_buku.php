@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('gendre');
             $table->text('sinopsis');
             $table->string('kategori');
+            $table->string('kode_buku');
             $table->timestamps();
 
         });

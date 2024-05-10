@@ -9,6 +9,7 @@ class M_kategori extends Model
 {
     use HasFactory;
     protected $table = 'tb_kategori';
+    public $timestamps = false;
     protected $primaryKey = 'id_kategori';
     protected $fillable = [
         'kategori',

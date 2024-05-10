@@ -109,10 +109,10 @@
                 <div class="mt-4 mb-6">
                     <!-- Modal title -->
                     <p class="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-300  ">
-                        Tambah Buku
+                        Tambah Kategori
                     </p>
                     <!-- Modal description -->
-                    <form class="flex flex-col overflow-scroll" action="{{ route('store_buku') }}" method="POST">
+                    <form class="grid grid-cols-1" action="{{ route('store_kategori') }}" method="POST">
                         @csrf
 
                         <div class="px-4 py-3 mb-2 bg-white rounded-lg shadow-md dark:bg-gray-800">
@@ -157,7 +157,7 @@
                         </div>
                     
                         <button type="submit"
-                            class="flex items-center justify-center p-3 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">Simpan</button>
+                            class=" flex items-center justify-center p-3 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">Simpan</button>
                     </form>
                 </div>
             </div>
