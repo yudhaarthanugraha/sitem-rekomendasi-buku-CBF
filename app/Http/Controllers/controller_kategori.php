@@ -31,6 +31,28 @@ class controller_kategori extends Controller
         $kategori->save();
         return redirect()->route('kelola_kategori')->with('success', 'Kategori ' . $request->kategori .  ' telah ditambahkan');
     }
+
+    // update
+    public function edit($id)
+    {
+        $title = 'Kelola Kategori';
+        $kategori = M_kategori::findOrFail($id);
+       
+        return view('admin.kategori.edit', compact('title', 'kategori'));
+    }
+    public function update($id, Request $request)
+    {
+        $validatedData = $request->validate([
+            'kategori' => 'required|string|max:255',
+            'deskripsi' => 'required|string|max:255',
+
+        ]);
+        $deskripsi = M_kategori::where('id_kategori', $id)->firstOrFail();
+        $deskripsi->kategori = $request->kategori;
+        $deskripsi->deskripsi = $request->deskripsi;
+        $deskripsi->save();
+        return redirect()->route('kelola_kategori')->with('success', 'Data kategori berhasil diperbarui.');
+    }
     // delete
     public function delete($id)
     {

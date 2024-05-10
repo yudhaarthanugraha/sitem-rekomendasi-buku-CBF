@@ -88,10 +88,10 @@
                               x-transition:leave-end="opacity-0 max-h-0"
                               class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-gray-900"
                               aria-label="submenu">
-                              <li
+                              {{-- <li
                                   class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
                                   <a class="w-full" href="">Guru pengampu</a>   
-                              </li>
+                              </li> --}}
                           </ul>
                       </template>
                   </li>
@@ -121,7 +121,7 @@
                   </li> --}}
               </ul>
               <div class="px-6 my-6">
-                  <form action="" class="" method="post">
+                  <form action="{{ route('logout') }}" class="" method="post">
                       @csrf
                       <button
                           class="flex items-center justify-between w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
