@@ -33,11 +33,12 @@ class controller_buku extends Controller
         return view('admin.buku.index', compact('books', 'user', 'title', 'genres', 'kategoris'));
     }
 
-    public function tambah()
-    {
-        $title = 'Master buku';
-        return view('admin.buku.tambah', compact('title'));
-    }
+    // public function tambah()
+    // {
+    //     $title = 'Master buku';
+    //     return view('admin.buku.tambah', compact('title'));
+    // }
+
     public function create(Request $request)
     {
         // Validasi data yang diterima dari form
@@ -99,7 +100,7 @@ class controller_buku extends Controller
         ]);
         $buku = M_buku::where('id_buku', $id)->firstOrFail();
         // if ($request->kode_buku !== $buku->kode_buku) {
-        //     $request->validate([    
+        //     $request->validate([
         //         'kode_buku' => 'unique:tb_buku,kode_buku,' . $id,
         //     ]);
         // }

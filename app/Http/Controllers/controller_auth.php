@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\M_user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PHPUnit\Util\Json;
 
 class controller_auth extends Controller
 {
@@ -39,10 +40,10 @@ class controller_auth extends Controller
             // Jika pengguna memiliki peran 'admin', arahkan ke halaman dashboard
             if ($user->role === 'admin') {
                 return redirect()->route('dashboard')->with('success', 'Login berhasil.');
-            } else {
+            } elseif ($user->role === 'siswa') {
                 // Jika tidak, arahkan ke halaman yang sesuai untuk pengguna biasa
                 // return redirect()->intended('beranda');
-              
+
             }
         } else {
             // Jika otentikasi gagal, kembalikan pengguna ke halaman login dengan pesan error
@@ -57,5 +58,4 @@ class controller_auth extends Controller
         // Redirect ke halaman login setelah logout
         return redirect()->route('login')->with('success', 'Anda sudah log out.');
     }
-
 }

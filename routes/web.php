@@ -4,6 +4,7 @@ use App\Http\Controllers\controller_auth;
 use App\Http\Controllers\controller_buku;
 use App\Http\Controllers\controller_dashboard;
 use App\Http\Controllers\controller_kategori;
+use App\Http\Controllers\controller_user;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,7 @@ Route::post('/login', [controller_auth::class, 'login'])->name('auth');
 // Tambahkan rute lain yang memerlukan autentikasi di sini
 Route::get('/dashboard', [controller_dashboard::class, 'show'])->name('dashboard');
 Route::post('/logout', [controller_auth::class, 'logout'])->name('logout');
+
 // route buku
 Route::get('/kelola-buku', [controller_buku::class, 'show'])->name('kelola-buku');
 Route::get('/kelola-buku/{id}/edit', [controller_buku::class, 'edit'])->name('edit_buku');
@@ -37,7 +39,12 @@ Route::put('/kelola-buku/{id}/edit', [controller_buku::class, 'update'])->name('
 Route::delete('/kelola-buku/{id}', [controller_buku::class, 'delete'])->name('delete_buku');
 
 // kelola siswa
-Route::get('/kelola/siswa', [controller_auth::class, 'logout'])->name('kelola_siswa');
+Route::get('/kelola/siswa', [controller_user::class, 'getAllUsers'])->name('kelola_siswa');
+Route::post('/kelola/siswa', [controller_user::class, 'createSiswa'])->name('store_siswa');
+Route::get('/kelola/siswa/{id}/edit', [controller_user::class, 'editSiswa'])->name('edit_siswa');
+Route::put('/kelola/siswa/{id}/edit', [controller_user::class, 'updateSiswa'])->name('update_siswa');
+Route::delete('/kelola/siswa/{id}', [controller_user::class, 'deleteSiswa'])->name('delete_siswa');
+
 // route kategori
 Route::get('/kelola-kategori', [controller_kategori::class, 'show'])->name('kelola_kategori');
 Route::get('/kelola-kategori/{id}/edit', [controller_kategori::class, 'edit'])->name('edit_kategori');
