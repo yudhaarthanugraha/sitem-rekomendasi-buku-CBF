@@ -4,6 +4,7 @@ use App\Http\Controllers\controller_auth;
 use App\Http\Controllers\controller_buku;
 use App\Http\Controllers\controller_dashboard;
 use App\Http\Controllers\controller_kategori;
+use App\Http\Controllers\controller_pinjam_buku;
 use App\Http\Controllers\controller_user;
 use Illuminate\Support\Facades\Route;
 
@@ -51,4 +52,8 @@ Route::get('/kelola-kategori/{id}/edit', [controller_kategori::class, 'edit'])->
 Route::put('/kelola-kategori/{id}/edit', [controller_kategori::class, 'update'])->name('update_kategori');
 Route::post('/kelola-kategori', [controller_kategori::class, 'create'])->name('store_kategori');
 Route::delete('/kelola-kategori/{id}', [controller_kategori::class, 'delete'])->name('delete_kategori');
+
+// pinjam buku
+Route::get('/kelola-pinjam-buku/{id}/pinjam', [controller_pinjam_buku::class, 'show'])->name('pinjam_buku');
+Route::post('/kelola-pinjam-buku', [controller_pinjam_buku::class, 'create'])->name('store_pinjam_buku');
 // });

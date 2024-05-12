@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('sinopsis');
             $table->string('kategori');
             $table->string('kode_buku');
+            $table->boolean('status_pinjaman');
             $table->timestamps();
 
         });
