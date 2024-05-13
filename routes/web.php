@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [controller_auth::class, 'show'])->name('login');
 Route::post('/login', [controller_auth::class, 'login'])->name('auth');
 
-// admin routes
+// admin routes start
 // Route::middleware(['auth'])->group(function () {
 // Tambahkan rute lain yang memerlukan autentikasi di sini
 Route::get('/dashboard', [controller_dashboard::class, 'show'])->name('dashboard');
@@ -51,4 +51,8 @@ Route::get('/kelola-kategori/{id}/edit', [controller_kategori::class, 'edit'])->
 Route::put('/kelola-kategori/{id}/edit', [controller_kategori::class, 'update'])->name('update_kategori');
 Route::post('/kelola-kategori', [controller_kategori::class, 'create'])->name('store_kategori');
 Route::delete('/kelola-kategori/{id}', [controller_kategori::class, 'delete'])->name('delete_kategori');
-// });
+// Admin routes end
+
+// Siswa routes start
+Route::get('/landing_page', [controller_dashboard::class, 'dashboardSiswa'])->name('landing_page');
+// Siswa routes end

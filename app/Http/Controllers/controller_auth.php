@@ -14,6 +14,7 @@ class controller_auth extends Controller
     {
         return view('siswa.auth.index');
     }
+
     public function login(Request $request)
     {
         // Validasi data yang diterima dari form login
@@ -42,14 +43,14 @@ class controller_auth extends Controller
                 return redirect()->route('dashboard')->with('success', 'Login berhasil.');
             } elseif ($user->role === 'siswa') {
                 // Jika tidak, arahkan ke halaman yang sesuai untuk pengguna biasa
-                // return redirect()->intended('beranda');
-
+                return redirect()->route('landing_page')->with('success', 'Login berhasil.');
             }
         } else {
             // Jika otentikasi gagal, kembalikan pengguna ke halaman login dengan pesan error
             return back()->with('error', 'Username atau password salah.');
         }
     }
+
     // Metode untuk melakukan logout
     public function logout(Request $request)
     {
