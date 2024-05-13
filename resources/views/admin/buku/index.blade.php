@@ -61,17 +61,22 @@
                                                     </path>
                                                 </svg>
                                             </a>
-                                            <a href="{{ route('pinjam_buku', ['id' => $book->id_buku]) }}"
-                                                class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
-                                                aria-label="Edit">
-                                                <span>Pinjaman</span>
-                                                <svg class="w-5 h-5" aria-hidden="true" fill="currentColor"
-                                                    viewBox="0 0 20 20">
-                                                    <path
-                                                        d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z">
-                                                    </path>
-                                                </svg>
-                                            </a>
+
+                                            @php
+                                                $route = $book->status_pinjaman !== 1 ? 'pinjam_buku' : 'kembali_buku';
+                        //                         $icon =
+                        //                             $book->status_pinjaman !== 1
+                        //                                 ? '  <svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5"
+                        //       xmlns="http://www.w3.org/2000/svg">
+                        //       <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M 19.2811 49.5156 C 20.5233 49.5156 21.3436 48.6719 21.3436 47.4531 C 21.3436 46.8438 21.1561 46.3984 20.7811 46.0234 L 14.0311 39.4375 L 9.5780 35.6406 L 15.0858 35.8750 L 44.9920 35.8750 C 50.4529 35.8750 52.7267 33.3672 52.7267 28.0703 L 52.7267 14.2188 C 52.7267 8.7578 50.4529 6.4844 44.9920 6.4844 L 31.8671 6.4844 C 30.5780 6.4844 29.7342 7.4219 29.7342 8.5703 C 29.7342 9.7188 30.5780 10.6562 31.8671 10.6562 L 44.9920 10.6562 C 47.4764 10.6562 48.5545 11.7344 48.5545 14.2188 L 48.5545 28.0703 C 48.5545 30.6250 47.4764 31.7031 44.9920 31.7031 L 15.0858 31.7031 L 9.5780 31.9375 L 14.0311 28.1406 L 20.7811 21.5547 C 21.1561 21.1797 21.3436 20.7109 21.3436 20.1016 C 21.3436 18.9062 20.5233 18.0391 19.2811 18.0391 C 18.7655 18.0391 18.1561 18.2969 17.7577 18.6953 L 3.9764 32.2188 C 3.5077 32.6640 3.2733 33.2031 3.2733 33.7891 C 3.2733 34.3516 3.5077 34.9140 3.9764 35.3594 L 17.7577 48.8828 C 18.1561 49.2813 18.7655 49.5156 19.2811 49.5156 Z"></path></g>
+                        //   </svg>'
+                        //                                 : '<svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>';
+                                                $icon = $book->status_pinjaman !== 1 ? 'pinjam' : 'kembali';
+                                            @endphp
+
+
+
+
                                             <form action="{{ route('delete_buku', ['id' => $book->id_buku]) }}"
                                                 method="post">
                                                 @csrf
@@ -88,6 +93,11 @@
                                                     </svg>
                                                 </button>
                                             </form>
+                                            <a href="{{ route($route, ['id' => $book->id_buku]) }}"
+                                                class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+                                                aria-label="Edit">
+                                                {!! $icon !!}
+                                            </a>
                                         </div>
                                     </td>
                                     </tr>
@@ -263,7 +273,7 @@
                                         <textarea placeholder="Masukan sinopsis disini .." name="sinopsis"
                                             class="block w-full  mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"></textarea>
                                         <div class="absolute inset-y-0 flex items-center ml-3 pointer-events-none">
-                                         
+
                                         </div>
                                     </div>
                                 </label>

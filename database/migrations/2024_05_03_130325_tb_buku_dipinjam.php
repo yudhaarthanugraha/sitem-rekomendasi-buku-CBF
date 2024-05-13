@@ -14,10 +14,11 @@ return new class extends Migration
         //
         Schema::create('tb_buku_dipinjam', function (Blueprint $table) {
             $table->id('id_pinjam');
-            $table->string('id_user')->unique();
+            $table->string('id_user');
             $table->string('id_buku');
             $table->date('tanggal_pinjam');
-            $table->date('tanggal_kembali');
+            $table->date('tanggal_kembali')->nullable()->default(null);
+
         });
     }
 

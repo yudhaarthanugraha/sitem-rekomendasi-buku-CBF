@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\M_buku;
+use App\Models\M_pinjam_buku;
 use App\Models\M_user;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,32 @@ class controller_pinjam_buku extends Controller
     }
     public function create(Request $request)
     {
-        dd($request->input());
-
+        $dataValidate =  $request->validate(['judul' => 'required', 'user' => 'required', 'tanggal_pinjam' => 'required']);
+        $pinjam_buku = new M_pinjam_buku();
+        $buku = M_buku::where('id_buku', $request->judul)->firstOrFail();
+        $buku->status_pinjaman = 1;
+        $pinjam_buku->id_buku = $request->judul;
+        $pinjam_buku->id_user = $request->user;
+        $pinjam_buku->tanggal_pinjam = $request->tanggal_pinjam;
+        $buku->save();
+        $pinjam_buku->save();
+        return redirect()->route('kelola-buku')->with('success', 'buku di dipinjam  telah ditambahkan');
+    }
+    public function kembali_buku($id)
+    {
+        $id_buku = $id;
+        $title = 'Halaman kembali buku ';
+        return view('admin.pinjam_buku.kembali_buku', compact('id_buku', 'title'));
+    }
+    public function update_kembali_buku(Request $request, $id)
+    {
+        $dataValidate =  $request->validate(['tanggal_kembali' => 'required']);
+        $pinjam_buku = M_pinjam_buku::where('id_buku', $id)->firstOrFail();
+        $buku = M_buku::where('id_buku', $id)->firstOrFail();
+        $buku->status_pinjaman = 0;
+        $pinjam_buku->tanggal_kembali = $request->tanggal_kembali;
+        $buku->save();
+        $pinjam_buku->save();
+        return redirect()->route('kelola-buku')->with('success', 'buku telah dikembalikan');
     }
 }

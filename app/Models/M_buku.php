@@ -19,6 +19,7 @@ class M_buku extends Model
         'gendre',
         'sinopsis',
         'kategori',
-        'kode_buku'
+        'kode_buku',
+        'status_pinjaman'
     ];
 }

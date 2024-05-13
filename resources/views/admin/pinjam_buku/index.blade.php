@@ -11,7 +11,7 @@
                 <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
                     Masukan data peminjam
                 </h2>
-                <form class="grid" action="" method="POST">
+                <form class="grid" action="{{ route('store_pinjam_buku') }}" method="POST">
                     @csrf
                     {{-- @method('PUT') --}}
                     <div class="grid gap-6  md:grid-cols-2 xl:grid-cols-2">
@@ -49,6 +49,7 @@
                                     class="relative text-gray-500 focus-within:text-purple-600 dark:focus-within:text-purple-400">
                                     <select name="user"
                                         class="block w-full pl-10 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-select">
+                                        <option value="#" selected>Pilih siswa</option>
                                         @foreach ($siswas as $siswa)
                                             <option value="{{ $siswa->id_user }}">
                                                 {{ $siswa->username }}
