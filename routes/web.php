@@ -56,6 +56,6 @@ Route::delete('/kelola-kategori/{id}', [controller_kategori::class, 'delete'])->
 // pinjam buku
 Route::get('/kelola-pinjam-buku/{id}/pinjam', [controller_pinjam_buku::class, 'show'])->name('pinjam_buku');
 Route::post('/kelola-pinjam-buku/pinjam', [controller_pinjam_buku::class, 'create'])->name('store_pinjam_buku');
-Route::get('/kelola-pinjam-buku/{id}/kembali_buku', [controller_pinjam_buku::class, 'kembali_buku'])->name('kembali_buku');
+Route::get('/kelola-pinjam-buku/{id}/kembali-buku', [controller_pinjam_buku::class, 'kembali_buku'])->name('kembali_buku');
 Route::put('/kelola-pinjam-buku/{id}/pinjam', [controller_pinjam_buku::class, 'update_kembali_buku'])->name('update_kembali_buku');
 // });

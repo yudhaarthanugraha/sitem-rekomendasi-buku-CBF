@@ -35,8 +35,9 @@ class controller_pinjam_buku extends Controller
     public function kembali_buku($id)
     {
         $id_buku = $id;
+        $buku = M_buku::findOrFail($id);
         $title = 'Halaman kembali buku ';
-        return view('admin.pinjam_buku.kembali_buku', compact('id_buku', 'title'));
+        return view('admin.pinjam_buku.kembali_buku', compact('id_buku', 'title', 'buku'));
     }
     public function update_kembali_buku(Request $request, $id)
     {
