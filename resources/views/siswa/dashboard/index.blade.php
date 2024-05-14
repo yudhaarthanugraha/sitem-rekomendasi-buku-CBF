@@ -6,12 +6,20 @@
             <div class="row">
                 <div class="col-sm-6 col-xxl-5 text-center text-sm-start" data-cues="slideInDown" data-group="page-title"
                     data-interval="-200" data-delay="500">
-                    <h2 class="display-1 fs-56 mb-4 mt-0 mt-lg-5 ls-xs pe-xl-5 pe-xxl-0">Temukan Buku
-                        <span class="underline-3 style-3 yellow">Favorit</span> Kamu
+                    <h2 class="display-1 fs-56 mb-4 mt-0 mt-lg-5 ls-xs pe-xl-5 pe-xxl-0">Temukan Buku Favorit Kamu
+                        <span class="underline-3 style-3 yellow">Disini</span>
                     </h2>
                     <p class="lead fs-23 lh-sm mb-7 pe-lg-5 pe-xl-5 pe-xxl-0">Jelajahi koleksi buku kami dan temukan
                         rekomendasi buku yang sesuai dengan minat Anda.</p>
-                    <div><a href="#" class="btn btn-lg btn-primary rounded">Search</a></div>
+                    <div class="d-flex gap-2 align-items-center">
+                        <div class="form-floating w-100">
+                            <input id="textInputExample" type="text" class="form-control border-primary rounded-pill"
+                                placeholder="Text Input">
+                            <label for="textInputExample">Search</label>
+                        </div>
+                        <!-- /.form-floating -->
+                        <a href="#" class="btn btn-primary btn-circle"><i class="uil uil-search-alt"></i></a>
+                    </div>
                 </div>
                 <!--/column -->
             </div>
@@ -21,301 +29,213 @@
     </section>
     <!-- /section -->
     <section class="wrapper bg-light">
-        <div class="container py-15 py-md-17">
-            <div class="row text-center">
-                <div class="col-md-10 col-lg-9 col-xxl-8 mx-auto">
-                    <h2 class="fs-15 text-uppercase text-muted mb-3">What We Do?</h2>
-                    <h3 class="display-3 ls-sm mb-9 px-xl-11">The service we offer is specifically designed to meet your
-                        needs.</h3>
+        <div class="container py-14 py-md-16">
+            <div class="row">
+                <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                    <h2 class="fs-15 text-uppercase text-primary text-center">Our Books</h2>
+                    <h3 class="display-4 mb-6 text-center">Cek koleksi terbaru kami yang baru saja ditambahkan ke
+                        perpustakaan.</h3>
                 </div>
                 <!-- /column -->
             </div>
             <!-- /.row -->
-            <div class="row gx-lg-8 gx-xl-12 gy-8">
-                <div class="col-md-6 col-lg-4">
-                    <div class="d-flex flex-row">
-                        <div>
-                            <img src="./assets/img/icons/lineal/telephone-3.svg"
-                                class="svg-inject icon-svg icon-svg-md text-blue me-5 mt-1" alt="" />
-                        </div>
-                        <div>
-                            <h4 class="fs-20 ls-sm">24/7 Support</h4>
-                            <p class="mb-0">Duis mollis gravida commodo id luctus erat porttitor ligula, eget lacinia odio
-                                sem aget elit nullam quis risus eget.</p>
-                        </div>
-                    </div>
+            <div class="position-relative">
+                <div class="shape bg-dot primary rellax w-17 h-20" data-rellax-speed="1" style="top: 0; left: -1.7rem;">
                 </div>
-                <!--/column -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="d-flex flex-row">
-                        <div>
-                            <img src="./assets/img/icons/lineal/shield.svg"
-                                class="svg-inject icon-svg icon-svg-md text-yellow me-5 mt-1" alt="" />
+                <div class="swiper-container dots-closer blog grid-view mb-6" data-margin="0" data-dots="true"
+                    data-items-xl="3" data-items-md="2" data-items-xs="1">
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="item-inner">
+                                    <article>
+                                        <div class="card">
+                                            <figure class="card-img-top overlay overlay-1 hover-scale"><a href="#">
+                                                    <img src="./assets/img/photos/b4.jpg" alt="" /></a>
+                                                <figcaption>
+                                                    <h5 class="from-top mb-0">Read More</h5>
+                                                </figcaption>
+                                            </figure>
+                                            <div class="card-body">
+                                                <div class="post-header">
+                                                    <div class="post-category text-line">
+                                                        <a href="#" class="hover" rel="category">Coding</a>
+                                                    </div>
+                                                    <!-- /.post-category -->
+                                                    <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark"
+                                                            href="./blog-post.html">Ligula tristique quis risus</a></h2>
+                                                </div>
+                                                <!-- /.post-header -->
+                                                <div class="post-content">
+                                                    <p>Mauris convallis non ligula non interdum. Gravida vulputate convallis
+                                                        tempus vestibulum cras imperdiet nun eu dolor.</p>
+                                                </div>
+                                                <!-- /.post-content -->
+                                            </div>
+                                            <!--/.card-body -->
+                                            <div class="card-footer">
+                                                <ul class="post-meta d-flex mb-0">
+                                                    <li class="post-date ms-auto"><i
+                                                            class="uil uil-calendar-alt"></i><span>14 Apr
+                                                            2022</span></li>
+                                                </ul>
+                                                <!-- /.post-meta -->
+                                            </div>
+                                            <!-- /.card-footer -->
+                                        </div>
+                                        <!-- /.card -->
+                                    </article>
+                                    <!-- /article -->
+                                </div>
+                                <!-- /.item-inner -->
+                            </div>
+                            <!--/.swiper-slide -->
+                            <div class="swiper-slide">
+                                <div class="item-inner">
+                                    <article>
+                                        <div class="card">
+                                            <figure class="card-img-top overlay overlay-1 hover-scale"><a href="#">
+                                                    <img src="./assets/img/photos/b5.jpg" alt="" /></a>
+                                                <figcaption>
+                                                    <h5 class="from-top mb-0">Read More</h5>
+                                                </figcaption>
+                                            </figure>
+                                            <div class="card-body">
+                                                <div class="post-header">
+                                                    <div class="post-category text-line">
+                                                        <a href="#" class="hover" rel="category">Workspace</a>
+                                                    </div>
+                                                    <!-- /.post-category -->
+                                                    <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark"
+                                                            href="./blog-post.html">Nullam id dolor elit id nibh</a></h2>
+                                                </div>
+                                                <!-- /.post-header -->
+                                                <div class="post-content">
+                                                    <p>Mauris convallis non ligula non interdum. Gravida vulputate convallis
+                                                        tempus vestibulum cras imperdiet nun eu dolor.</p>
+                                                </div>
+                                                <!-- /.post-content -->
+                                            </div>
+                                            <!--/.card-body -->
+                                            <div class="card-footer">
+                                                <ul class="post-meta d-flex mb-0">
+                                                    <li class="post-date ms-auto"><i
+                                                            class="uil uil-calendar-alt"></i><span>29 Mar
+                                                            2022</span></li>
+                                                </ul>
+                                                <!-- /.post-meta -->
+                                            </div>
+                                            <!-- /.card-footer -->
+                                        </div>
+                                        <!-- /.card -->
+                                    </article>
+                                    <!-- /article -->
+                                </div>
+                                <!-- /.item-inner -->
+                            </div>
+                            <!--/.swiper-slide -->
+                            <div class="swiper-slide">
+                                <div class="item-inner">
+                                    <article>
+                                        <div class="card">
+                                            <figure class="card-img-top overlay overlay-1 hover-scale"><a href="#">
+                                                    <img src="./assets/img/photos/b6.jpg" alt="" /></a>
+                                                <figcaption>
+                                                    <h5 class="from-top mb-0">Read More</h5>
+                                                </figcaption>
+                                            </figure>
+                                            <div class="card-body">
+                                                <div class="post-header">
+                                                    <div class="post-category text-line">
+                                                        <a href="#" class="hover" rel="category">Meeting</a>
+                                                    </div>
+                                                    <!-- /.post-category -->
+                                                    <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark"
+                                                            href="./blog-post.html">Ultricies fusce porta elit</a></h2>
+                                                </div>
+                                                <!-- /.post-header -->
+                                                <div class="post-content">
+                                                    <p>Mauris convallis non ligula non interdum. Gravida vulputate convallis
+                                                        tempus vestibulum cras imperdiet nun eu dolor.</p>
+                                                </div>
+                                                <!-- /.post-content -->
+                                            </div>
+                                            <!--/.card-body -->
+                                            <div class="card-footer">
+                                                <ul class="post-meta d-flex mb-0">
+                                                    <li class="post-date ms-auto"><i
+                                                            class="uil uil-calendar-alt"></i><span>26 Feb
+                                                            2022</span></li>
+                                                </ul>
+                                                <!-- /.post-meta -->
+                                            </div>
+                                            <!-- /.card-footer -->
+                                        </div>
+                                        <!-- /.card -->
+                                    </article>
+                                    <!-- /article -->
+                                </div>
+                                <!-- /.item-inner -->
+                            </div>
+                            <!--/.swiper-slide -->
+                            <div class="swiper-slide">
+                                <div class="item-inner">
+                                    <article>
+                                        <div class="card">
+                                            <figure class="card-img-top overlay overlay-1 hover-scale"><a href="#">
+                                                    <img src="./assets/img/photos/b7.jpg" alt="" /></a>
+                                                <figcaption>
+                                                    <h5 class="from-top mb-0">Read More</h5>
+                                                </figcaption>
+                                            </figure>
+                                            <div class="card-body">
+                                                <div class="post-header">
+                                                    <div class="post-category text-line">
+                                                        <a href="#" class="hover" rel="category">Business Tips</a>
+                                                    </div>
+                                                    <!-- /.post-category -->
+                                                    <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark"
+                                                            href="./blog-post.html">Morbi leo risus porta eget</a></h2>
+                                                </div>
+                                                <!-- /.post-header -->
+                                                <div class="post-content">
+                                                    <p>Mauris convallis non ligula non interdum. Gravida vulputate convallis
+                                                        tempus vestibulum cras imperdiet nun eu dolor.</p>
+                                                </div>
+                                                <!-- /.post-content -->
+                                            </div>
+                                            <!--/.card-body -->
+                                            <div class="card-footer">
+                                                <ul class="post-meta d-flex mb-0">
+                                                    <li class="post-date ms-auto"><i
+                                                            class="uil uil-calendar-alt"></i><span>7 Jan
+                                                            2022</span></li>
+
+                                                </ul>
+                                                <!-- /.post-meta -->
+                                            </div>
+                                            <!-- /.card-footer -->
+                                        </div>
+                                        <!-- /.card -->
+                                    </article>
+                                    <!-- /article -->
+                                </div>
+                                <!-- /.item-inner -->
+                            </div>
+                            <!--/.swiper-slide -->
                         </div>
-                        <div>
-                            <h4 class="fs-20 ls-sm">Secure Payments</h4>
-                            <p class="mb-0">Duis mollis gravida commodo id luctus erat porttitor ligula, eget lacinia odio
-                                sem aget elit nullam quis risus eget.</p>
-                        </div>
+                        <!--/.swiper-wrapper -->
                     </div>
+                    <!-- /.swiper -->
                 </div>
-                <!--/column -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="d-flex flex-row">
-                        <div>
-                            <img src="./assets/img/icons/lineal/cloud-computing-2.svg"
-                                class="svg-inject icon-svg icon-svg-md text-orange me-5" alt="" />
-                        </div>
-                        <div>
-                            <h4 class="fs-20 ls-sm">Daily Updates</h4>
-                            <p class="mb-0">Duis mollis gravida commodo id luctus erat porttitor ligula, eget lacinia odio
-                                sem aget elit nullam quis risus eget.</p>
-                        </div>
-                    </div>
-                </div>
-                <!--/column -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="d-flex flex-row">
-                        <div>
-                            <img src="./assets/img/icons/lineal/analytics.svg"
-                                class="svg-inject icon-svg icon-svg-md text-pink me-5" alt="" />
-                        </div>
-                        <div>
-                            <h4 class="fs-20 ls-sm">Market Research</h4>
-                            <p class="mb-0">Duis mollis gravida commodo id luctus erat porttitor ligula, eget lacinia odio
-                                sem aget elit nullam quis risus eget.</p>
-                        </div>
-                    </div>
-                </div>
-                <!--/column -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="d-flex flex-row">
-                        <div>
-                            <img src="./assets/img/icons/lineal/chat-2.svg"
-                                class="svg-inject icon-svg icon-svg-md text-green me-5 mt-1" alt="" />
-                        </div>
-                        <div>
-                            <h4 class="fs-20 ls-sm">Social Engagement</h4>
-                            <p class="mb-0">Duis mollis gravida commodo id luctus erat porttitor ligula, eget lacinia odio
-                                sem aget elit nullam quis risus eget.</p>
-                        </div>
-                    </div>
-                </div>
-                <!--/column -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="d-flex flex-row">
-                        <div>
-                            <img src="./assets/img/icons/lineal/megaphone.svg"
-                                class="svg-inject icon-svg icon-svg-md text-purple me-5 mt-1" alt="" />
-                        </div>
-                        <div>
-                            <h4 class="fs-20 ls-sm">Content Marketing</h4>
-                            <p class="mb-0">Duis mollis gravida commodo id luctus erat porttitor ligula, eget lacinia odio
-                                sem aget elit nullam quis risus eget.</p>
-                        </div>
-                    </div>
-                </div>
-                <!--/column -->
+                <!-- /.swiper-container -->
             </div>
-            <!--/.row -->
+            <!-- /.position-relative -->
         </div>
         <!-- /.container -->
     </section>
     <!-- /section -->
-    <section class="wrapper bg-gray position-relative min-vh-60 d-lg-flex align-items-center">
-        <div class="col-lg-6 position-lg-absolute top-0 start-0 image-wrapper bg-image bg-cover h-100"
-            data-image-src="./assets/img/photos/bg38.jpg">
-            <div class="divider text-gray divider-v-end d-none d-lg-block">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 1200">
-                    <g />
-                    <g>
-                        <g>
-                            <polygon fill="currentColor" points="48 0 0 0 48 1200 54 1200 54 0 48 0" />
-                        </g>
-                    </g>
-                </svg>
-            </div>
-        </div>
-        <!--/column -->
-        <div class="container">
-            <div class="row gx-0">
-                <div class="col-lg-6 ms-auto">
-                    <div class="pt-13 pb-15 pb-md-17 py-lg-16 ps-lg-15 pe-xxl-16">
-                        <h2 class="fs-15 text-uppercase text-muted mb-3">How It Works?</h2>
-                        <h3 class="display-3 ls-sm mb-7">Here are the 3 working steps on success.</h3>
-                        <div class="d-flex flex-row mb-5">
-                            <div>
-                                <img src="./assets/img/icons/lineal/light-bulb.svg"
-                                    class="svg-inject icon-svg icon-svg-md text-blue me-5 mt-1" alt="" />
-                            </div>
-                            <div>
-                                <h4 class="fs-20 ls-sm">Collect Ideas</h4>
-                                <p class="mb-0">Nulla vitae elit libero pharetra augue dapibus. Praesent commodo cursus.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-row mb-5">
-                            <div>
-                                <img src="./assets/img/icons/lineal/pie-chart-2.svg"
-                                    class="svg-inject icon-svg icon-svg-md text-green me-5 mt-1" alt="" />
-                            </div>
-                            <div>
-                                <h4 class="fs-20 ls-sm">Data Analysis</h4>
-                                <p class="mb-0">Vivamus sagittis lacus vel augue laoreet. Etiam porta sem malesuada magna.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-row">
-                            <div>
-                                <img src="./assets/img/icons/lineal/design.svg"
-                                    class="svg-inject icon-svg icon-svg-md text-yellow me-5 mt-1" alt="" />
-                            </div>
-                            <div>
-                                <h4 class="fs-20 ls-sm">Magic Touch</h4>
-                                <p class="mb-0">Cras mattis consectetur purus sit amet. Aenean lacinia bibendum nulla sed.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--/column -->
-            </div>
-            <!--/.row -->
-        </div>
-        <!-- /.container -->
-    </section>
-    <!-- /section -->
-    <section class="wrapper bg-white">
-        <div class="container py-15 py-md-17">
-            <div class="row text-center">
-                <div class="col-lg-10 col-xl-7 col-xxl-6 mx-auto">
-                    <h2 class="fs-15 text-uppercase text-muted mb-3">Case Studies</h2>
-                    <h3 class="display-3 ls-sm mb-10">Our awesome projects with creative ideas and great design.</h3>
-                </div>
-                <!-- /column -->
-            </div>
-            <!-- /.row -->
-            <div class="swiper-container blog grid-view mb-10" data-margin="30" data-dots="true" data-items-xl="3"
-                data-items-md="2" data-items-xs="1">
-                <div class="swiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <article>
-                                <figure class="overlay overlay-1 hover-scale rounded mb-6"><a href="#"> <img
-                                            src="./assets/img/photos/b4.jpg" alt="" /></a>
-                                    <figcaption>
-                                        <h5 class="from-top mb-0">Read More</h5>
-                                    </figcaption>
-                                </figure>
-                                <div class="post-header">
-                                    <h2 class="post-title h3 ls-sm mb-3"><a class="link-dark"
-                                            href="./blog-post.html">Ligula tristique quis risus</a></h2>
-                                </div>
-                                <!-- /.post-header -->
-                                <div class="post-footer">
-                                    <ul class="post-meta">
-                                        <li class="post-date"><i class="uil uil-calendar-alt"></i><span>14 Apr 2022</span>
-                                        </li>
-                                        <li class="post-comments"><a href="#"><i
-                                                    class="uil uil-file-alt fs-15"></i>Coding</a></li>
-                                    </ul>
-                                    <!-- /.post-meta -->
-                                </div>
-                                <!-- /.post-footer -->
-                            </article>
-                            <!-- /article -->
-                        </div>
-                        <!--/.swiper-slide -->
-                        <div class="swiper-slide">
-                            <article>
-                                <figure class="overlay overlay-1 hover-scale rounded mb-6"><a href="#"> <img
-                                            src="./assets/img/photos/b5.jpg" alt="" /></a>
-                                    <figcaption>
-                                        <h5 class="from-top mb-0">Read More</h5>
-                                    </figcaption>
-                                </figure>
-                                <div class="post-header">
-                                    <h2 class="post-title h3 ls-sm mb-3"><a class="link-dark"
-                                            href="./blog-post.html">Nullam id dolor elit id nibh</a></h2>
-                                </div>
-                                <!-- /.post-header -->
-                                <div class="post-footer">
-                                    <ul class="post-meta">
-                                        <li class="post-date"><i class="uil uil-calendar-alt"></i><span>29 Mar 2022</span>
-                                        </li>
-                                        <li class="post-comments"><a href="#"><i
-                                                    class="uil uil-file-alt fs-15"></i>Workspace</a></li>
-                                    </ul>
-                                    <!-- /.post-meta -->
-                                </div>
-                                <!-- /.post-footer -->
-                            </article>
-                            <!-- /article -->
-                        </div>
-                        <!--/.swiper-slide -->
-                        <div class="swiper-slide">
-                            <article>
-                                <figure class="overlay overlay-1 hover-scale rounded mb-6"><a href="#"> <img
-                                            src="./assets/img/photos/b6.jpg" alt="" /></a>
-                                    <figcaption>
-                                        <h5 class="from-top mb-0">Read More</h5>
-                                    </figcaption>
-                                </figure>
-                                <div class="post-header">
-                                    <h2 class="post-title h3 ls-sm mb-3"><a class="link-dark"
-                                            href="./blog-post.html">Ultricies fusce porta elit</a></h2>
-                                </div>
-                                <!-- /.post-header -->
-                                <div class="post-footer">
-                                    <ul class="post-meta">
-                                        <li class="post-date"><i class="uil uil-calendar-alt"></i><span>26 Feb 2022</span>
-                                        </li>
-                                        <li class="post-comments"><a href="#"><i
-                                                    class="uil uil-file-alt fs-15"></i>Meeting</a></li>
-                                    </ul>
-                                    <!-- /.post-meta -->
-                                </div>
-                                <!-- /.post-footer -->
-                            </article>
-                            <!-- /article -->
-                        </div>
-                        <!--/.swiper-slide -->
-                        <div class="swiper-slide">
-                            <article>
-                                <figure class="overlay overlay-1 hover-scale rounded mb-6"><a href="#"> <img
-                                            src="./assets/img/photos/b7.jpg" alt="" /></a>
-                                    <figcaption>
-                                        <h5 class="from-top mb-0">Read More</h5>
-                                    </figcaption>
-                                </figure>
-                                <div class="post-header">
-                                    <h2 class="post-title h3 ls-sm mb-3"><a class="link-dark"
-                                            href="./blog-post.html">Morbi leo risus porta eget</a></h2>
-                                </div>
-                                <div class="post-footer">
-                                    <ul class="post-meta">
-                                        <li class="post-date"><i class="uil uil-calendar-alt"></i><span>7 Jan 2022</span>
-                                        </li>
-                                        <li class="post-comments"><a href="#"><i
-                                                    class="uil uil-file-alt fs-15"></i>Business Tips</a></li>
-                                    </ul>
-                                    <!-- /.post-meta -->
-                                </div>
-                                <!-- /.post-footer -->
-                            </article>
-                            <!-- /article -->
-                        </div>
-                        <!--/.swiper-slide -->
-                    </div>
-                    <!--/.swiper-wrapper -->
-                </div>
-                <!-- /.swiper -->
-            </div>
-            <!-- /.swiper-container -->
-        </div>
-        <!-- /.container -->
-    </section>
-    <!-- /section -->
+
     <section class="wrapper bg-gray position-relative min-vh-60 d-lg-flex align-items-center">
         <div class="col-lg-6 position-lg-absolute top-0 end-0 image-wrapper bg-image bg-cover h-100"
             data-image-src="./assets/img/photos/bg39.jpg">
@@ -391,31 +311,11 @@
                 <!--/column -->
                 <div class="col-lg-6">
                     <h2 class="fs-15 text-uppercase text-muted mb-3">Who Are We?</h2>
-                    <h3 class="display-3 ls-sm mb-5">Company that believes in the power of creative strategy.</h3>
-                    <p class="mb-6">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                        Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel
-                        scelerisque nisl consectetur et. Cum sociis natoque penatibus et magnis dis parturient montes,
-                        nascetur ridiculus mus. Aenean lacinia bibendum nulla sed.</p>
-                    <div class="row gy-3 gx-xl-8">
-                        <div class="col-xl-6">
-                            <ul class="icon-list bullet-primary mb-0">
-                                <li><span><i class="uil uil-check"></i></span><span>Aenean eu leo quam ornare curabitur
-                                        blandit tempus.</span></li>
-                                <li class="mt-3"><span><i class="uil uil-check"></i></span><span>Nullam quis risus eget
-                                        urna mollis ornare donec elit.</span></li>
-                            </ul>
-                        </div>
-                        <!--/column -->
-                        <div class="col-xl-6">
-                            <ul class="icon-list bullet-primary mb-0">
-                                <li><span><i class="uil uil-check"></i></span><span>Etiam porta sem malesuada magna mollis
-                                        euismod.</span></li>
-                                <li class="mt-3"><span><i class="uil uil-check"></i></span><span>Fermentum massa vivamus
-                                        faucibus amet euismod.</span></li>
-                            </ul>
-                        </div>
-                        <!--/column -->
-                    </div>
+                    <h3 class="display-3 ls-sm mb-5">Perpustakaan SMK Negeri 3 Palangka Raya</h3>
+                    <p class="mb-6">Kami adalah perpustakaan sekolah yang berdedikasi untuk mendukung proses pembelajaran
+                        siswa di SMK Negeri 3 Palangka Raya. Perpustakaan kami dirancang untuk menjadi pusat sumber daya
+                        pendidikan, memberikan akses yang mudah dan cepat ke berbagai bahan bacaan yang bermanfaat.</p>
+
                     <!--/.row -->
                 </div>
                 <!--/column -->
@@ -430,8 +330,9 @@
                         </div>
                         <div>
                             <h4 class="fs-20 ls-sm">Our Vision</h4>
-                            <p class="mb-2">Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida
-                                at eget. Fusce dapibus tellus.</p>
+                            <p class="mb-2">Menjadi perpustakaan sekolah yang unggul dan inovatif dalam menyediakan
+                                layanan informasi dan sumber belajar yang mendukung tercapainya prestasi akademik dan
+                                pengembangan diri siswa di era digital.</p>
                         </div>
                     </div>
                 </div>
@@ -444,8 +345,10 @@
                         </div>
                         <div>
                             <h4 class="fs-20 ls-sm">Our Mission</h4>
-                            <p class="mb-2">Maecenas faucibus mollis interdum. Vivamus sagittis lacus vel augue laoreet.
-                                Sed posuere consectetur.</p>
+                            <p class="mb-2">Kami berkomitmen untuk menyediakan koleksi buku yang relevan dan terkini,
+                                mendukung program pendidikan sekolah dengan sumber daya yang beragam, serta menginspirasi
+                                minat baca dan semangat belajar siswa. Kami juga memanfaatkan teknologi untuk meningkatkan
+                                aksesibilitas dan pengalaman pengguna perpustakaan.</p>
                         </div>
                     </div>
                 </div>
@@ -457,9 +360,10 @@
                                 class="svg-inject icon-svg icon-svg-md text-yellow me-5" alt="" />
                         </div>
                         <div>
-                            <h4 class="fs-20 ls-sm">Our Values</h4>
-                            <p class="mb-2">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo
-                                cursus magna scelerisque.</p>
+                            <h4 class="fs-20 ls-sm">About</h4>
+                            <p class="mb-2">Perpustakaan ini dikelola oleh tim profesional yang berdedikasi untuk
+                                menyediakan layanan terbaik bagi siswa. Staf kami siap membantu dalam berbagai hal, mulai
+                                dari pencarian buku hingga penggunaan sistem perpustakaan online.</p>
                         </div>
                     </div>
                 </div>
@@ -496,184 +400,6 @@
                         <!--/.card-body -->
                     </div>
                     <!--/.card -->
-                </div>
-                <!-- /column -->
-            </div>
-            <!-- /.row -->
-            <div class="row text-center">
-                <div class="col-md-10 col-lg-8 col-xl-9 col-xxl-8 mx-auto">
-                    <h2 class="fs-15 text-uppercase text-muted mb-3">Our Pricing</h2>
-                    <h3 class="display-3 ls-sm mb-10 px-xl-15">We offer great prices and quality service for your business.
-                    </h3>
-                </div>
-                <!-- /column -->
-            </div>
-            <!-- /.row -->
-            <div class="pricing-wrapper mb-10 mb-md-14">
-                <div class="row gx-0 gy-6">
-                    <div class="col-md-6 col-lg-3">
-                        <div class="pricing card shadow-none">
-                            <div class="card-body">
-                                <h4 class="card-title ls-sm">Basic Plan</h4>
-                                <div class="prices text-dark">
-                                    <div class="price justify-content-start"><span class="price-currency">$</span><span
-                                            class="price-value">9</span> <span class="price-duration">mo</span></div>
-                                </div>
-                                <!--/.prices -->
-                                <ul class="icon-list bullet-green mt-7 mb-8">
-                                    <li><i class="uil uil-check"></i><span><strong>1</strong> Project </span></li>
-                                    <li><i class="uil uil-check"></i><span><strong>100K</strong> API Access </span></li>
-                                    <li><i class="uil uil-check"></i><span><strong>100MB</strong> Storage </span></li>
-                                    <li><i class="uil uil-times text-red"></i><span> Weekly <strong>Reports</strong>
-                                        </span></li>
-                                    <li><i class="uil uil-times text-red"></i><span> 7/24 <strong>Support</strong></span>
-                                    </li>
-                                </ul>
-                                <a href="#" class="btn btn-soft-primary rounded">Choose Plan</a>
-                            </div>
-                            <!--/.card-body -->
-                        </div>
-                        <!--/.pricing -->
-                    </div>
-                    <!--/column -->
-                    <div class="col-md-6 col-lg-3">
-                        <div class="pricing card shadow-none">
-                            <div class="card-body">
-                                <h4 class="card-title ls-sm">Premium Plan</h4>
-                                <div class="prices text-dark">
-                                    <div class="price justify-content-start"><span class="price-currency">$</span><span
-                                            class="price-value">19</span> <span class="price-duration">mo</span></div>
-                                </div>
-                                <!--/.prices -->
-                                <ul class="icon-list bullet-green mt-7 mb-8">
-                                    <li><i class="uil uil-check"></i><span><strong>5</strong> Projects </span></li>
-                                    <li><i class="uil uil-check"></i><span><strong>100K</strong> API Access </span></li>
-                                    <li><i class="uil uil-check"></i><span><strong>200MB</strong> Storage </span></li>
-                                    <li><i class="uil uil-check"></i><span> Weekly <strong>Reports</strong></span></li>
-                                    <li><i class="uil uil-times text-red"></i><span> 7/24 <strong>Support</strong></span>
-                                    </li>
-                                </ul>
-                                <a href="#" class="btn btn-soft-primary rounded">Choose Plan</a>
-                            </div>
-                            <!--/.card-body -->
-                        </div>
-                        <!--/.pricing -->
-                    </div>
-                    <!--/column -->
-                    <div class="col-md-6 col-lg-3">
-                        <div class="pricing card bg-gray">
-                            <div class="card-body">
-                                <h4 class="card-title ls-sm">Corporate Plan</h4>
-                                <div class="prices text-dark">
-                                    <div class="price justify-content-start"><span class="price-currency">$</span><span
-                                            class="price-value">29</span> <span class="price-duration">mo</span></div>
-                                </div>
-                                <!--/.prices -->
-                                <ul class="icon-list bullet-green mt-7 mb-8">
-                                    <li><i class="uil uil-check"></i><span><strong>20</strong> Projects </span></li>
-                                    <li><i class="uil uil-check"></i><span><strong>300K</strong> API Access </span></li>
-                                    <li><i class="uil uil-check"></i><span><strong>500MB</strong> Storage </span></li>
-                                    <li><i class="uil uil-check"></i><span> Weekly <strong>Reports</strong></span></li>
-                                    <li><i class="uil uil-check"></i><span> 7/24 <strong>Support</strong></span></li>
-                                </ul>
-                                <a href="#" class="btn btn-primary rounded">Choose Plan</a>
-                            </div>
-                            <!--/.card-body -->
-                        </div>
-                        <!--/.pricing -->
-                    </div>
-                    <!--/column -->
-                    <div class="col-md-6 col-lg-3">
-                        <div class="pricing card shadow-none">
-                            <div class="card-body">
-                                <h4 class="card-title ls-sm">Community Plan</h4>
-                                <div class="prices text-dark">
-                                    <div class="price justify-content-start"><span class="price-currency">$</span><span
-                                            class="price-value">49</span> <span class="price-duration">mo</span></div>
-                                </div>
-                                <!--/.prices -->
-                                <ul class="icon-list bullet-green mt-7 mb-8">
-                                    <li><i class="uil uil-check"></i><span><strong>90</strong> Projects </span></li>
-                                    <li><i class="uil uil-check"></i><span><strong>900K</strong> API Access </span></li>
-                                    <li><i class="uil uil-check"></i><span><strong>900MB</strong> Storage </span></li>
-                                    <li><i class="uil uil-check"></i><span> Weekly <strong>Reports</strong> </span></li>
-                                    <li><i class="uil uil-check"></i><span> 7/24 <strong>Support</strong></span></li>
-                                </ul>
-                                <a href="#" class="btn btn-soft-primary rounded">Choose Plan</a>
-                            </div>
-                            <!--/.card-body -->
-                        </div>
-                        <!--/.pricing -->
-                    </div>
-                </div>
-                <!--/.row -->
-            </div>
-            <!--/.pricing-wrapper -->
-            <div class="row">
-                <div class="col-xl-11 mx-auto">
-                    <div class="row gx-md-8 gx-xl-12 gy-10 px-lg-5">
-                        <div class="col-lg-6">
-                            <div class="d-flex flex-row">
-                                <div>
-                                    <img src="./assets/img/icons/lineal/check-list.svg"
-                                        class="svg-inject icon-svg icon-svg-sm text-blue me-5 mt-1" alt="" />
-                                </div>
-                                <div>
-                                    <h4 class="fs-20 ls-sm">Can I cancel my subscription?</h4>
-                                    <p class="mb-0">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
-                                        nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
-                                        mollis euismod.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /column -->
-                        <div class="col-lg-6">
-                            <div class="d-flex flex-row">
-                                <div>
-                                    <img src="./assets/img/icons/lineal/wallet.svg"
-                                        class="svg-inject icon-svg icon-svg-sm text-yellow me-5 mt-1" alt="" />
-                                </div>
-                                <div>
-                                    <h4 class="fs-20 ls-sm">Which payment methods do you accept?</h4>
-                                    <p class="mb-0">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
-                                        nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
-                                        mollis euismod.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /column -->
-                        <div class="col-lg-6">
-                            <div class="d-flex flex-row">
-                                <div>
-                                    <img src="./assets/img/icons/lineal/insurance.svg"
-                                        class="svg-inject icon-svg icon-svg-sm text-pink me-5 mt-1" alt="" />
-                                </div>
-                                <div>
-                                    <h4 class="fs-20 ls-sm">How can I manage my Account?</h4>
-                                    <p class="mb-0">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
-                                        nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
-                                        mollis euismod.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /column -->
-                        <div class="col-lg-6">
-                            <div class="d-flex flex-row">
-                                <div>
-                                    <img src="./assets/img/icons/lineal/padlock.svg"
-                                        class="svg-inject icon-svg icon-svg-sm text-green me-5 mt-1" alt="" />
-                                </div>
-                                <div>
-                                    <h4 class="fs-20 ls-sm">Is my credit card information secure?</h4>
-                                    <p class="mb-0">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
-                                        nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
-                                        mollis euismod.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /column -->
-                    </div>
-                    <!-- /.row -->
                 </div>
                 <!-- /column -->
             </div>

@@ -6,6 +6,7 @@ use App\Models\M_buku;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+
 class SeederBook extends Seeder
 {
     /**
@@ -20,8 +21,10 @@ class SeederBook extends Seeder
                 'judul' => 'Judul Buku ' . $i,
                 'penulis' => 'Penulis ' . $i,
                 'sinopsis' => 'Sinopsis buku ' . $i,
-                'gendre' => 'Gendre ' . $i, 
+                'gendre' => 'Gendre ' . $i,
                 'kategori' => 'Kategori ' . $i,
+                'kode_buku' => '0879689' . $i,
+                'status_pinjaman' => 0,
                 'tahun_terbit' => Carbon::now()->subYears(rand(1, 20))->format('Y-m-d'), // Format tahun-bulan-tanggal
                 'created_at' => now(),
                 // 'updated_at' => now(),
