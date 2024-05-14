@@ -2,7 +2,7 @@
       <aside class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
           <div class="py-4 text-gray-500 dark:text-gray-400">
               <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="#">
-                  Sistem perpustakaan       
+                  Sistem perpustakaan
               </a>
               <ul class="mt-6">
                   <li class="relative px-6 py-3">
@@ -28,7 +28,6 @@
                       @endif
                       <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                           href="{{ route('kelola-buku') }}">
-                        
                           <svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5"
                               xmlns="http://www.w3.org/2000/svg">
                               <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -40,7 +39,7 @@
                                   </path>
                               </g>
                           </svg>
-                         
+
                           <span class="ml-4 {{ $title === 'Kelola Buku' ? 'dark:text-white' : '' }}">Buku</span>
                       </a>
                   </li>
@@ -51,16 +50,27 @@
                       @endif
                       <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                           href="{{ route('kelola_kategori') }}">
+                          <svg xmlns="http://www.w3.org/2000/svg" height="14" width="14" viewBox="0 0 512 512" class="w-5 h-5" fill="currentColor"><path d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z"/></svg>
+                          <span class="ml-4 {{ $title === 'Kelola kategori' ? 'dark:text-white' : '' }}">Kategori</span>
+                      </a>
+                  </li>
+                  <li class="relative px-6 py-3">
+                      @if ($title === 'Kelola iswa')
+                          <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                              aria-hidden="true"></span>
+                      @endif
+                      <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                          href="{{ route('kelola_siswa') }}">
                           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                               <path
                                   d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z">
                               </path>
                           </svg>
-                          <span class="ml-4 {{ $title === 'Kelola kategori' ? 'dark:text-white' : '' }}">Kategori</span>
+                          <span class="ml-4 {{ $title === 'Kelola Siswa' ? 'dark:text-white' : '' }}">Kesiswaan</span>
                       </a>
                   </li>
-                  
-                  <li class="relative px-6 py-3">
+
+                  {{-- <li class="relative px-6 py-3">
                       <button
                           class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                           @click="togglePagesMenu" aria-haspopup="true">
@@ -88,13 +98,13 @@
                               x-transition:leave-end="opacity-0 max-h-0"
                               class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-gray-900"
                               aria-label="submenu">
-                              {{-- <li
+                              <li
                                   class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                                  <a class="w-full" href="">Guru pengampu</a>   
-                              </li> --}}
+                                  <a class="w-full" href="">Guru pengampu</a>
+                              </li>
                           </ul>
                       </template>
-                  </li>
+                  </li> --}}
 
                   {{-- <li class="relative px-6 py-3">
                       @if ($title === 'Kelola user')
