@@ -22,8 +22,9 @@ class controller_dashboard extends Controller
     {
         $user = Auth::user();
         $title = 'Landing Page';
-
-        return view('siswa.dashboard.index', compact('user', 'title'));
+        $books = M_buku::orderBy('created_at', 'desc')->take(5)->get();
+        // dd($books);
+        return view('siswa.dashboard.index', compact('user', 'title', 'books'));
     }
 
     // Siswa Books List

@@ -46,53 +46,55 @@
                     data-items-xl="3" data-items-md="2" data-items-xs="1">
                     <div class="swiper">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="item-inner">
-                                    <article>
-                                        <div class="card">
-                                            <figure class="card-img-top overlay overlay-1 hover-scale"><a href="#">
-                                                    <img src="./assets/img/photos/b4.jpg" alt="" /></a>
-                                                <figcaption>
-                                                    <h5 class="from-top mb-0">Read More</h5>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="card-body">
-                                                <div class="post-header">
-                                                    <div class="post-category text-line">
-                                                        <a href="#" class="hover" rel="category">Coding</a>
+                            @foreach ($books as $book)
+                                <div class="swiper-slide">
+                                    <div class="item-inner">
+                                        <article>
+                                            <div class="card">
+                                                <figure class="card-img-top overlay overlay-1 hover-scale"><a
+                                                        href="#">
+                                                        <img src="./assets/img/photos/b4.jpg" alt="" /></a>
+                                                    <figcaption>
+                                                        <h5 class="from-top mb-0">Lihat detail</h5>
+                                                    </figcaption>
+                                                </figure>
+                                                <div class="card-body">
+                                                    <div class="post-header">
+                                                        <div class="post-category text-line">
+                                                            <a href="#" class="hover"
+                                                                rel="category">{{ $book->judul }}</a>
+                                                        </div>
+                                                        <!-- /.post-category -->
+                                                        <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark"
+                                                                href="{{ route('detail') }}">{{$book->penulis}}</a></h2>
                                                     </div>
-                                                    <!-- /.post-category -->
-                                                    <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark"
-                                                            href="{{ route('detail') }}">Ligula tristique
-                                                            quis
-                                                            risus</a></h2>
+                                                    <!-- /.post-header -->
+                                                    <div class="post-content">
+                                                        <p>{{ $book->sinopsis }}.</p>
+                                                    </div>
+                                                    <!-- /.post-content -->
                                                 </div>
-                                                <!-- /.post-header -->
-                                                <div class="post-content">
-                                                    <p>Mauris convallis non ligula non interdum. Gravida vulputate convallis
-                                                        tempus vestibulum cras imperdiet nun eu dolor.</p>
+                                                <!--/.card-body -->
+                                                <div class="card-footer">
+                                                    <ul class="post-meta d-flex mb-0">
+                                                        <span>Terbitan</span>
+                                                        <li class="post-date ms-auto text-dark"><i
+                                                                class="uil uil-calendar-alt"></i><span>{{ $book->tahun_terbit }}</span></li>
+                                                    </ul>
+                                                    <!-- /.post-meta -->
                                                 </div>
-                                                <!-- /.post-content -->
+                                                <!-- /.card-footer -->
                                             </div>
-                                            <!--/.card-body -->
-                                            <div class="card-footer">
-                                                <ul class="post-meta d-flex mb-0">
-                                                    <li class="post-date ms-auto"><i
-                                                            class="uil uil-calendar-alt"></i><span>14 Apr
-                                                            2022</span></li>
-                                                </ul>
-                                                <!-- /.post-meta -->
-                                            </div>
-                                            <!-- /.card-footer -->
-                                        </div>
-                                        <!-- /.card -->
-                                    </article>
-                                    <!-- /article -->
+                                            <!-- /.card -->
+                                        </article>
+                                        <!-- /article -->
+                                    </div>
+                                    <!-- /.item-inner -->
                                 </div>
-                                <!-- /.item-inner -->
-                            </div>
+                            @endforeach
+
                             <!--/.swiper-slide -->
-                            <div class="swiper-slide">
+                            {{-- <div class="swiper-slide">
                                 <div class="item-inner">
                                     <article>
                                         <div class="card">
@@ -136,7 +138,7 @@
                                 <!-- /.item-inner -->
                             </div>
                             <!--/.swiper-slide -->
-                            <div class="swiper-slide">
+                            {{-- <div class="swiper-slide">
                                 <div class="item-inner">
                                     <article>
                                         <div class="card">
@@ -223,7 +225,7 @@
                                     <!-- /article -->
                                 </div>
                                 <!-- /.item-inner -->
-                            </div>
+                            </div> --}} --}}
                             <!--/.swiper-slide -->
                         </div>
                         <!--/.swiper-wrapper -->
