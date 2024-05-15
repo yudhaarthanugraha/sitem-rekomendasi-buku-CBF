@@ -28,8 +28,8 @@
         <!-- /.container -->
     </section>
     <!-- /section -->
-    <section class="wrapper bg-light">
-        <div class="container py-14 py-md-16">
+    <section id="books" class="wrapper bg-light">
+        <div class="container justify-center py-14 py-md-16">
             <div class="row">
                 <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto">
                     <h2 class="fs-15 text-uppercase text-primary text-center">Our Books</h2>
@@ -231,11 +231,18 @@
                 <!-- /.swiper-container -->
             </div>
             <!-- /.position-relative -->
+            <div class="row pt-5">
+                <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto d-flex justify-content-center">
+                    <a href="#" class="btn btn-expand btn-primary rounded-pill">
+                        <i class="uil uil-arrow-right"></i>
+                        <span>Learn More</span>
+                    </a>
+                </div>
+            </div>
         </div>
         <!-- /.container -->
     </section>
     <!-- /section -->
-
     <section class="wrapper bg-gray position-relative min-vh-60 d-lg-flex align-items-center">
         <div class="col-lg-6 position-lg-absolute top-0 end-0 image-wrapper bg-image bg-cover h-100"
             data-image-src="./assets/img/photos/bg39.jpg">
@@ -256,21 +263,24 @@
                 <div class="col-lg-6">
                     <div class="pt-13 pb-15 pb-md-17 py-lg-16 pe-lg-15">
                         <h2 class="fs-16 text-uppercase text-muted mb-3">Our Solutions</h2>
-                        <h3 class="display-3 ls-sm mb-5">Just sit & relax while we take care of your business needs.</h3>
-                        <p class="mb-6">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
-                            mus. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus.
-                            Maecenas sed diam eget risus varius blandit sit amet non magna. Praesent commodo cursus magna.
+                        <h3 class="display-3 ls-sm mb-5">Meningkatkan Pengalaman Membaca</h3>
+                        <p class="mb-6">Kami menyediakan solusi cerdas untuk perpustakaan sekolah dengan
+                            mengimplementasikan sistem rekomendasi buku berbasis content-based filtering. Sistem ini secara
+                            otomatis menganalisis preferensi dan riwayat peminjaman siswa untuk memberikan rekomendasi buku
+                            yang tepat dan relevan. Dengan memanfaatkan teknologi ini, kami membantu meningkatkan minat baca
+                            dan kemudahan akses buku, memastikan setiap siswa mendapatkan pengalaman membaca yang optimal
+                            dan sesuai dengan minat mereka.
                         </p>
                         <div class="row align-items-center counter-wrapper gy-6">
                             <div class="col-md-6">
                                 <h3 class="counter counter-lg mb-1">99.7%</h3>
-                                <h6 class="fs-17 ls-sm mb-1">Customer Satisfaction</h6>
+                                <h6 class="fs-17 ls-sm mb-1">Kepuasan Siswa</h6>
                                 <span class="ratings five"></span>
                             </div>
                             <!--/column -->
                             <div class="col-md-6">
                                 <h3 class="counter counter-lg mb-1">4x</h3>
-                                <h6 class="fs-17 ls-sm mb-1">New Visitors</h6>
+                                <h6 class="fs-17 ls-sm mb-1">Pengunjung baru</h6>
                                 <span class="ratings five"></span>
                             </div>
                             <!--/column -->
@@ -285,7 +295,7 @@
         <!-- /.container -->
     </section>
     <!-- /section -->
-    <section class="wrapper bg-white">
+    <section id="about-us" class="wrapper bg-white">
         <div class="container py-15 py-md-17">
             <div class="row gy-10 gy-sm-13 gx-md-8 gx-xl-12 align-items-center mb-10 mb-md-12">
                 <div class="col-lg-6">
@@ -382,13 +392,13 @@
                                 <div class="col-lg-8 ps-xl-10">
                                     <span class="ratings five fs-20 mb-3"></span>
                                     <blockquote class="border-0 fs-lg mb-0">
-                                        <p>“Donec id elit non mi porta gravida at eget metus. Vivamus mollis est non commodo
-                                            luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis
-                                            porta est non commodo luctus.”</p>
+                                        <p>“Aplikasi perpustakaan online ini sangat membantu saya menemukan buku-buku yang
+                                            sesuai dengan minat saya. Sistem rekomendasinya sangat akurat dan memudahkan
+                                            saya dalam mencari buku baru yang menarik untuk dibaca.”</p>
                                         <div class="blockquote-details justify-content-center text-center">
                                             <div class="info p-0">
-                                                <h4 class="ls-sm mb-1">Coriss Ambady</h4>
-                                                <p class="mb-0">Financial Analyst</p>
+                                                <h4 class="ls-sm mb-1">Maria Andini</h4>
+                                                <p class="mb-0">Rekayasa Perangkat Lunak</p>
                                             </div>
                                         </div>
                                     </blockquote>

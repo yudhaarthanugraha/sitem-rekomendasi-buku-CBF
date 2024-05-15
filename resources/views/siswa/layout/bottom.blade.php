@@ -2,19 +2,13 @@
 <!-- /.content-wrapper -->
 <footer class="bg-gray">
     <div class="container py-13 py-md-15">
-        <div class="d-lg-flex flex-row align-items-lg-center">
-            <h3 class="display-3 ls-sm mb-6 mb-lg-0 pe-lg-20 pe-xl-22 pe-xxl-25">Join our community by using our services
-                and grow your business.</h3>
-            <a href="#" class="btn btn-lg btn-primary rounded mb-0 text-nowrap">Try It For Free</a>
-        </div>
-        <!--/div -->
-        <hr class="mt-11 mb-12" />
         <div class="row gy-6 gy-lg-0">
             <div class="col-md-4 col-lg-3">
                 <div class="widget">
-                    <img class="mb-4" src="./assets/img/logo-dark.png" srcset="./assets/img/logo-dark@2x.png 2x"
+                    <img class="mb-4 img-fluid" height="70" width="70" src="./assets/img/logo_smk.png"
                         alt="" />
-                    <p class="mb-4">© 2023 Sandbox. <br class="d-none d-lg-block" />All rights reserved.</p>
+                    <p class="mb-4">© 2024 Perpustakaan SMK Negeri 3 Palangka Raya. <br
+                            class="d-none d-lg-block" />All rights reserved.</p>
                     <nav class="nav social social-muted">
                         <a href="#"><i class="uil uil-twitter"></i></a>
                         <a href="#"><i class="uil uil-facebook-f"></i></a>
@@ -30,21 +24,20 @@
             <div class="col-md-4 col-lg-3">
                 <div class="widget">
                     <h4 class="widget-title ls-sm mb-3">Get in Touch</h4>
-                    <address class="pe-xl-15 pe-xxl-17">Moonshine St. 14/05 Light City, London, United Kingdom</address>
-                    <a href="mailto:#" class="link-body">info@email.com</a><br /> 00 (123) 456 78 90
+                    <address class="pe-xl-15 pe-xxl-17">Jl. Tingang No.1, Palangka Raya, Kalimantan Tengah 73112
+                    </address>
+                    <a href="mailto:#" class="link-body">perpustakaan@smkn3palangkaraya.sch.id</a><br /> ( 0536 ) 123 45
+                    67
                 </div>
                 <!-- /.widget -->
             </div>
             <!-- /column -->
             <div class="col-md-4 col-lg-3">
                 <div class="widget">
-                    <h4 class="widget-title ls-sm mb-3">Learn More</h4>
+                    <h4 class="widget-title ls-sm mb-3">Navigation</h4>
                     <ul class="list-unstyled text-reset mb-0">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Our Story</a></li>
-                        <li><a href="#">Projects</a></li>
-                        <li><a href="#">Terms of Use</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#books">Books</a></li>
+                        <li><a href="#about-us">About Us</a></li>
                     </ul>
                 </div>
                 <!-- /.widget -->
@@ -53,7 +46,8 @@
             <div class="col-md-12 col-lg-3">
                 <div class="widget">
                     <h4 class="widget-title ls-sm mb-3">Our Newsletter</h4>
-                    <p class="mb-5">Subscribe to our newsletter to get our news & deals delivered to you.</p>
+                    <p class="mb-5">Terima kasih telah mengunjungi perpustakaan kami. Kami berharap dapat membantu
+                        Anda dalam perjalanan membaca dan belajar Anda.</p>
                     <div class="newsletter-wrapper">
                         <!-- Begin Mailchimp Signup Form -->
                         <div id="mc_embed_signup2">
@@ -99,6 +93,17 @@
         <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
     </svg>
 </div>
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
 <script src="./assets/js/plugins.js"></script>
 <script src="./assets/js/theme.js"></script>
 </body>
