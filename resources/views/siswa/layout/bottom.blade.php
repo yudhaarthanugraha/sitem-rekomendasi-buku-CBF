@@ -61,7 +61,7 @@
                                             class="required email form-control" placeholder="Email Address"
                                             id="mce-EMAIL2">
                                         <label for="mce-EMAIL2">Email Address</label>
-                                        <input type="submit" value="Join" name="subscribe"
+                                        <input type="submit" value="Send" name="subscribe"
                                             id="mc-embedded-subscribe2" class="btn btn-primary ">
                                     </div>
                                     <div id="mce-responses2" class="clear">
