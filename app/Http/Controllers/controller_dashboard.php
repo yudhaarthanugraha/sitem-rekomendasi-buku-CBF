@@ -17,12 +17,31 @@ class controller_dashboard extends Controller
         return view('admin.dashboard.index', compact('user', 'title', 'books'));
     }
 
-    // siswa dashboard
+    // siswa landing page
     public function dashboardSiswa()
     {
         $user = Auth::user();
         $title = 'Landing Page';
 
         return view('siswa.dashboard.index', compact('user', 'title'));
+    }
+
+    // Siswa Books List
+    public function booksList()
+    {
+        $user = Auth::user();
+        $title = 'Daftar Buku';
+
+        return view('siswa.books.list_book', compact('user', 'title'));
+    }
+
+    // Siswa detail
+    public function detailBook()
+    {
+        $user = Auth::user();
+        $title = 'Detail Buku';
+        $id = 1;
+
+        return view('siswa.books.detail_book', compact('user', 'title', 'id'));
     }
 }

@@ -63,7 +63,9 @@
                                                     </div>
                                                     <!-- /.post-category -->
                                                     <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark"
-                                                            href="./blog-post.html">Ligula tristique quis risus</a></h2>
+                                                            href="{{ route('detail') }}">Ligula tristique
+                                                            quis
+                                                            risus</a></h2>
                                                 </div>
                                                 <!-- /.post-header -->
                                                 <div class="post-content">
@@ -233,7 +235,7 @@
             <!-- /.position-relative -->
             <div class="row pt-5">
                 <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto d-flex justify-content-center">
-                    <a href="#" class="btn btn-expand btn-primary rounded-pill">
+                    <a href="{{ route('list_book') }}" class="btn btn-expand btn-primary rounded-pill">
                         <i class="uil uil-arrow-right"></i>
                         <span>Learn More</span>
                     </a>
