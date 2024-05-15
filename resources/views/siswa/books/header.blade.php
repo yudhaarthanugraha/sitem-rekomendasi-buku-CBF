@@ -16,10 +16,7 @@
                 <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#books">Books</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#about-us">About Us</a>
+                            <a class="nav-link" href="{{ route('landing_page') }}">Home</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#"

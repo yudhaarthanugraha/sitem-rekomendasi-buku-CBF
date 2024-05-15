@@ -63,4 +63,6 @@ Route::put('/kelola-pinjam-buku/{id}/pinjam', [controller_pinjam_buku::class, 'u
 
 // Siswa routes start
 Route::get('/landing_page', [controller_dashboard::class, 'dashboardSiswa'])->name('landing_page');
+Route::get('/list_book', [controller_dashboard::class, 'booksList'])->name('list_book');
+Route::get('/detail-book', [controller_dashboard::class, 'detailBook'])->name('detail');
 // Siswa routes end
