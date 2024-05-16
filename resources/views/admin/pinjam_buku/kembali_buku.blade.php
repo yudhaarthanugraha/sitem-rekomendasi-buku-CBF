@@ -6,9 +6,10 @@
         <main class="h-full pb-16 overflow-y-auto">
             <div class="container px-6 mx-auto grid">
                 <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-                    Masukan tanggal peminjaman
+                    Masukan tanggal pengembalian
                 </h2>
-                <form class="grid dark:bg-gray-800 bg-white p-4" action="{{ route('update_kembali_buku', ['id' => $id_buku]) }}" method="POST">
+                <form class="grid dark:bg-gray-800 bg-white p-4"
+                    action="{{ route('update_kembali_buku', ['id' => $id_buku]) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="grid gap-6  md:grid-cols-2 xl:grid-cols-2">
@@ -34,7 +35,16 @@
                             </label>
                         </div>
                         <div class="dark:text-white px-4 py-3 mb-2 bg-white rounded-lg shadow-md dark:bg-gray-800">
-                            <h3 class="text-2xl font-bold py-3">Data buku</h3>
+
+                            <div class="flex items-center justify-between mb-4 ">
+                                <h3 class="text-2xl font-bold py-3">Data buku</h3>
+                                @if ($buku->gambar)
+                                    <div class="shadow-md ">
+                                        <img src="{{ asset('uploads/' . $buku->gambar) }}" alt="Gambar Buku"
+                                            class="w-32 h-32 rounded-lg">
+                                    </div>
+                                @endif
+                            </div>
                             <div class="grid md:grid-cols-2 gap-2 w-full">
                                 <span class="font-medium">Judul</span>
                                 <span class=" text-purple-600">{{ $buku->judul }}</span>

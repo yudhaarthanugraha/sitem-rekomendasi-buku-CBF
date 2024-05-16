@@ -20,17 +20,31 @@
                             <thead>
                                 <tr
                                     class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                                    <th class="px-4 py-3">#</th>
                                     <th class="px-4 py-3">Judul</th>
                                     <th class="px-4 py-3">Penulis</th>
                                     <th class="px-4 py-3">Tahun terbit</th>
-                                    <th class="px-4 py-3">Gendre</th>
-                                    <th class="px-4 py-3">Sinopsis</th>
+                                    <th class="px-4 py-3">Genre</th>
+                                    {{-- <th class="px-4 py-3">Sinopsis</th> --}}
                                     <th class="px-4 py-3">Kode buku</th>
                                     <th class="px-4 py-3">Actions</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                                 @foreach ($books as $book)
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center text-sm">
+                                            <!-- Avatar with inset shadow -->
+                                            <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
+                                                <img class="object-cover w-full h-full rounded-full"
+                                                    src="{{ $book->gambar ? asset('uploads/' . $book->gambar) : 'https://plus.unsplash.com/premium_photo-1677187301535-b46cec7b2cc8?q=80&w=1523&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}"
+                                                    alt="" loading="lazy" />
+
+                                                <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
                                     <td class="px-4 py-3 text-sm dark:text-white">
                                         {{ $book->judul }}
                                     </td>
@@ -43,11 +57,13 @@
                                     <td class="px-4 py-3 text-sm dark:text-white">
                                         {{ $book->gendre }}
                                     </td>
-                                    <td class="px-4 py-3 text-sm dark:text-white">
+                                    {{-- <td class="px-4 py-3 text-sm dark:text-white">
                                         {{ $book->sinopsis }}
-                                    </td>
+                                    </td> --}}
                                     <td class="px-4 py-3 text-sm dark:text-white">
-                                        {{ $book->kode_buku }}
+                                        <span
+                                            class="px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full dark:text-white dark:bg-orange-600">
+                                            {{ $book->kode_buku }} </span>
                                     </td>
                                     <td class="px-4 py-3">
                                         <div class="flex items-center space-x-4 text-sm">
@@ -64,13 +80,6 @@
 
                                             @php
                                                 $route = $book->status_pinjaman !== 1 ? 'pinjam_buku' : 'kembali_buku';
-                        //                         $icon =
-                        //                             $book->status_pinjaman !== 1
-                        //                                 ? '  <svg fill="currentColor" viewBox="0 0 20 20" class="w-5 h-5"
-                        //       xmlns="http://www.w3.org/2000/svg">
-                        //       <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M 19.2811 49.5156 C 20.5233 49.5156 21.3436 48.6719 21.3436 47.4531 C 21.3436 46.8438 21.1561 46.3984 20.7811 46.0234 L 14.0311 39.4375 L 9.5780 35.6406 L 15.0858 35.8750 L 44.9920 35.8750 C 50.4529 35.8750 52.7267 33.3672 52.7267 28.0703 L 52.7267 14.2188 C 52.7267 8.7578 50.4529 6.4844 44.9920 6.4844 L 31.8671 6.4844 C 30.5780 6.4844 29.7342 7.4219 29.7342 8.5703 C 29.7342 9.7188 30.5780 10.6562 31.8671 10.6562 L 44.9920 10.6562 C 47.4764 10.6562 48.5545 11.7344 48.5545 14.2188 L 48.5545 28.0703 C 48.5545 30.6250 47.4764 31.7031 44.9920 31.7031 L 15.0858 31.7031 L 9.5780 31.9375 L 14.0311 28.1406 L 20.7811 21.5547 C 21.1561 21.1797 21.3436 20.7109 21.3436 20.1016 C 21.3436 18.9062 20.5233 18.0391 19.2811 18.0391 C 18.7655 18.0391 18.1561 18.2969 17.7577 18.6953 L 3.9764 32.2188 C 3.5077 32.6640 3.2733 33.2031 3.2733 33.7891 C 3.2733 34.3516 3.5077 34.9140 3.9764 35.3594 L 17.7577 48.8828 C 18.1561 49.2813 18.7655 49.5156 19.2811 49.5156 Z"></path></g>
-                        //   </svg>'
-                        //                                 : '<svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>';
                                                 $icon = $book->status_pinjaman !== 1 ? 'pinjam' : 'kembali';
                                             @endphp
 
@@ -157,7 +166,8 @@
                         Tambah Buku
                     </p>
                     <!-- Modal description -->
-                    <form class="flex flex-col overflow-auto" action="{{ route('store_buku') }}" method="POST">
+                    <form class="flex flex-col overflow-auto" action="{{ route('store_buku') }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="grid md:grid-cols-2 xl:grid-cols-2">
                             <div class="px-4 py-3 mb-2 bg-white rounded-lg shadow-md dark:bg-gray-800">
@@ -169,9 +179,9 @@
                                             class="block w-full pl-10 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
                                             placeholder="masukan judul" />
                                         <div class="absolute inset-y-0 flex items-center ml-3 pointer-events-none">
-                                            <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
-                                                stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
-                                                stroke="currentColor">
+                                            <svg class="w-5 h-5" aria-hidden="true" fill="none"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                viewBox="0 0 24 24" stroke="currentColor">
                                                 <path
                                                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
                                                 </path>
@@ -291,6 +301,29 @@
                                                     {{ $kategori->kategori }}</option>
                                             @endforeach
                                         </select>
+
+                                        <div class="absolute inset-y-0 flex items-center ml-3 pointer-events-none">
+                                            <svg class="w-5 h-5" aria-hidden="true" fill="none"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path
+                                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="px-4 py-3 mb-2 bg-white rounded-lg shadow-md dark:bg-gray-800">
+
+                                <label class="block text-sm">
+                                    <span class="text-gray-700 dark:text-gray-400">Gambar</span>
+                                    <span class="text-gray-700 dark:text-gray-400">(Maksimal size 2 mb)</span>
+                                    <div
+                                        class="relative text-gray-500 focus-within:text-purple-600 dark:focus-within:text-purple-400">
+                                        <input type="file" name="gambar"
+                                            class="block w-full pl-10 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
+                                            placeholder="Upload gambar" />
 
                                         <div class="absolute inset-y-0 flex items-center ml-3 pointer-events-none">
                                             <svg class="w-5 h-5" aria-hidden="true" fill="none"

@@ -7,7 +7,7 @@
                 <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
                     Edit buku
                 </h2>
-                <form class="grid" action="{{ route('update_buku', $book->id_buku) }}" method="POST">
+                <form class="grid" action="{{ route('update_buku', $book->id_buku) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="grid gap-2 md:grid-cols-2 xl:grid-cols-2">
@@ -161,6 +161,28 @@
                                     </div>
                                 </div>
                             </label>
+                        </div>
+
+
+                        <!-- Input untuk mengunggah gambar baru (opsional) -->
+                        <div class="px-4 py-3 mb-2 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                              @if ($book->gambar)
+                                <div>
+                                    <img src="{{ asset('uploads/' . $book->gambar) }}" alt="Gambar Buku"
+                                        class="w-32 h-32 rounded-lg">
+                                </div>
+                            @endif
+                            <label class="block text-sm">
+                                <span class="text-gray-700 dark:text-gray-400">Gambar (Opsional)</span>
+                                <div
+                                    class="relative text-gray-500 focus-within:text-purple-600 dark:focus-within:text-purple-400">
+                                    <input type="file" name="gambar"
+                                        class="block w-full pl-10 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
+                                        placeholder="Upload gambar" />
+                                    <!-- Tambahkan kode SVG ikon upload di sini -->
+                                </div>
+                            </label>
+                          
                         </div>
                     </div>
                     <button onclick="confirm('Apakah anda yakin melakukan perubahan data?')" type="submit"

@@ -6,6 +6,7 @@ use App\Models\M_buku;
 use App\Models\M_kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class controller_buku extends Controller
 {
@@ -41,7 +42,6 @@ class controller_buku extends Controller
 
     public function create(Request $request)
     {
-        // Validasi data yang diterima dari form
         $validatedData = $request->validate([
             'judul' => 'required|string|max:255',
             'penulis' => 'required|string|max:255',
@@ -51,7 +51,15 @@ class controller_buku extends Controller
             'sinopsis' => 'required|string|max:500',
             'kategori' => 'required|string|max:500',
             'kode_buku' => 'required|string|max:255|unique:tb_buku',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg|max:10048',
         ]);
+
+        // Tangani penyimpanan gambar yang diunggah
+        if ($request->hasFile('gambar')) {
+            $image = $request->file('gambar');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('uploads'), $imageName);
+        }
         // Simpan data buku baru ke dalam database
         $buku = new M_buku();
         $buku->judul = $request->judul;
@@ -61,6 +69,7 @@ class controller_buku extends Controller
         $buku->sinopsis = $request->sinopsis;
         $buku->kategori = $request->kategori;
         $buku->kode_buku = $request->kode_buku;
+        $buku->gambar = $imageName;
         $buku->save();
         // Jika penyimpanan berhasil, kembalikan respons berhasil
         return redirect()->route('kelola-buku')->with('success', 'Data buku ' . $request->judul . ' berhasil ditambahkan');
@@ -97,13 +106,27 @@ class controller_buku extends Controller
             'sinopsis' => 'required|string|max:500',
             'kategori' => 'required|string|max:255',
             'kode_buku' => 'required|string|max:255',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg|max:10048',
         ]);
-        $buku = M_buku::where('id_buku', $id)->firstOrFail();
-        // if ($request->kode_buku !== $buku->kode_buku) {
-        //     $request->validate([
-        //         'kode_buku' => 'unique:tb_buku,kode_buku,' . $id,
-        //     ]);
-        // }
+        $buku = M_buku::findOrFail($id);
+        // Jika terdapat file gambar baru
+        if ($request->hasFile('gambar')) {
+            // Hapus gambar lama jika ada
+            if ($buku->gambar) {
+                $gambarPath = public_path('uploads/' . $buku->gambar);
+                if (file_exists($gambarPath)) {
+                    unlink($gambarPath);
+                }
+            }
+            // Simpan gambar baru dengan nama unik berdasarkan waktu
+            $image = $request->file('gambar');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('uploads'), $imageName);
+
+            // Set nama gambar baru ke atribut gambar buku
+            $buku->gambar = $imageName;
+        }
+
         $buku->judul = $request->judul;
         $buku->penulis = $request->penulis;
         $buku->tahun_terbit = $request->tahun_terbit;
@@ -112,12 +135,19 @@ class controller_buku extends Controller
         $buku->kategori = $request->kategori;
         $buku->kode_buku = $request->kode_buku;
         $buku->save();
+
         return redirect()->route('kelola-buku')->with('success', 'Data buku berhasil diperbarui.');
     }
     public function delete($id)
     {
         // Temukan buku berdasarkan ID
         $buku = M_buku::findOrFail($id);
+        if ($buku->gambar) {
+            $gambarPath = public_path('uploads/' . $buku->gambar);
+            if (file_exists($gambarPath)) {
+                unlink($gambarPath);
+            }
+        }
         // Hapus buku
         $buku->delete();
 
