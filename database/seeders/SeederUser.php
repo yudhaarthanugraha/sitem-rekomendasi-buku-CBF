@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\M_user;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Faker\Factory as Faker;
 
 class SeederUser extends Seeder
 {
@@ -15,14 +15,23 @@ class SeederUser extends Seeder
      */
     public function run(): void
     {
+        $faker = Faker::create();
         //
-        {
+        // User admin
+        DB::table('tb_user')->insert([
+            'username' => 'admin',
+            'password' => Hash::make('123'), // default sandi "123"
+            'role' => 'admin',
+            'created_at' => now(),
+        ]);
+
+        // User siswa
+        for ($i = 1; $i <= 10; $i++) {
             DB::table('tb_user')->insert([
-                'username' => 'admin',
-                'password' => Hash::make('123'), // Menggunakan Hash::make() untuk menghash kata sandi
-                'role' => 'admin',
+                'username' => $faker->userName, // Menggunakan Faker untuk nama pengguna acak
+                'password' => Hash::make('123'), // Sandi default yang di-hash
+                'role' => 'siswa',
                 'created_at' => now(),
-                // 'updated_at' => now(),
             ]);
         }
     }

@@ -45,7 +45,7 @@
                                     </div>
                                 @endif
                             </div>
-                            <div class="grid md:grid-cols-2 gap-2 w-full">
+                            <div class="grid md:grid-cols-2 xl:grid-cols-2 gap-3 w-full">
                                 <span class="font-medium">Judul</span>
                                 <span class=" text-purple-600">{{ $buku->judul }}</span>
                                 <span class="font-medium">Penulis</span>

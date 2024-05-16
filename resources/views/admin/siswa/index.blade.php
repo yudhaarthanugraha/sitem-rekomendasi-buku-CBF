@@ -20,27 +20,21 @@
                             <thead>
                                 <tr
                                     class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                                    <th class="px-4 py-3">ID</th>
                                     <th class="px-4 py-3">username</th>
-                                    <th class="px-4 py-3">created at</th>
-                                    <th class="px-4 py-3">role</th>
+                                    <th class="px-4 py-3">Terdaftar</th>
                                     <th class="px-4 py-3">Actions</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                                 @foreach ($siswas as $siswa)
-                                    <td class="px-4 py-3 text-sm dark:text-white">
-                                        {{ $siswa->id_user }}
-                                    </td>
+                                
                                     <td class="px-4 py-3 text-sm dark:text-white">
                                         {{ $siswa->username }}
                                     </td>
                                     <td class="px-4 py-3 text-sm dark:text-white">
                                         {{ $siswa->created_at }}
                                     </td>
-                                    <td class="px-4 py-3 text-sm dark:text-white">
-                                        {{ $siswa->role }}
-                                    </td>
+                                   
                                     <td class="px-4 py-3">
                                         <div class="flex items-center space-x-4 text-sm">
                                             <a href="{{ route('edit_siswa', ['id' => $siswa->id_user]) }}"

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\M_kategori;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Faker\Factory as Faker;
 
 class Seederkategori extends Seeder
 {
@@ -13,10 +14,23 @@ class Seederkategori extends Seeder
      */
     public function run(): void
     {
-        for ($i = 1; $i <= 4; $i++) {
+        $faker = Faker::create();
+        $categories = [
+            (object) ['name' => 'Sejarah'],
+            (object) ['name' => 'Biografi'],
+            (object) ['name' => 'Pendidikan'],
+            (object) ['name' => 'Komedi'],
+            (object) ['name' => 'Drama'],
+            (object) ['name' => 'Sains'],
+            (object) ['name' => 'Teknologi'],
+            (object) ['name' => 'Seni & Budaya'],
+            (object) ['name' => 'Bisnis & Keuangan'],
+            (object) ['name' => 'Pengembangan Diri']
+        ];
+        foreach ($categories as $category) {
             DB::table('tb_kategori')->insert([
-                'kategori' => 'kategori' . $i,
-                'deskripsi' => 'deskripsi ' . $i,
+                'kategori' => $category->name,
+                'deskripsi' => $faker->paragraph(),
             ]);
         }
     }
@@ -25,5 +39,4 @@ class Seederkategori extends Seeder
         // Hapus data  yang dimasukkan oleh seeder
         M_kategori::truncate();
     }
-    
 }
