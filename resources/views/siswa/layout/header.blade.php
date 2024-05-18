@@ -3,7 +3,8 @@
         <div class="container flex-lg-row flex-nowrap align-items-center">
             <div class="navbar-brand w-100">
                 <a class="nav-link d-flex gap-2 item-center" href="{{ route('landing_page') }}">
-                    <img class="img-fluid" width="60" height="60" src="./assets/img/logo_smk.png" alt="" />
+                    <img class="img-fluid" width="60" height="60" src="{{ asset('/assets/img/logo_smk.png') }}"
+                        alt="logo SMK" />
                     <span class="fs-30 mt-1">Perpustakaan</span>
                 </a>
             </div>

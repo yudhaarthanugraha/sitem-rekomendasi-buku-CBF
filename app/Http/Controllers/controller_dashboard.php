@@ -14,6 +14,7 @@ class controller_dashboard extends Controller
         $user = Auth::user();
         $title = 'Dashboard';
         $books = M_buku::paginate(100);
+
         return view('admin.dashboard.index', compact('user', 'title', 'books'));
     }
 
@@ -23,26 +24,39 @@ class controller_dashboard extends Controller
         $user = Auth::user();
         $title = 'Landing Page';
         $books = M_buku::orderBy('created_at', 'desc')->take(5)->get();
-        // dd($books);
+
         return view('siswa.dashboard.index', compact('user', 'title', 'books'));
     }
 
     // Siswa Books List
-    public function booksList()
+    public function booksList($letter = null)
     {
         $user = Auth::user();
         $title = 'Daftar Buku';
 
-        return view('siswa.books.list_book', compact('user', 'title'));
+        if (!$letter) {
+            $letter = '#';
+        }
+
+        if ($letter === '#') {
+            $books = M_buku::whereRaw('LEFT(judul, 1) REGEXP "^[0-9[:punct:]]"')
+                ->paginate(9);
+        } else {
+            $books = M_buku::where('judul', 'LIKE', $letter . '%')
+                ->paginate(9);
+        }
+
+        return view('siswa.books.list_book', compact('user', 'title', 'books', 'letter'));
     }
 
     // Siswa detail
-    public function detailBook()
+    public function detailBook($id)
     {
         $user = Auth::user();
         $title = 'Detail Buku';
-        $id = 1;
 
-        return view('siswa.books.detail_book', compact('user', 'title', 'id'));
+        $book = M_buku::find($id);
+
+        return view('siswa.books.detail_book', compact('user', 'title', 'book'));
     }
 }
