@@ -2,8 +2,9 @@
 @section('main')
     @include('siswa.books.header')
     <section class="wrapper image-wrapper bg-image bg-overlay text-white"
-        data-image-src="{{ $book->gambar ? asset('uploads/' . $book->gambar) : 'https://plus.unsplash.com/premium_photo-1677187301535-b46cec7b2cc8?q=80&w=1523&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}"
-        alt="{{ $book->judul }}">
+        data-image-src="{{ route('detail', ['id' => $book->id_buku]) }}">
+        <img src="{{ ($book->gambar === null || $book->gambar === ' ' ? 'https://plus.unsplash.com/premium_photo-1677187301535-b46cec7b2cc8?q=80&w=1523&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' : str_contains($book->gambar, 'https')) ? $book->gambar : asset('uploads/' . $book->gambar) }}"
+            alt="{{ $book->judul }}" alt="{{ $book->judul }}">
         <div class="container pt-17 pb-12 pt-md-19 pb-md-16 text-center">
             <div class="row">
                 <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
