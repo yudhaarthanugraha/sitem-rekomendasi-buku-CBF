@@ -16,7 +16,7 @@ class SeederBook extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create();
+        $faker = Faker::create('id_ID');
         $genres = [
             (object) ['nama' => 'Horor'],
             (object) ['nama' => 'Romance'],
@@ -31,23 +31,38 @@ class SeederBook extends Seeder
             // Tambahkan genre lainnya sesuai kebutuhan
         ];
 
-        for ($i = 1; $i <= 10; $i++) {
-            $randomGenreIndex = array_rand($genres);
-            $genre = $genres[$randomGenreIndex]->nama;
-
-            // Simpan data buku beserta nama file gambar ke dalam database
+        for ($i = 0; $i < 50; $i++) {
+            $randomGenre = $faker->randomElement($genres);
             DB::table('tb_buku')->insert([
-                'judul' => $faker->sentence,
+                'judul' => $faker->sentence($nbWords = 4, $variableNbWords = true),
                 'penulis' => $faker->name,
-                'sinopsis' => $faker->paragraph,
-                'gendre' => $genre,
+                'kode_buku' => '0879689' . $i, // Menggunakan kode buku yang berbeda untuk setiap entri
+                'status_pinjaman' => 0, // Status pinjam default 0
                 'kategori' => $faker->word,
-                'kode_buku' => '0879689' . $i,
-                // 'gambar' => $filename,
-                'status_pinjaman' => 0,
-                'tahun_terbit' => $faker->dateTimeBetween('-20 years', 'now')->format('Y-m-d'),
+                'sinopsis' => $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
+                'tahun_terbit' => $faker->date($format = 'Y-m-d', $max = 'now'),
+                'gendre' => $randomGenre->nama, // Menggunakan genre yang dipilih secara acak
+                'gambar' => $faker->imageUrl($width = 640, $height = 480, 'books'),
                 'created_at' => now(),
             ]);
         }
+        // for ($i = 1; $i <= 10; $i++) {
+        //     $randomGenreIndex = array_rand($genres);
+        //     $genre = $genres[$randomGenreIndex]->nama;
+
+        //     // Simpan data buku beserta nama file gambar ke dalam database
+        //     DB::table('tb_buku')->insert([
+        //         'judul' => $faker->sentence,
+        //         'penulis' => $faker->name,
+        //         'sinopsis' => $faker->paragraph,
+        //         'gendre' => $genre,
+        //         'kategori' => $faker->word,
+        //         'kode_buku' => '0879689' . $i,
+        //         // 'gambar' => $filename,
+        //         'status_pinjaman' => 0,
+        //         'tahun_terbit' => $faker->dateTimeBetween('-20 years', 'now')->format('Y-m-d'),
+        //         'created_at' => now(),
+        //     ]);
+        // }
     }
 }
