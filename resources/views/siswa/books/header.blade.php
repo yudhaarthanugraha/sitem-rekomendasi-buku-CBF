@@ -20,6 +20,9 @@
                         <li class="nav-item">
                             <a class="nav-link ch-color" href="{{ route('landing_page') }}">Home</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link ch-color" href="{{ route('list_book') }}">Books</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link ch-color dropdown-toggle" href="#"
                                 data-bs-toggle="dropdown">{{ $user->username }}</a>

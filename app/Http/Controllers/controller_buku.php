@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\CBFHelper;
 use App\Models\M_buku;
 use App\Models\M_kategori;
 use Illuminate\Http\Request;
@@ -10,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 
 class controller_buku extends Controller
 {
-    //
+    //Menampilkan Buku
     public function show()
     {
         $user = Auth::user();
@@ -34,12 +35,7 @@ class controller_buku extends Controller
         return view('admin.buku.index', compact('books', 'user', 'title', 'genres', 'kategoris'));
     }
 
-    // public function tambah()
-    // {
-    //     $title = 'Master buku';
-    //     return view('admin.buku.tambah', compact('title'));
-    // }
-
+    // Menambahkan data Buku
     public function create(Request $request)
     {
         $validatedData = $request->validate([
@@ -74,7 +70,8 @@ class controller_buku extends Controller
         // Jika penyimpanan berhasil, kembalikan respons berhasil
         return redirect()->route('kelola-buku')->with('success', 'Data buku ' . $request->judul . ' berhasil ditambahkan');
     }
-    // controller
+
+    // Menampilkan view edit Buku
     public function edit($id)
     {
         $title = 'Master buku';
@@ -96,6 +93,8 @@ class controller_buku extends Controller
         $kategoris = M_kategori::all();
         return view('admin.buku.edit', compact('title', 'book', 'genres', 'kategoris'));
     }
+
+    // Mengedit data Buku
     public function update($id, Request $request)
     {
         $validatedData = $request->validate([
@@ -138,6 +137,8 @@ class controller_buku extends Controller
 
         return redirect()->route('kelola-buku')->with('success', 'Data buku berhasil diperbarui.');
     }
+
+    // Menghjapus data Buku
     public function delete($id)
     {
         // Temukan buku berdasarkan ID
@@ -153,5 +154,14 @@ class controller_buku extends Controller
 
         // Simpan pesan berhasil ke dalam session
         return redirect()->back()->with('success', 'Data buku ' . $buku->nama . ' berhasil dihapus');
+    }
+
+    // Pencariaan Menggunakan CBF
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $recommendedBooks = CBFHelper::getRecommendations($query);
+
+        return view('books.search_results', compact('recommendedBooks'));
     }
 }
