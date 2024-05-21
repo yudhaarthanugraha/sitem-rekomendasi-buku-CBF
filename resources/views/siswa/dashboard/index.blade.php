@@ -11,15 +11,19 @@
                     </h2>
                     <p class="lead fs-23 lh-sm mb-7 pe-lg-5 pe-xl-5 pe-xxl-0">Jelajahi koleksi buku kami dan temukan
                         rekomendasi buku yang sesuai dengan minat Anda.</p>
-                    <div class="d-flex gap-2 align-items-center">
+                    <form action="{{ route('search') }}" method="GET" class="d-flex w-100 gap-2 align-items-center">
+                        @csrf
+                        @method('GET')
                         <div class="form-floating w-100">
-                            <input id="textInputExample" type="text" class="form-control border-primary rounded-pill"
-                                placeholder="Text Input">
+                            <input id="textInputExample" name="query" type="text"
+                                class="form-control border-primary rounded-pill" placeholder="Text Input">
                             <label for="textInputExample">Search</label>
                         </div>
                         <!-- /.form-floating -->
-                        <a href="#" class="btn btn-primary btn-circle"><i class="uil uil-search-alt"></i></a>
-                    </div>
+                        {{-- <a href="#" class="btn btn-primary btn-circle"><i class="uil uil-search-alt"></i></a> --}}
+                        <button type="submit" class="btn btn-primary btn-circle">
+                            <i class="uil uil-search-alt"></i></button>
+                    </form>
                 </div>
                 <!--/column -->
             </div>
@@ -28,6 +32,14 @@
         <!-- /.container -->
     </section>
     <!-- /section -->
+    @if (isset($results))
+        @foreach ($results as $result)
+            <li>
+                <strong>{{ $result['book']->judul }}</strong> - Similarity: {{ $result['similarity'] }}
+                <p>{{ $result['book']->sinopsis }}</p>
+            </li>
+        @endforeach
+    @endif
     <section id="books" class="wrapper bg-light">
         <div class="container justify-center py-14 py-md-16">
             <div class="row">
@@ -53,7 +65,7 @@
                                             <div class="card ">
                                                 <figure class="card-img-top overlay overlay-1 hover-scale"><a
                                                         href="{{ route('detail', ['id' => $book->id_buku]) }}">
-                                                        <img src="{{ $book->gambar ? asset('uploads/' . $book->gambar) : 'https://plus.unsplash.com/premium_photo-1677187301535-b46cec7b2cc8?q=80&w=1523&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}"
+                                                        <img src="{{ ($book->gambar === null || $book->gambar === ' ' ? 'https://plus.unsplash.com/premium_photo-1677187301535-b46cec7b2cc8?q=80&w=1523&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' : str_contains($book->gambar, 'https')) ? $book->gambar : asset('uploads/' . $book->gambar) }}"
                                                             alt="{{ $book->judul }}" /></a>
                                                     <figcaption>
                                                         <h5 class="from-top mb-0">Lihat detail</h5>
