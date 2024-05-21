@@ -50,10 +50,11 @@
                                 <div class="swiper-slide">
                                     <div class="item-inner">
                                         <article>
-                                            <div class="card">
+                                            <div class="card ">
                                                 <figure class="card-img-top overlay overlay-1 hover-scale"><a
-                                                        href="#">
-                                                        <img   src="{{ $book->gambar ? asset('uploads/' . $book->gambar) : './assets/img/photos/b4.jpg' }}" alt="" /></a>
+                                                        href="{{ route('detail', ['id' => $book->id_buku]) }}">
+                                                        <img src="{{ $book->gambar ? asset('uploads/' . $book->gambar) : 'https://plus.unsplash.com/premium_photo-1677187301535-b46cec7b2cc8?q=80&w=1523&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}"
+                                                            alt="{{ $book->judul }}" /></a>
                                                     <figcaption>
                                                         <h5 class="from-top mb-0">Lihat detail</h5>
                                                     </figcaption>
@@ -61,16 +62,18 @@
                                                 <div class="card-body">
                                                     <div class="post-header">
                                                         <div class="post-category text-line">
-                                                            <a href="#" class="hover"
-                                                                rel="category">{{ $book->judul }}</a>
+                                                            <a href="#" class="hover text-blue"
+                                                                rel="category">{{ $book->kategori }}</a>
                                                         </div>
                                                         <!-- /.post-category -->
                                                         <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark"
-                                                                href="{{ route('detail') }}">{{$book->penulis}}</a></h2>
+                                                                href="{{ route('detail', ['id' => $book->id_buku]) }}">{{ $book->judul }}</a>
+                                                        </h2>
                                                     </div>
                                                     <!-- /.post-header -->
+                                                    <div class="d-flex column"></div>
                                                     <div class="post-content">
-                                                        <p>{{ $book->sinopsis }}.</p>
+                                                        <p class="sinopsis">{{ $book->sinopsis }}.</p>
                                                     </div>
                                                     <!-- /.post-content -->
                                                 </div>
@@ -79,7 +82,8 @@
                                                     <ul class="post-meta d-flex mb-0">
                                                         <span>Terbitan</span>
                                                         <li class="post-date ms-auto text-dark"><i
-                                                                class="uil uil-calendar-alt"></i><span>{{ $book->tahun_terbit }}</span></li>
+                                                                class="uil uil-calendar-alt"></i><span>{{ \Carbon\Carbon::parse($book->tahun_terbit)->format('d F Y') }}</span>
+                                                        </li>
                                                     </ul>
                                                     <!-- /.post-meta -->
                                                 </div>
@@ -92,7 +96,7 @@
                                     <!-- /.item-inner -->
                                 </div>
                             @endforeach
-
+                            <!--/.swiper-slide -->
                         </div>
                         <!--/.swiper-wrapper -->
                     </div>

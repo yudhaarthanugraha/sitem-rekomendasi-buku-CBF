@@ -10,10 +10,10 @@
         content="bootstrap 5, business, corporate, creative, gulp, marketing, minimal, modern, multipurpose, one page, responsive, saas, sass, seo, startup, html5 template, site template">
     <meta name="author" content="elemis">
     <title>{{ $title }}</title>
-    <link rel="shortcut icon" href="./assets/img/logo_smk.png">
-    <link rel="stylesheet" href="./assets/css/plugins.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/colors/navy.css">
+    <link rel="shortcut icon" href="{{ asset('assets/img/logo_smk.png') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/colors/navy.css') }}">
 </head>
 
 <body>

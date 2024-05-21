@@ -5,7 +5,7 @@
         <div class="row gy-6 gy-lg-0">
             <div class="col-md-4 col-lg-3">
                 <div class="widget">
-                    <img class="mb-4 img-fluid" height="70" width="70" src="./assets/img/logo_smk.png"
+                    <img class="mb-4 img-fluid" height="70" width="70" src="{{ asset('assets/img/logo_smk.png') }}"
                         alt="" />
                     <p class="mb-4">© 2024 Perpustakaan SMK Negeri 3 Palangka Raya. <br
                             class="d-none d-lg-block" />All rights reserved.</p>
@@ -104,8 +104,19 @@
         });
     });
 </script>
-<script src="./assets/js/plugins.js"></script>
-<script src="./assets/js/theme.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clamp-js/0.7.0/clamp.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var sinopsisElements = document.querySelectorAll('.sinopsis');
+        sinopsisElements.forEach(function(element) {
+            $clamp(element, {
+                clamp: 3
+            });
+        });
+    });
+</script>
+<script src="{{ asset('assets/js/plugins.js') }}"></script>
+<script src="{{ asset('assets/js/theme.js') }}"></script>
 </body>
 
 </html>
