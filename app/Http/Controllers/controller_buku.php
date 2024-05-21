@@ -182,8 +182,29 @@ class controller_buku extends Controller
                 'similarity' => $similarities[$index],
             ];
         }
-        // dd($results);
+        // dd($cbf->tokenization($documents));
 
         return view('siswa.dashboard.index', compact('user', 'title', 'books', 'results'));
+    }
+
+    public function suggest(Request $request)
+    {
+        $query = $request->input('query');
+        $books = M_buku::all();
+        $documents = $books->map(function ($book) {
+            return $book->judul . ' ' . $book->sinopsis;
+        })->toArray();
+
+
+        $cbf = new CBFHelper();
+        $suggestions = [];
+        // $suggestions = $cbf->tokenization($documents);
+
+        foreach ($cbf->getSuggestions($query, $documents) as $key => $value) {
+            $suggestions[] = $value;
+        }
+
+        // dd($suggestions);
+        return response()->json($suggestions);
     }
 }

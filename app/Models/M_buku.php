@@ -12,6 +12,10 @@ class M_buku extends Model
     protected $primaryKey = 'id_buku';
     public $timestamps = true;
 
+    protected $atributes = [
+        'status_pinjaman' => 0,
+    ];
+
     protected $fillable = [
         'judul',
         'penulis',

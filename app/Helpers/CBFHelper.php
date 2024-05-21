@@ -23,9 +23,8 @@ class CBFHelper
     // Preprocessing Text
     public function preprocess($text)
     {
-
         $text = strtolower($text);
-        $text = preg_replace('/[^\p{L}\p{N}\s]/u', '', $text);
+        $text = preg_replace('/[^\p{L}\p{N}\s]/u', ' ', $text);
         $text = $this->stopWordRemover->remove($text);
         $text = $this->stemmer->stem($text);
 
@@ -39,7 +38,7 @@ class CBFHelper
         $df = [];
         $idf = [];
         $tfidf = [];
-        $N = count($documents);
+        $n = count($documents);
 
         foreach ($documents as $docId => $document) {
             $terms = explode(' ', $document);
@@ -55,7 +54,7 @@ class CBFHelper
         }
 
         foreach ($df as $term => $count) {
-            $idf[$term] = log($N / $count);
+            $idf[$term] = log($n / $count);
         }
 
         foreach ($tf as $docId => $terms) {
@@ -110,5 +109,24 @@ class CBFHelper
         arsort($similarities);
 
         return $similarities;
+    }
+
+    // autocomplete suggestions
+    public function getSuggestions($query, $documents)
+    {
+        $processedQuery = $this->preprocess($query);
+        $suggestions = [];
+
+        foreach ($documents as $document) {
+            $terms = explode(' ', $document);
+            foreach ($terms as $term) {
+                $term = trim(strtolower(str_replace('.', '', $term)));
+                if (str_contains($term, $processedQuery) && !in_array($term, $suggestions)) {
+                    $suggestions[] = $term;
+                }
+            }
+        }
+
+        return $suggestions;
     }
 }
