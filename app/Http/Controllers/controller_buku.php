@@ -159,9 +159,31 @@ class controller_buku extends Controller
     // Pencariaan Menggunakan CBF
     public function search(Request $request)
     {
+        $user = Auth::user();
+        $title = 'Landing Page';
+        $books = M_buku::orderBy('created_at', 'desc')->take(5)->get();
         $query = $request->input('query');
-        $recommendedBooks = CBFHelper::getRecommendations($query);
+        $docBuku = M_buku::all();
 
-        return view('books.search_results', compact('recommendedBooks'));
+        $documents = $docBuku->map(function ($book) {
+            return $book->judul . ' ' . $book->sinopsis;
+        })->toArray();
+
+        $cbf = new CBFHelper();
+        $similarities = $cbf->recommend($query, $documents);
+
+        // ganti nilai 5 untuk jumlah rekomendasi
+        $topMatches = array_slice(array_keys($similarities), 0, 5, true);
+
+        $results = [];
+        foreach ($topMatches as $index) {
+            $results[] = [
+                'book' => $docBuku[$index],
+                'similarity' => $similarities[$index],
+            ];
+        }
+        // dd($results);
+
+        return view('siswa.dashboard.index', compact('user', 'title', 'books', 'results'));
     }
 }

@@ -29,7 +29,6 @@
                             <article>
                                 <figure class="overlay overlay-1 hover-scale rounded mb-5">
                                     <a href="{{ route('detail', ['id' => $book->id_buku]) }}">
-                                        <img src="{{ route('detail', ['id' => $book->id_buku]) }}">
                                         <img src="{{ ($book->gambar === null || $book->gambar === ' ' ? 'https://plus.unsplash.com/premium_photo-1677187301535-b46cec7b2cc8?q=80&w=1523&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' : str_contains($book->gambar, 'https')) ? $book->gambar : asset('uploads/' . $book->gambar) }}"
                                             alt="{{ $book->judul }}" alt="{{ $book->judul }}" />
                                     </a>

@@ -12,9 +12,11 @@
                     <p class="lead fs-23 lh-sm mb-7 pe-lg-5 pe-xl-5 pe-xxl-0">Jelajahi koleksi buku kami dan temukan
                         rekomendasi buku yang sesuai dengan minat Anda.</p>
                     <form action="{{ route('search') }}" method="GET" class="d-flex w-100 gap-2 align-items-center">
+                        @csrf
+                        @method('GET')
                         <div class="form-floating w-100">
-                            <input id="textInputExample" type="text" class="form-control border-primary rounded-pill"
-                                placeholder="Text Input">
+                            <input id="textInputExample" name="query" type="text"
+                                class="form-control border-primary rounded-pill" placeholder="Text Input">
                             <label for="textInputExample">Search</label>
                         </div>
                         <!-- /.form-floating -->
@@ -30,6 +32,14 @@
         <!-- /.container -->
     </section>
     <!-- /section -->
+    @if (isset($results))
+        @foreach ($results as $result)
+            <li>
+                <strong>{{ $result['book']->judul }}</strong> - Similarity: {{ $result['similarity'] }}
+                <p>{{ $result['book']->sinopsis }}</p>
+            </li>
+        @endforeach
+    @endif
     <section id="books" class="wrapper bg-light">
         <div class="container justify-center py-14 py-md-16">
             <div class="row">
