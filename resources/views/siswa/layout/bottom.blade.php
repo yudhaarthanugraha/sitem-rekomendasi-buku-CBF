@@ -93,6 +93,7 @@
         <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
     </svg>
 </div>
+{{-- Smooth scrolling --}}
 <script>
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -105,6 +106,7 @@
     });
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clamp-js/0.7.0/clamp.min.js"></script>
+{{-- Menyembunyikan sinopsis --}}
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var sinopsisElements = document.querySelectorAll('.sinopsis');
@@ -112,6 +114,26 @@
             $clamp(element, {
                 clamp: 3
             });
+        });
+    });
+</script>
+{{-- Autocomlite suggesti --}}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#autocomplete').autocomplete({
+            source: function(request, response) {
+                $.ajax({
+                    url: 'api/suggestions',
+                    data: {
+                        query: request.term
+                    },
+                    success: function(data) {
+                        console.log(data);
+                        response(data);
+                    }
+                });
+            },
+            minLength: 2, // Minimal karakter untuk mulai memberikan saran
         });
     });
 </script>

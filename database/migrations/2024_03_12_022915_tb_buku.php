@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         //
-        Schema::create('tb_buku' , function(Blueprint $table) {
+        Schema::create('tb_buku', function (Blueprint $table) {
             $table->id('id_buku')->unique();
             $table->string('judul');
             $table->string('penulis');
@@ -22,9 +22,8 @@ return new class extends Migration
             $table->string('kategori');
             $table->string('kode_buku');
             $table->string('gambar')->nullable();
-            $table->boolean('status_pinjaman');
+            $table->boolean('status_pinjaman')->default(0);
             $table->timestamps();
-
         });
     }
 

@@ -27,12 +27,12 @@
                         @csrf
                         @method('GET')
                         <div class="form-floating w-100">
-                            <input id="textInputExample" name="query" type="text"
-                                class="form-control border-primary rounded-pill" placeholder="Text Input">
-                            <label for="textInputExample">Search</label>
+                            <input name="query" type="text" id="autocomplete"
+                                class="form-control border-primary rounded-pill" placeholder="Text Input"
+                                autocomplete="off">
+                            <label id="autocomplete" for="textInputExample">Search</label>
                         </div>
                         <!-- /.form-floating -->
-                        {{-- <a href="#" class="btn btn-primary btn-circle"><i class="uil uil-search-alt"></i></a> --}}
                         <button type="submit" class="btn btn-primary btn-circle">
                             <i class="uil uil-search-alt"></i></button>
                     </form>
