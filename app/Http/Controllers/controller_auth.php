@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\M_user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use PHPUnit\Util\Json;
 
 class controller_auth extends Controller
 {
@@ -50,13 +49,19 @@ class controller_auth extends Controller
             return back()->with('error', 'Username atau password salah.');
         }
     }
-
     // Metode untuk melakukan logout
     public function logout(Request $request)
     {
+        // Logout pengguna yang terautentikasi
         Auth::logout();
 
-        // Redirect ke halaman login setelah logout
-        return redirect()->route('login')->with('success', 'Anda sudah log out.');
+        // Invalidate the session
+        $request->session()->invalidate();
+
+        // Regenerate the session token
+        $request->session()->regenerateToken();
+
+        // Redirect ke halaman login dengan pesan sukses
+        return redirect()->route('login')->with('success', 'Anda telah berhasil logout.');
     }
 }

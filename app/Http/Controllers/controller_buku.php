@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\CBFHelper;
 use App\Models\M_buku;
 use App\Models\M_kategori;
+use App\Models\M_user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -183,8 +184,9 @@ class controller_buku extends Controller
             ];
         }
         // dd($cbf->tokenization($documents));
-
-        return view('siswa.dashboard.index', compact('user', 'title', 'books', 'results'));
+        $pengguna = M_user::paginate(200);
+        $allBook = M_buku::paginate(1000);
+        return view('siswa.dashboard.index', compact('user', 'title', 'books', 'results', 'pengguna', 'allBook' ));
     }
 
     public function suggest(Request $request)

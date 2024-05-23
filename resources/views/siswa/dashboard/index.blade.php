@@ -21,6 +21,7 @@
                     <h2 class="display-1 fs-56 mb-4 mt-0 mt-lg-5 ls-xs pe-xl-5 pe-xxl-0">Temukan Buku Favorit Kamu
                         <span class="underline-3 style-3 yellow">Disini</span>
                     </h2>
+                    
                     <p class="lead fs-23 lh-sm mb-7 pe-lg-5 pe-xl-5 pe-xxl-0">Jelajahi koleksi buku kami dan temukan
                         rekomendasi buku yang sesuai dengan minat Anda.</p>
                     <form action="{{ route('search') }}" method="GET" class="d-flex w-100 gap-2 align-items-center"
@@ -32,7 +33,9 @@
                                 class="form-control border-primary rounded-pill" placeholder="Text Input"
                                 autocomplete="off">
                             <label for="autocomplete">Eksplorasi buku anda di sini..</label>
-                            <div id="error-message" class="position-absolute -bottom-0 alert alert-warning mt-2" style="display: none; text-align: left;">Input yang dimasukan tidak boleh kosong atau hanya spasi.</div>
+                            <div id="error-message" class="position-absolute -bottom-0 alert alert-warning mt-2"
+                                style="display: none; text-align: left;">Input yang dimasukan tidak boleh kosong atau hanya
+                                spasi.</div>
                         </div>
                         <!-- /.form-floating -->
                         <button type="submit" class="btn btn-primary btn-circle">
@@ -137,7 +140,7 @@
                         return $book['similarity'] === 0.0;
                     });
                 @endphp
-           
+
                 @if (count($rekomenBook) > 0)
                     <!-- Section for results with similarity != 0.0 -->
                     <div class="position-relative">
@@ -206,14 +209,14 @@
                     </div>
                 @else
                     <div class="w-100  md:my-20">
-                        <h2 class="alert alert-warning text-center" role="alert"> Tidak Ditemukan Buku Yang Direkomendasikan.</h2>
+                        <h2 class="alert alert-warning text-center" role="alert"> Tidak Ditemukan Buku Yang
+                            Direkomendasikan.</h2>
                     </div>
                 @endif
             </div>
             <!-- /.container -->
         </section>
     @endif
-
     <section id="books" class="wrapper bg-light py-5 py-md-6">
         <div class="container justify-center">
             <div class="row">
@@ -333,14 +336,14 @@
                         </p>
                         <div class="row align-items-center counter-wrapper gy-6">
                             <div class="col-md-6">
-                                <h3 class="counter counter-lg mb-1">99.7%</h3>
-                                <h6 class="fs-17 ls-sm mb-1">Kepuasan Siswa</h6>
+                                <h3 class="counter counter-lg mb-1">{{  $allBook->total() }}</h3>
+                                <h6 class="fs-17 ls-sm mb-1">Total buku</h6>
                                 <span class="ratings five"></span>
                             </div>
                             <!--/column -->
                             <div class="col-md-6">
-                                <h3 class="counter counter-lg mb-1">4x</h3>
-                                <h6 class="fs-17 ls-sm mb-1">Pengunjung baru</h6>
+                                <h3 class="counter counter-lg mb-1">{{ $pengguna->total() }}</h3>
+                                <h6 class="fs-17 ls-sm mb-1">Total pengguna</h6>
                                 <span class="ratings five"></span>
                             </div>
                             <!--/column -->
@@ -439,7 +442,7 @@
                 </div>
                 <!--/column -->
             </div>
-            <!--/.row -->
+            {{-- <!--/.row -->
             <div class="row position-relative mb-15 mb-md-17">
                 <figure class="rounded position-absolute d-none d-lg-block"
                     style="top: 50%; right:0; width: 45%; height: auto; transform: translateY(-50%); z-index:2"><img
@@ -473,7 +476,7 @@
                 </div>
                 <!-- /column -->
             </div>
-            <!-- /.row -->
+            <!-- /.row --> --}}
         </div>
         <!-- /.container -->
     </section>
