@@ -13,7 +13,6 @@
                     @csrf
                     @method('PUT')
                     <div class="grid gap-6  md:grid-cols-2 xl:grid-cols-2">
-
                         <div class=" px-4 py-3 mb-2 bg-white rounded-lg shadow-md dark:bg-gray-800 ">
                             <label class="block text-sm">
                                 <span class="text-gray-700 dark:text-gray-400">Tanggal kembali</span>
