@@ -23,6 +23,7 @@ class controller_pinjam_buku extends Controller
     {
         $dataValidate =  $request->validate(['judul' => 'required', 'user' => 'required', 'tanggal_pinjam' => 'required']);
         $pinjam_buku = new M_pinjam_buku();
+        // dd($dataValidate);
         $buku = M_buku::where('id_buku', $request->judul)->firstOrFail();
         $buku->status_pinjaman = 1;
         $pinjam_buku->id_buku = $request->judul;
@@ -37,12 +38,19 @@ class controller_pinjam_buku extends Controller
         $id_buku = $id;
         $buku = M_buku::findOrFail($id);
         $title = 'Halaman kembali buku ';
-        return view('admin.pinjam_buku.kembali_buku', compact('id_buku', 'title', 'buku'));
+        $id_user = M_pinjam_buku::where('id_buku', $id)
+        ->whereNull('tanggal_kembali')
+        ->firstOrFail()->id_user;
+        $username = M_user::where('id_user', $id_user)->firstOrFail()->username;
+        return view('admin.pinjam_buku.kembali_buku', compact('id_buku', 'title', 'buku', 'username'));
     }
     public function update_kembali_buku(Request $request, $id)
     {
         $dataValidate =  $request->validate(['tanggal_kembali' => 'required']);
-        $pinjam_buku = M_pinjam_buku::where('id_buku', $id)->firstOrFail();
+        // dd($dataValidate);
+        $pinjam_buku = M_pinjam_buku::where('id_buku', $id)
+            ->whereNull('tanggal_kembali')
+            ->firstOrFail();
         $buku = M_buku::where('id_buku', $id)->firstOrFail();
         $buku->status_pinjaman = 0;
         $pinjam_buku->tanggal_kembali = $request->tanggal_kembali;

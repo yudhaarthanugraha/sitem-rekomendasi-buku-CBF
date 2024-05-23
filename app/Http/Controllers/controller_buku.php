@@ -16,7 +16,7 @@ class controller_buku extends Controller
     public function show()
     {
         $user = Auth::user();
-        $books = M_buku::paginate(5);
+        $books = M_buku::paginate(8);
         $title = 'Kelola Buku';
         $genres = [
             (object) ['nama' => 'Horor'],
