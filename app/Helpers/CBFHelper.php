@@ -24,7 +24,7 @@ class CBFHelper
     public function preprocess($text)
     {
         $text = strtolower($text);
-        $text = preg_replace('/[^\p{L}\p{N}\s]/u', ' ', $text);
+        $text = preg_replace('/[^\p{L}\p{N}\s]/u', '', $text);
         $text = $this->stopWordRemover->remove($text);
         $text = $this->stemmer->stem($text);
 
@@ -100,6 +100,9 @@ class CBFHelper
         $tfidfQuery = $tfidfDocs[0];
         array_shift($tfidfDocs);
 
+        // test frasa ex:'gotong-royong'
+        // dd($tfidfDocs);
+
         $similarities = [];
 
         foreach ($tfidfDocs as $docId => $tfidfDoc) {
@@ -120,7 +123,7 @@ class CBFHelper
         foreach ($documents as $document) {
             $terms = explode(' ', $document);
             foreach ($terms as $term) {
-                $term = trim(strtolower(str_replace('.', '', $term)));
+                $term = trim(strtolower(str_replace(['.', ','], '', $term)));
                 if (str_contains($term, $processedQuery) && !in_array($term, $suggestions)) {
                     $suggestions[] = $term;
                 }

@@ -182,7 +182,6 @@ class controller_buku extends Controller
                 'similarity' => $similarities[$index],
             ];
         }
-        // dd($cbf->tokenization($documents));
 
         return view('siswa.dashboard.index', compact('user', 'title', 'books', 'results'));
     }
@@ -195,16 +194,13 @@ class controller_buku extends Controller
             return $book->judul . ' ' . $book->sinopsis;
         })->toArray();
 
-
         $cbf = new CBFHelper();
         $suggestions = [];
-        // $suggestions = $cbf->tokenization($documents);
 
         foreach ($cbf->getSuggestions($query, $documents) as $key => $value) {
             $suggestions[] = $value;
         }
 
-        // dd($suggestions);
         return response()->json($suggestions);
     }
 }
