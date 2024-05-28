@@ -21,7 +21,7 @@
                     <h2 class="display-1 fs-56 mb-4 mt-0 mt-lg-5 ls-xs pe-xl-5 pe-xxl-0">Temukan Buku Favorit Kamu
                         <span class="underline-3 style-3 yellow">Disini</span>
                     </h2>
-                    
+
                     <p class="lead fs-23 lh-sm mb-7 pe-lg-5 pe-xl-5 pe-xxl-0">Jelajahi koleksi buku kami dan temukan
                         rekomendasi buku yang sesuai dengan minat Anda.</p>
                     <form action="{{ route('search') }}" method="GET" class="d-flex w-100 gap-2 align-items-center"
@@ -336,7 +336,7 @@
                         </p>
                         <div class="row align-items-center counter-wrapper gy-6">
                             <div class="col-md-6">
-                                <h3 class="counter counter-lg mb-1">{{  $allBook->total() }}</h3>
+                                <h3 class="counter counter-lg mb-1">{{ $allBook->total() }}</h3>
                                 <h6 class="fs-17 ls-sm mb-1">Total buku</h6>
                                 <span class="ratings five"></span>
                             </div>
