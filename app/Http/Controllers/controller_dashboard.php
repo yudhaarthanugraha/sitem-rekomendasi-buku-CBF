@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\M_buku;
+use App\Models\M_pinjam_buku;
 use App\Models\M_user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -55,11 +56,21 @@ class controller_dashboard extends Controller
     // Siswa detail
     public function detailBook($id)
     {
+
         $user = Auth::user();
         $title = 'Detail Buku';
 
         $book = M_buku::find($id);
+        $pinjam_buku = M_pinjam_buku::where('id_buku', $id)
+            ->whereNull('tanggal_kembali')
+            ->first();
+        if ($pinjam_buku) {
+            $id_user = $pinjam_buku->id_user;
+            $username = M_user::where('id_user', $id_user)->first()->username;
+        } else {
+            $username = null; // Atau nilai default lainnya sesuai kebutuhan Anda
+        }
 
-        return view('siswa.books.detail_book', compact('user', 'title', 'book'));
+        return view('siswa.books.detail_book', compact('user', 'title', 'book', 'username'));
     }
 }

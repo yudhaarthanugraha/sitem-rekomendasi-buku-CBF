@@ -18,7 +18,7 @@ class controller_buku extends Controller
     public function show()
     {
         $user = Auth::user();
-        $books = M_buku::paginate(5);
+        $books = M_buku::paginate(8);
         $title = 'Kelola Buku';
         $genres = [
             (object) ['nama' => 'Horor'],
@@ -47,10 +47,10 @@ class controller_buku extends Controller
             'judul' => 'required|string|max:255',
             'tahun_terbit' => 'required|string|max:255',
             'gendre' => 'required|string|max:255',
-            'sinopsis' => 'required|string|max:500',
+            'sinopsis' => 'required|string',
             'kategori' => 'required|string|max:500',
             'kode_buku' => 'required|string|max:255|unique:tb_buku',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg|max:10048',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,webp|max:10048',
         ]);
 
         // Tangani penyimpanan gambar yang diunggah
@@ -105,10 +105,10 @@ class controller_buku extends Controller
             'penulis' => 'required|string|max:255',
             'tahun_terbit' => 'required|date',
             'gendre' => 'required|string|max:255',
-            'sinopsis' => 'required|string|max:500',
+            'sinopsis' => 'required|string|',
             'kategori' => 'required|string|max:255',
             'kode_buku' => 'required|string|max:255',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg|max:10048',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:10048',
         ]);
         $buku = M_buku::findOrFail($id);
         // Jika terdapat file gambar baru

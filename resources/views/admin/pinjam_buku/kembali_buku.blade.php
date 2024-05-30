@@ -55,6 +55,8 @@
                                 <span class=" text-gray-600">{{ $buku->gendre }}</span>
                                 <span class="font-medium">Sinopsis</span>
                                 <span class=" text-gray-600">{{ $buku->sinopsis }}</span>
+                                <span class="font-medium">Peminjam</span>
+                                <span class=" text-green-600">{{ $username }}</span>
                             </div>
 
                         </div>

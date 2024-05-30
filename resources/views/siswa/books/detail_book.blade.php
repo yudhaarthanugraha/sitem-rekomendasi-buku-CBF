@@ -50,6 +50,14 @@
                                         <h5 class="mb-1">Penulis</h5>
                                         <p>{{ $book->penulis }}</p>
                                     </li>
+                                    @if ($username)
+                                         <li>
+                                        <h5 class="mb-1">Peminjam</h5>
+                                 <p class="text-success font-weight-bold">{{ $username }}</p>
+
+                                    </li>
+                                    @endif
+                                   
                                     <li>
                                         <h5 class="mb-1">Status</h5>
                                         <p>
