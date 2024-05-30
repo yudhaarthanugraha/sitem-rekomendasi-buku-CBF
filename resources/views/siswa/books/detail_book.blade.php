@@ -50,6 +50,17 @@
                                         <h5 class="mb-1">Penulis</h5>
                                         <p>{{ $book->penulis }}</p>
                                     </li>
+                                    <li>
+                                        <h5 class="mb-1">Status</h5>
+                                        <p>
+                                            @if ($book->status_pinjaman)
+                                                <span class="badge bg-warning">Dipinjam</span>
+                                            @else
+                                                <span class="badge bg-success">Tersedia</span>
+                                            @endif
+                                        </p>
+
+                                    </li>
                                 </ul>
                                 {{-- <a href="#" class="more hover">See Project</a> --}}
                             </div>

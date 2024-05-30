@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/suggestions', [controller_buku::class, 'suggest']);
+Route::get('/pengujian', [controller_buku::class, 'pengujian']);

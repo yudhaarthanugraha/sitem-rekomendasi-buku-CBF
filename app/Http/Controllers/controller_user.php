@@ -14,7 +14,7 @@ class controller_user extends Controller
     public function getAllUsers()
     {
         $user = Auth::user();
-        $siswas = M_user::where('role', 'siswa')->paginate(10);
+        $siswas = M_user::where('role', 'siswa')->paginate(5);
         $title = 'Kelola Siswa';
 
         return view('admin.siswa.index', compact('user', 'title', 'siswas'));

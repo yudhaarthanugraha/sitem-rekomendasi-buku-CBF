@@ -102,7 +102,6 @@ class CBFHelper
 
         // test frasa ex:'gotong-royong'
         // dd($tfidfDocs);
-
         $similarities = [];
 
         foreach ($tfidfDocs as $docId => $tfidfDoc) {

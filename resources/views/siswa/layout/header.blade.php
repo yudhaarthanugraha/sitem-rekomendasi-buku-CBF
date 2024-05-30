@@ -27,9 +27,9 @@
                                 data-bs-toggle="dropdown">{{ $user->username }}</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item">
-                                    <form action="{{ route('logout') }}" method="post">
+                                    <form action="{{ route('logout') }}" method="POST">
                                         @csrf
-                                        <button class="dropdown-item" href="">Logout</button>
+                                        <button class="dropdown-item">Logout</button>
                                     </form>
                                 </li>
                             </ul>

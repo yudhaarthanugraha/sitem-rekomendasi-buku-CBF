@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\M_buku;
+use App\Models\M_user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,11 +22,13 @@ class controller_dashboard extends Controller
     // siswa landing page
     public function dashboardSiswa()
     {
+
         $user = Auth::user();
         $title = 'Landing Page';
         $books = M_buku::orderBy('created_at', 'desc')->take(5)->get();
-
-        return view('siswa.dashboard.index', compact('user', 'title', 'books'));
+        $pengguna = M_user::paginate(200);
+        $allBook = M_buku::paginate(1000);
+        return view('siswa.dashboard.index', compact('user', 'title', 'books', 'pengguna', 'allBook'));
     }
 
     // Siswa Books List

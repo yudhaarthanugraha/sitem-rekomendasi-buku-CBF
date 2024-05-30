@@ -13,7 +13,6 @@
                     @csrf
                     @method('PUT')
                     <div class="grid gap-6  md:grid-cols-2 xl:grid-cols-2">
-
                         <div class=" px-4 py-3 mb-2 bg-white rounded-lg shadow-md dark:bg-gray-800 ">
                             <label class="block text-sm">
                                 <span class="text-gray-700 dark:text-gray-400">Tanggal kembali</span>
@@ -37,25 +36,25 @@
                         <div class="dark:text-white px-4 py-3 mb-2 bg-white rounded-lg shadow-md dark:bg-gray-800">
 
                             <div class="flex items-center justify-between mb-4 ">
-                                <h3 class="text-2xl font-bold py-3">Data buku</h3>
                                 @if ($buku->gambar)
-                                    <div class="shadow-md ">
-                                        <img src="{{ asset('uploads/' . $buku->gambar) }}" alt="Gambar Buku"
-                                            class="w-32 h-32 rounded-lg">
+                                    <div class="shadow-md">
+                                        <img class="w-52 rounded-lg"
+                                            src="{{ ($buku->gambar === null || $buku->gambar === ' ' ? 'https://plus.unsplash.com/premium_photo-1677187301535-b46cec7b2cc8?q=80&w=1523&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' : str_contains($buku->gambar, 'https')) ? $buku->gambar : asset('uploads/' . $buku->gambar) }}"
+                                            alt="{{ $buku->judul }}" />
                                     </div>
                                 @endif
                             </div>
                             <div class="grid md:grid-cols-2 xl:grid-cols-2 gap-3 w-full">
                                 <span class="font-medium">Judul</span>
-                                <span class=" text-purple-600">{{ $buku->judul }}</span>
+                                <span class=" text-gray-600">{{ $buku->judul }}</span>
                                 <span class="font-medium">Penulis</span>
-                                <span class=" text-purple-600">{{ $buku->penulis }}</span>
+                                <span class=" text-gray-600">{{ $buku->penulis }}</span>
                                 <span class="font-medium">Tahun Terbit</span>
-                                <span class=" text-purple-600">{{ $buku->tahun_terbit }}</span>
+                                <span class=" text-gray-600">{{ $buku->tahun_terbit }}</span>
                                 <span class="font-medium">Genre</span>
-                                <span class=" text-purple-600">{{ $buku->gendre }}</span>
+                                <span class=" text-gray-600">{{ $buku->gendre }}</span>
                                 <span class="font-medium">Sinopsis</span>
-                                <span class=" text-purple-600">{{ $buku->sinopsis }}</span>
+                                <span class=" text-gray-600">{{ $buku->sinopsis }}</span>
                             </div>
 
                         </div>

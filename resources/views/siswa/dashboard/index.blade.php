@@ -1,6 +1,18 @@
 @extends('siswa.layout.layout')
 @section('main')
     @include('siswa.layout.header')
+    @php
+        function truncateSentence($sentence, $wordCount)
+        {
+            $words = explode(' ', $sentence);
+
+            if (count($words) <= $wordCount) {
+                return $sentence;
+            }
+            $truncated = array_slice($words, 0, $wordCount);
+            return implode(' ', $truncated) . '...';
+        }
+    @endphp
     <section class="wrapper image-wrapper bg-cover bg-image bg-xs-none bg-gray" data-image-src="./assets/img/photos/bg37.jpg">
         <div class="container pt-17 pb-15 py-sm-17 py-xxl-20">
             <div class="row">
@@ -9,21 +21,28 @@
                     <h2 class="display-1 fs-56 mb-4 mt-0 mt-lg-5 ls-xs pe-xl-5 pe-xxl-0">Temukan Buku Favorit Kamu
                         <span class="underline-3 style-3 yellow">Disini</span>
                     </h2>
+
                     <p class="lead fs-23 lh-sm mb-7 pe-lg-5 pe-xl-5 pe-xxl-0">Jelajahi koleksi buku kami dan temukan
                         rekomendasi buku yang sesuai dengan minat Anda.</p>
-                    <form action="{{ route('search') }}" method="GET" class="d-flex w-100 gap-2 align-items-center">
+                    <form action="{{ route('search') }}" method="GET" class="d-flex w-100 gap-2 align-items-center"
+                        onsubmit="return validateForm()">
                         @csrf
                         @method('GET')
-                        <div class="form-floating w-100">
-                            <input name="query" type="text" id="autocomplete"
+                        <div class="form-floating w-100 position-relative">
+                            <input required name="query" type="text" id="autocomplete"
                                 class="form-control border-primary rounded-pill" placeholder="Text Input"
                                 autocomplete="off">
-                            <label id="autocomplete" for="textInputExample">Search</label>
+                            <label for="autocomplete">Eksplorasi buku anda di sini..</label>
+                            <div id="error-message" class="position-absolute -bottom-0 alert alert-warning mt-2"
+                                style="display: none; text-align: left;">Input yang dimasukan tidak boleh kosong atau hanya
+                                spasi.</div>
                         </div>
                         <!-- /.form-floating -->
                         <button type="submit" class="btn btn-primary btn-circle">
-                            <i class="uil uil-search-alt"></i></button>
+                            <i class="uil uil-search-alt"></i>
+                        </button>
                     </form>
+
                 </div>
                 <!--/column -->
             </div>
@@ -33,18 +52,176 @@
     </section>
     <!-- /section -->
     @if (isset($results))
-        @foreach ($results as $result)
-            <li>
-                <strong>{{ $result['book']->judul }}</strong> - Similarity: {{ $result['similarity'] }}
-                <p>{{ $result['book']->sinopsis }}</p>
-            </li>
-        @endforeach
+        <section id="#" class="wrapper bg-light  py-5 py-md-6">
+            <div class="container justify-center">
+
+
+                @php
+                    $filteredResults = array_filter($results, function ($book) {
+                        return $book['similarity'] !== 0.0;
+                    });
+                @endphp
+
+                @if (count($filteredResults) > 0)
+                    <!-- Section for results with similarity != 0.0 -->
+                    <div class="position-relative">
+                        <h2 class=" text-uppercase text-primary text-center">Hasil Pencarian ...</h2>
+                        <div class="shape bg-dot primary rellax w-17 h-20" data-rellax-speed="1"
+                            style="top: 0; left: -1.7rem;">
+                        </div>
+                        <div class="swiper-container dots-closer blog grid-view mb-6" data-margin="0" data-dots="true"
+                            data-items-xl="3" data-items-md="2" data-items-xs="1">
+                            <div class="swiper">
+                                <div class="swiper-wrapper">
+                                    @foreach ($filteredResults as $book)
+                                        <div class="swiper-slide">
+                                            <div class="item-inner">
+                                                <article>
+                                                    <div class="card">
+                                                        <figure class="card-img-top overlay overlay-1 hover-scale">
+                                                            <a
+                                                                href="{{ route('detail', ['id' => $book['book']->id_buku]) }}">
+                                                                <img src="{{ ($book['book']->gambar === null || $book['book']->gambar === ' ' ? 'https://plus.unsplash.com/premium_photo-1677187301535-b46cec7b2cc8?q=80&w=1523&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' : str_contains($book['book']->gambar, 'https')) ? $book['book']->gambar : asset('uploads/' . $book['book']->gambar) }}"
+                                                                    alt="{{ $book['book']->judul }}" />
+                                                            </a>
+                                                            <figcaption>
+                                                                <h5 class="from-top mb-0">Lihat detail</h5>
+                                                            </figcaption>
+                                                        </figure>
+                                                        <div class="card-body">
+                                                            <div class="post-header">
+                                                                <div class="post-category text-line">
+                                                                    <a href="#" class="hover text-blue"
+                                                                        rel="category">{{ $book['book']->kategori }}</a>
+                                                                </div>
+                                                                <h2 class="post-title h3 mt-1 mb-3">
+                                                                    <a class="link-dark"
+                                                                        href="{{ route('detail', ['id' => $book['book']->id_buku]) }}">{{ $book['book']->judul }}</a>
+                                                                </h2>
+                                                            </div>
+                                                            <div class="d-flex column"></div>
+                                                            <div class="post-content">
+                                                                <p class="sinopsis">{{ $book['book']->sinopsis }}.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-footer">
+                                                            <ul class="post-meta d-flex mb-0">
+                                                                <span>Terbitan</span>
+                                                                <li class="post-date ms-auto text-dark">
+                                                                    <i class="uil uil-calendar-alt"></i>
+                                                                    <span>{{ \Carbon\Carbon::parse($book['book']->tahun_terbit)->format('d F Y') }}</span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </article>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+
+
+                                <!--/.swiper-slide -->
+                                <!--/.swiper-wrapper -->
+                            </div>
+                            <!-- /.swiper -->
+                        </div>
+                        <!-- /.swiper-container -->
+                    </div>
+                @else
+                    <div class="w-100  md:my-20">
+                        <h2 class="alert alert-warning text-center" role="alert"> Tidak Ditemukan Buku Yang Sesuai
+                            Pencarian.</h2>
+                    </div>
+                @endif
+                <!-- Section for results with similarity == 0.0 -->
+                @php
+                    $rekomenBook = array_filter($results, function ($book) {
+                        return $book['similarity'] === 0.0;
+                    });
+                @endphp
+
+                @if (count($rekomenBook) > 0)
+                    <!-- Section for results with similarity != 0.0 -->
+                    <div class="position-relative">
+                        <h2 class=" text-uppercase text-primary text-center">Rekomendasi buku lainnya ...</h2>
+                        <div class="shape bg-dot primary rellax w-17 h-20" data-rellax-speed="1"
+                            style="top: 0; left: -1.7rem;">
+                        </div>
+                        <div class="swiper-container dots-closer blog grid-view mb-6" data-margin="0" data-dots="true"
+                            data-items-xl="3" data-items-md="2" data-items-xs="1">
+                            <div class="swiper">
+                                <div class="swiper-wrapper">
+                                    @foreach ($rekomenBook as $book)
+                                        <div class="swiper-slide">
+                                            <div class="item-inner">
+                                                <article>
+                                                    <div class="card">
+                                                        <figure class="card-img-top overlay overlay-1 hover-scale">
+                                                            <a
+                                                                href="{{ route('detail', ['id' => $book['book']->id_buku]) }}">
+                                                                <img src="{{ ($book['book']->gambar === null || $book['book']->gambar === ' ' ? 'https://plus.unsplash.com/premium_photo-1677187301535-b46cec7b2cc8?q=80&w=1523&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' : str_contains($book['book']->gambar, 'https')) ? $book['book']->gambar : asset('uploads/' . $book['book']->gambar) }}"
+                                                                    alt="{{ $book['book']->judul }}" />
+                                                            </a>
+                                                            <figcaption>
+                                                                <h5 class="from-top mb-0">Lihat detail</h5>
+                                                            </figcaption>
+                                                        </figure>
+                                                        <div class="card-body">
+                                                            <div class="post-header">
+                                                                <div class="post-category text-line">
+                                                                    <a href="#" class="hover text-blue"
+                                                                        rel="category">{{ $book['book']->kategori }}</a>
+                                                                </div>
+                                                                <h2 class="post-title h3 mt-1 mb-3">
+                                                                    <a class="link-dark"
+                                                                        href="{{ route('detail', ['id' => $book['book']->id_buku]) }}">{{ $book['book']->judul }}</a>
+                                                                </h2>
+                                                            </div>
+                                                            <div class="d-flex column"></div>
+                                                            <div class="post-content">
+                                                                <p class="sinopsis">{{ $book['book']->sinopsis }}.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-footer">
+                                                            <ul class="post-meta d-flex mb-0">
+                                                                <span>Terbitan</span>
+                                                                <li class="post-date ms-auto text-dark">
+                                                                    <i class="uil uil-calendar-alt"></i>
+                                                                    <span>{{ \Carbon\Carbon::parse($book['book']->tahun_terbit)->format('d F Y') }}</span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </article>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+
+
+                                <!--/.swiper-slide -->
+                                <!--/.swiper-wrapper -->
+                            </div>
+                            <!-- /.swiper -->
+                        </div>
+                        <!-- /.swiper-container -->
+                    </div>
+                @else
+                    <div class="w-100  md:my-20">
+                        <h2 class="alert alert-warning text-center" role="alert"> Tidak Ditemukan Buku Yang
+                            Direkomendasikan.</h2>
+                    </div>
+                @endif
+            </div>
+            <!-- /.container -->
+        </section>
     @endif
-    <section id="books" class="wrapper bg-light">
-        <div class="container justify-center py-14 py-md-16">
+    <section id="books" class="wrapper bg-light py-5 py-md-6">
+        <div class="container justify-center">
             <div class="row">
                 <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-                    <h2 class="fs-15 text-uppercase text-primary text-center">Our Books</h2>
+                    <h2 class="fs-15 text-uppercase text-primary text-center">Koleksi kami</h2>
                     <h3 class="display-4 mb-6 text-center">Cek koleksi terbaru kami yang baru saja ditambahkan ke
                         perpustakaan.</h3>
                 </div>
@@ -121,7 +298,7 @@
                 <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto d-flex justify-content-center">
                     <a href="{{ route('list_book') }}" class="btn btn-expand btn-primary rounded-pill">
                         <i class="uil uil-arrow-right"></i>
-                        <span>Learn More</span>
+                        <span>Lihat koleksi lainnya</span>
                     </a>
                 </div>
             </div>
@@ -159,14 +336,14 @@
                         </p>
                         <div class="row align-items-center counter-wrapper gy-6">
                             <div class="col-md-6">
-                                <h3 class="counter counter-lg mb-1">99.7%</h3>
-                                <h6 class="fs-17 ls-sm mb-1">Kepuasan Siswa</h6>
+                                <h3 class="counter counter-lg mb-1">{{ $allBook->total() }}</h3>
+                                <h6 class="fs-17 ls-sm mb-1">Total buku</h6>
                                 <span class="ratings five"></span>
                             </div>
                             <!--/column -->
                             <div class="col-md-6">
-                                <h3 class="counter counter-lg mb-1">4x</h3>
-                                <h6 class="fs-17 ls-sm mb-1">Pengunjung baru</h6>
+                                <h3 class="counter counter-lg mb-1">{{ $pengguna->total() }}</h3>
+                                <h6 class="fs-17 ls-sm mb-1">Total pengguna</h6>
                                 <span class="ratings five"></span>
                             </div>
                             <!--/column -->
@@ -265,7 +442,7 @@
                 </div>
                 <!--/column -->
             </div>
-            <!--/.row -->
+            {{-- <!--/.row -->
             <div class="row position-relative mb-15 mb-md-17">
                 <figure class="rounded position-absolute d-none d-lg-block"
                     style="top: 50%; right:0; width: 45%; height: auto; transform: translateY(-50%); z-index:2"><img
@@ -299,9 +476,24 @@
                 </div>
                 <!-- /column -->
             </div>
-            <!-- /.row -->
+            <!-- /.row --> --}}
         </div>
         <!-- /.container -->
     </section>
     <!-- /section -->
+
+    <script>
+        function validateForm() {
+            var query = document.getElementById('autocomplete').value.trim();
+            var errorMessage = document.getElementById('error-message');
+
+            if (query === "") {
+                errorMessage.style.display = 'block';
+                return false;
+            } else {
+                errorMessage.style.display = 'none';
+                return true;
+            }
+        }
+    </script>
 @endsection

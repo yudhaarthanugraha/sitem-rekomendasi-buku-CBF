@@ -168,8 +168,10 @@
                         <div class="px-4 py-3 mb-2 bg-white rounded-lg shadow-md dark:bg-gray-800">
                               @if ($book->gambar)
                                 <div>
-                                    <img src="{{ asset('uploads/' . $book->gambar) }}" alt="Gambar Buku"
-                                        class="w-32 h-32 rounded-lg">
+                                    <img class="w-32 h-32 rounded-lg"
+                                                    src="{{ ($book->gambar === null || $book->gambar === ' ' ? 'https://plus.unsplash.com/premium_photo-1677187301535-b46cec7b2cc8?q=80&w=1523&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' : str_contains($book->gambar, 'https')) ? $book->gambar : asset('uploads/' . $book->gambar) }}"
+                                                    alt="{{ $book->judul }}" />
+                                    
                                 </div>
                             @endif
                             <label class="block text-sm">

@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\CBFHelper;
+use App\Helpers\PengujianHelper;
 use App\Models\M_buku;
 use App\Models\M_kategori;
+use App\Models\M_user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class controller_buku extends Controller
@@ -164,6 +167,8 @@ class controller_buku extends Controller
         $books = M_buku::orderBy('created_at', 'desc')->take(5)->get();
         $query = $request->input('query');
         $docBuku = M_buku::all();
+        $pengguna = M_user::paginate(200);
+        $allBook = M_buku::paginate(1000);
 
         $documents = $docBuku->map(function ($book) {
             return $book->judul . ' ' . $book->sinopsis;
@@ -172,6 +177,7 @@ class controller_buku extends Controller
         $cbf = new CBFHelper();
         $similarities = $cbf->recommend($query, $documents);
 
+        dd($similarities);
         // ganti nilai 5 untuk jumlah rekomendasi
         $topMatches = array_slice(array_keys($similarities), 0, 5, true);
 
@@ -183,9 +189,10 @@ class controller_buku extends Controller
             ];
         }
 
-        return view('siswa.dashboard.index', compact('user', 'title', 'books', 'results'));
+        return view('siswa.dashboard.index', compact('user', 'title', 'books', 'results', 'pengguna', 'allBook'));
     }
 
+    // Suggestions text search
     public function suggest(Request $request)
     {
         $query = $request->input('query');
@@ -202,5 +209,52 @@ class controller_buku extends Controller
         }
 
         return response()->json($suggestions);
+    }
+
+    // pengujian
+    public function pengujian(Request $request)
+    {
+        $cbfHelper = new CBFHelper();
+        $evaluationHelper = new PengujianHelper();
+
+        $query = $request->input('query');
+        $books = M_buku::all();
+        $documents = $books->map(function ($book) {
+            return $book->judul . ' ' . $book->sinopsis;
+        })->toArray();
+
+        $recommendations = $cbfHelper->recommend($query, $documents);
+
+        // Hasil relevan
+        $relevant = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]; // Contoh ID dokumen yang relevan
+        $results = [];
+        $similarities = [5, 10, 15, 20, 25, 30, 35, 40, 45];
+
+        foreach ($similarities as $minSim) {
+            $threshold = $minSim / 100;
+            $filteredRecommendations = array_filter($recommendations, function ($value) use ($threshold) {
+                return $value >= $threshold;
+            });
+
+            $retrieved = array_keys($filteredRecommendations);
+            $relevantRetrieved = array_intersect($retrieved, $relevant);
+
+            // Log untuk debugging
+            Log::info('retrived: ' . print_r($retrieved, true));
+            Log::info('Threshold: ' . $threshold);
+            Log::info('Filtered Recommendations: ' . print_r($filteredRecommendations, true));
+            Log::info('Relevant Retrieved: ' . print_r($relevantRetrieved, true));
+
+            $evaluation = $evaluationHelper->evaluate($relevantRetrieved, $retrieved, $relevant);
+
+            $results[] = [
+                'minSim' => $minSim,
+                'precision' => $evaluation['precision'],
+                'recall' => $evaluation['recall'],
+                'fMeasure' => $evaluation['fMeasure']
+            ];
+        }
+
+        return response()->json($results);
     }
 }

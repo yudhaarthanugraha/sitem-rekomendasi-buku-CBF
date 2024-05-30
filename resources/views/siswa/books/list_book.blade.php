@@ -59,7 +59,7 @@
                             </article>
                         </div>
                     @empty
-                        <p class="text-center">No books found for this category.</p>
+                        <p class="text-center">Tidak ditemukan buku dengan inisial berikut.</p>
                     @endforelse
                 </div>
                 <!-- Pagination links -->
