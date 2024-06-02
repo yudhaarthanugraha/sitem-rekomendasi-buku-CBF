@@ -52,10 +52,10 @@
                                         <h5 class="mb-1">Penulis</h5>
                                         <p>{{ $book->penulis }}</p>
                                     </li>
-                                    @if (isset($user_pinjam->username))
+                                    @if (isset($user_pinjam))
                                         <li>
                                             <h5 class="mb-1">Peminjam</h5>
-                                            <p class="text-success font-weight-bold">{{ $user_pinjam->$username }}</p>
+                                            <p class="text-success font-weight-bold">{{ $user_pinjam->username }}</p>
 
                                         </li>
                                     @endif

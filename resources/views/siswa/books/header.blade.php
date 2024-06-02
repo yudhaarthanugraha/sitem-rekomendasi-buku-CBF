@@ -6,7 +6,7 @@
                 <a class="nav-link d-flex gap-2 item-center" href="{{ route('landing_page') }}">
                     <img class="img-fluid" width="60" height="60" src="{{ asset('/assets/img/logo_smk.png') }}"
                         alt="Logo SMK" />
-                    <span class="fs-30 ch-color mt-1">Perpustakaan</span>
+                    <span class="fs-30 text-white ch-color mt-1">Perpustakaan</span>
                 </a>
             </div>
             <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">

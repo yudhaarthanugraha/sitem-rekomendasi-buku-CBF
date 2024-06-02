@@ -88,7 +88,7 @@ class controller_dashboard extends Controller
             $id_user = intval($pinjam_buku->id_user);
             $user_pinjam = M_user::find($id_user);
         } else {
-            $username = null; // Atau nilai default lainnya sesuai kebutuhan Anda
+            $user_pinjam = null; // Atau nilai default lainnya sesuai kebutuhan Anda
         }
 
         return view('siswa.books.detail_book', compact('user', 'title', 'book', 'user_pinjam', 'categorys'));
