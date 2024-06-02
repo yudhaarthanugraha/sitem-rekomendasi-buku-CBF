@@ -21,7 +21,20 @@ class controller_dashboard extends Controller
         $totSiswa = M_user::where('role', '=', 'siswa')->count();
         $totKategori = M_kategori::all()->count();
 
-        return view('admin.dashboard.index', compact('user', 'title', 'books', 'totSiswa', 'totBukuPinjam', 'totKategori'));
+        $bukus =  M_kategori::with('buku')->get();
+        $groupedData = [];
+
+        foreach ($bukus as $buku) {
+            $bukuJudul = $buku->buku->pluck('judul')->toArray();
+            $jumlahBuku = $buku->buku->count();
+            $groupedData[] = (object) [
+                'kategori' => $buku->kategori,
+                'buku' => $bukuJudul,
+                'jumlah_buku' => $jumlahBuku
+            ];
+        }
+
+        return view('admin.dashboard.index', compact('user', 'title', 'books', 'totSiswa', 'totBukuPinjam', 'totKategori', 'groupedData'));
     }
 
     // siswa landing page
@@ -33,7 +46,9 @@ class controller_dashboard extends Controller
         $books = M_buku::orderBy('created_at', 'desc')->take(5)->get();
         $pengguna = M_user::paginate(200);
         $allBook = M_buku::paginate(1000);
-        return view('siswa.dashboard.index', compact('user', 'title', 'books', 'pengguna', 'allBook'));
+        $categorys = M_kategori::all();
+        // dd($kategoris);
+        return view('siswa.dashboard.index', compact('user', 'title', 'books', 'pengguna', 'allBook', 'categorys'));
     }
 
     // Siswa Books List
@@ -41,7 +56,7 @@ class controller_dashboard extends Controller
     {
         $user = Auth::user();
         $title = 'Daftar Buku';
-
+        $categorys = M_kategori::all();
         if (!$letter) {
             $letter = '#';
         }
@@ -54,7 +69,7 @@ class controller_dashboard extends Controller
                 ->paginate(9);
         }
 
-        return view('siswa.books.list_book', compact('user', 'title', 'books', 'letter'));
+        return view('siswa.books.list_book', compact('user', 'title', 'books', 'letter', 'categorys'));
     }
 
     // Siswa detail
@@ -63,11 +78,12 @@ class controller_dashboard extends Controller
 
         $user = Auth::user();
         $title = 'Detail Buku';
-
-        $book = M_buku::find($id);
+        $categorys = M_kategori::all();
+        $book = M_buku::with('kategoriRel')->find($id);
         $pinjam_buku = M_pinjam_buku::where('id_buku', $id)
             ->whereNull('tanggal_kembali')
             ->first();
+
         if ($pinjam_buku) {
             $id_user = $pinjam_buku->id_user;
             $username = M_user::where('id_user', $id_user)->first()->username;
@@ -75,6 +91,6 @@ class controller_dashboard extends Controller
             $username = null; // Atau nilai default lainnya sesuai kebutuhan Anda
         }
 
-        return view('siswa.books.detail_book', compact('user', 'title', 'book', 'username'));
+        return view('siswa.books.detail_book', compact('user', 'title', 'book', 'username', 'categorys'));
     }
 }

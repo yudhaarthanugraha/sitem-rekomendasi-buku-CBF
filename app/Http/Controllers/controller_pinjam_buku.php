@@ -16,7 +16,7 @@ class controller_pinjam_buku extends Controller
         $buku = M_buku::findOrFail($id);
         $books = M_buku::all();
         $siswas = M_user::where('role', 'siswa')->get();
-        // $siswas = M_user::where('role', 'siswa')->get();
+
         return view('admin.pinjam_buku.index', compact('buku', 'books', 'title', 'siswas'));
     }
     public function create(Request $request)
@@ -39,8 +39,8 @@ class controller_pinjam_buku extends Controller
         $buku = M_buku::findOrFail($id);
         $title = 'Halaman kembali buku ';
         $id_user = M_pinjam_buku::where('id_buku', $id)
-        ->whereNull('tanggal_kembali')
-        ->firstOrFail()->id_user;
+            ->whereNull('tanggal_kembali')
+            ->firstOrFail()->id_user;
         $username = M_user::where('id_user', $id_user)->firstOrFail()->username;
         return view('admin.pinjam_buku.kembali_buku', compact('id_buku', 'title', 'buku', 'username'));
     }

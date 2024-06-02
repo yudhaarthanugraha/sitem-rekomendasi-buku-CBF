@@ -7,7 +7,7 @@
             $('#user').select2({
                 placeholder: "Pilih siswa",
                 allowClear: true,
-                width: '100%'  // Ini akan memastikan bahwa select2 mengisi lebar elemen induknya
+                width: '100%'
             });
         });
     </script>
@@ -23,12 +23,8 @@
                 }
             });
         }
-
-        // In your Javascript (external .js resource or <script> tag)
-        // $(document).ready(function() {
-        //     $('.js-example-basic-single').select2();
-        // });
     </script>
+
     <script>
         document.getElementById('searchInput').addEventListener('input', function() {
             var searchText = this.value.toLowerCase();

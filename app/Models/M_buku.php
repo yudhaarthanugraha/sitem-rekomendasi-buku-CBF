@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class M_buku extends Model
 {
@@ -27,4 +29,14 @@ class M_buku extends Model
         'gambar',
         'status_pinjaman'
     ];
+
+    public function kategoriRel(): BelongsTo
+    {
+        return $this->belongsTo(M_kategori::class, 'kategori');
+    }
+
+    // public function kategori(): HasOne
+    // {
+    //     return $this->hasOne(M_kategori::class, 'kategori');
+    // }
 }

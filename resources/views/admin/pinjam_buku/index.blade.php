@@ -20,7 +20,7 @@
                                 <span class="text-gray-700 dark:text-gray-400">Judul - kode_buku</span>
                                 <div
                                     class="relative text-gray-500 focus-within:text-purple-600 dark:focus-within:text-purple-400">
-                                    <select  name="judul"
+                                    <select name="judul"
                                         class="block w-full mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-select">
                                         @foreach ($books as $book)
                                             <option value="{{ $book->id_buku }}"
@@ -40,9 +40,8 @@
                                 <span class="text-gray-700 dark:text-gray-400 ">Siswa</span>
                                 <div
                                     class="relative text-gray-500 focus-within:text-purple-600 dark:focus-within:text-purple-400">
-
                                     <select name="user" id="user"
-                                        class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                        class="block w-full mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-select">
                                         <option value="#" selected>Pilih siswa</option>
                                         @foreach ($siswas as $siswa)
                                             <option value="{{ $siswa->id_user }}">
