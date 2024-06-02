@@ -24,10 +24,11 @@
             <div class="col-md-4 col-lg-3">
                 <div class="widget">
                     <h4 class="widget-title ls-sm mb-3">Get in Touch</h4>
-                    <address class="pe-xl-15 pe-xxl-17">Jl. Tingang No.1, Palangka Raya, Kalimantan Tengah 73112
-                    </address>
-                    <a href="mailto:#" class="link-body">perpustakaan@smkn3palangkaraya.sch.id</a><br /> ( 0536 ) 123 45
-                    67
+                    <address class="pe-xl-15 pe-xxl-17">Jl. R. A. Kartini No.25, Langkai, Kec. Pahandut, Kota Palangka
+                        Raya, Kalimantan Tengah 74874
+                        <a href="mailto:#" class="link-body">perpustakaan@smkn3palangkaraya.sch.id</a><br /> ( 0536 )
+                        123 45
+                        67
                 </div>
                 <!-- /.widget -->
             </div>

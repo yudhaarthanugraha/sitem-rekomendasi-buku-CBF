@@ -13,7 +13,7 @@
             return implode(' ', $truncated) . '...';
         }
     @endphp
-    <section class="wrapper image-wrapper bg-cover bg-image bg-xs-none bg-gray" data-image-src="./assets/img/photos/bg37.jpg">
+    <section class="wrapper image-wrapper bg-cover bg-image bg-xs-none bg-gray" data-image-src="./assets/img/hero-smk1.png">
         <div class="container pt-17 pb-15 py-sm-17 py-xxl-20">
             <div class="row">
                 <div class="col-sm-6 col-xxl-5 text-center text-sm-start" data-cues="slideInDown" data-group="page-title"
@@ -308,7 +308,7 @@
     <!-- /section -->
     <section class="wrapper bg-gray position-relative min-vh-60 d-lg-flex align-items-center">
         <div class="col-lg-6 position-lg-absolute top-0 end-0 image-wrapper bg-image bg-cover h-100"
-            data-image-src="./assets/img/photos/bg39.jpg">
+            data-image-src="./assets/img/smk.png">
             <div class="divider text-gray divider-v-start d-none d-lg-block">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 1200">
                     <g />
@@ -364,17 +364,17 @@
                 <div class="col-lg-6">
                     <div class="row gx-md-5 gy-5">
                         <div class="col-md-6">
-                            <figure class="rounded"><img src="./assets/img/photos/g14.jpg"
+                            <figure class="rounded"><img src="./assets/img/about1.png"
                                     srcset="./assets/img/photos/g14@2x.jpg 2x" alt=""></figure>
                         </div>
                         <!--/column -->
                         <div class="col-md-6 align-self-end">
-                            <figure class="rounded"><img src="./assets/img/photos/g15.jpg"
+                            <figure class="rounded"><img src="./assets/img/about2.png"
                                     srcset="./assets/img/photos/g15@2x.jpg 2x" alt=""></figure>
                         </div>
                         <!--/column -->
                         <div class="col-12">
-                            <figure class="rounded mx-md-5"><img src="./assets/img/photos/g16.jpg"
+                            <figure class="rounded mx-md-5"><img src="./assets/img/about3.png"
                                     srcset="./assets/img/photos/g16@2x.jpg 2x" alt=""></figure>
                         </div>
                         <!--/column -->

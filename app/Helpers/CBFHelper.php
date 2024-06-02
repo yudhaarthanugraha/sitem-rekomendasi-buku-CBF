@@ -109,6 +109,7 @@ class CBFHelper
         }
 
         arsort($similarities);
+        // dd($similarities);
 
         return $similarities;
     }

@@ -33,11 +33,7 @@
                         <div class="row gx-0">
                             <div class="col-md-9 text-justify">
                                 <p>{{ $book->sinopsis }}</p>
-                                <p>Donec id elit non mi porta gravida at eget metus. Cras mattis consectetur purus sit amet
-                                    fermentum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed
-                                    odio dui. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
-                                    Sed posuere consectetur est at lobortis. Vivamus sagittis lacus vel augue laoreet rutrum
-                                    faucibus dolor auctor.</p>
+
                             </div>
                             <!--/column -->
                             <div class="col-md-2 ms-auto">
@@ -51,13 +47,13 @@
                                         <p>{{ $book->penulis }}</p>
                                     </li>
                                     @if ($username)
-                                         <li>
-                                        <h5 class="mb-1">Peminjam</h5>
-                                 <p class="text-success font-weight-bold">{{ $username }}</p>
+                                        <li>
+                                            <h5 class="mb-1">Peminjam</h5>
+                                            <p class="text-success font-weight-bold">{{ $username }}</p>
 
-                                    </li>
+                                        </li>
                                     @endif
-                                   
+
                                     <li>
                                         <h5 class="mb-1">Status</h5>
                                         <p>

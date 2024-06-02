@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\M_buku;
+use App\Models\M_kategori;
 use App\Models\M_pinjam_buku;
 use App\Models\M_user;
 use Illuminate\Http\Request;
@@ -15,9 +16,12 @@ class controller_dashboard extends Controller
     {
         $user = Auth::user();
         $title = 'Dashboard';
-        $books = M_buku::paginate(100);
+        $books = M_buku::all()->count();
+        $totBukuPinjam = M_buku::where('status_pinjaman', '=', 1)->count();
+        $totSiswa = M_user::where('role', '=', 'siswa')->count();
+        $totKategori = M_kategori::all()->count();
 
-        return view('admin.dashboard.index', compact('user', 'title', 'books'));
+        return view('admin.dashboard.index', compact('user', 'title', 'books', 'totSiswa', 'totBukuPinjam', 'totKategori'));
     }
 
     // siswa landing page

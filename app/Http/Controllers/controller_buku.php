@@ -177,9 +177,9 @@ class controller_buku extends Controller
         $cbf = new CBFHelper();
         $similarities = $cbf->recommend($query, $documents);
 
-        dd($similarities);
         // ganti nilai 5 untuk jumlah rekomendasi
         $topMatches = array_slice(array_keys($similarities), 0, 5, true);
+        // dd($topMatches);
 
         $results = [];
         foreach ($topMatches as $index) {
@@ -226,11 +226,11 @@ class controller_buku extends Controller
         $recommendations = $cbfHelper->recommend($query, $documents);
 
         // Hasil relevan
-        $relevant = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]; // Contoh ID dokumen yang relevan
+        $relevant = [20, 21, 13, 10, 4, 0, 24, 18, 5, 3, 14, 6, 2, 19]; // Contoh ID dokumen yang relevan
         $results = [];
-        $similarities = [5, 10, 15, 20, 25, 30, 35, 40, 45];
+        $minimumSimilarities = [5, 10, 15, 20, 25, 30, 35, 40, 45];
 
-        foreach ($similarities as $minSim) {
+        foreach ($minimumSimilarities as $minSim) {
             $threshold = $minSim / 100;
             $filteredRecommendations = array_filter($recommendations, function ($value) use ($threshold) {
                 return $value >= $threshold;
