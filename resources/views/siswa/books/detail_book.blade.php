@@ -1,17 +1,7 @@
 @extends('siswa.layout.layout')
 @section('main')
     @include('siswa.books.header')
-    @php
-        // function findCategory($id, $kategoris)
-        // {
-        //     foreach ($kategoris as $kat) {
-        //         if ($kat->id_kategori == $id) {
-        //             return $kat->kategori;
-        //         }
-        //     }
-        //     return $id;
-        // }
-    @endphp
+
     <section class="wrapper image-wrapper bg-image bg-overlay text-white"
         data-image-src="{{ ($book->gambar === null || $book->gambar === ' ' ? 'https://plus.unsplash.com/premium_photo-1677187301535-b46cec7b2cc8?q=80&w=1523&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' : str_contains($book->gambar, 'https')) ? $book->gambar : asset('uploads/' . $book->gambar) }}"
         alt="{{ $book->judul }}">
@@ -62,10 +52,10 @@
                                         <h5 class="mb-1">Penulis</h5>
                                         <p>{{ $book->penulis }}</p>
                                     </li>
-                                    @if ($username)
+                                    @if (isset($user_pinjam->username))
                                         <li>
                                             <h5 class="mb-1">Peminjam</h5>
-                                            <p class="text-success font-weight-bold">{{ $username }}</p>
+                                            <p class="text-success font-weight-bold">{{ $user_pinjam->$username }}</p>
 
                                         </li>
                                     @endif
@@ -84,14 +74,11 @@
                                     <li>
                                         <h5 class="mb-1">Kategori</h5>
                                         <p>
-                                            {{-- @if ($book->kategori)
-                                                <span class="">{{ findCategory($book->kategori, $categorys) }}</span>
-                                            @endif --}}
+                                            <span class="">{{ $book->kategoriRel->kategori }}</span>
                                         </p>
 
                                     </li>
                                 </ul>
-                                {{-- <a href="#" class="more hover">See Project</a> --}}
                             </div>
                             <!--/column -->
                         </div>

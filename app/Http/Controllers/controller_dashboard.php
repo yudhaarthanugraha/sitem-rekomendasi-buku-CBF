@@ -85,12 +85,12 @@ class controller_dashboard extends Controller
             ->first();
 
         if ($pinjam_buku) {
-            $id_user = $pinjam_buku->id_user;
-            $username = M_user::where('id_user', $id_user)->first()->username;
+            $id_user = intval($pinjam_buku->id_user);
+            $user_pinjam = M_user::find($id_user);
         } else {
             $username = null; // Atau nilai default lainnya sesuai kebutuhan Anda
         }
 
-        return view('siswa.books.detail_book', compact('user', 'title', 'book', 'username', 'categorys'));
+        return view('siswa.books.detail_book', compact('user', 'title', 'book', 'user_pinjam', 'categorys'));
     }
 }
