@@ -10,6 +10,15 @@
                         @php
                             $letters = range('A', 'Z');
                             array_unshift($letters, '#');
+                            function findCategory($id, $kategoris)
+                            {
+                                foreach ($kategoris as $kat) {
+                                    if ($kat->id_kategori == $id) {
+                                        return $kat->kategori;
+                                    }
+                                }
+                                return $id; // Mengembalikan ID jika kategori tidak ditemukan
+                            }
                         @endphp
                         @foreach ($letters as $char)
                             <li class="page-item mb-1">
@@ -38,7 +47,7 @@
                                 </figure>
                                 <div class="post-header">
                                     <div class="post-category text-line">
-                                        <a href="#" class="text-blue hover" rel="category">{{ $book->kategori }}</a>
+                                        <a href="#" class="text-blue hover" rel="category">{{ findCategory($book->kategori , $categorys)}}</a>
                                     </div>
                                     <h2 class="post-title h3 mt-1 mb-3">
                                         <a class="link-dark"

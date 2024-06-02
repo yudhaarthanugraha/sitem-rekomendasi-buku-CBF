@@ -1,6 +1,17 @@
 @extends('siswa.layout.layout')
 @section('main')
     @include('siswa.books.header')
+    @php
+          function findCategory($id, $kategoris)
+    {
+        foreach ($kategoris as $kat) {
+            if ($kat->id_kategori == $id) {
+                return $kat->kategori;
+            }
+        }
+        return $id; // Mengembalikan ID jika kategori tidak ditemukan
+    }
+    @endphp
     <section class="wrapper image-wrapper bg-image bg-overlay text-white"
         data-image-src="{{ ($book->gambar === null || $book->gambar === ' ' ? 'https://plus.unsplash.com/premium_photo-1677187301535-b46cec7b2cc8?q=80&w=1523&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' : str_contains($book->gambar, 'https')) ? $book->gambar : asset('uploads/' . $book->gambar) }}"
         alt="{{ $book->judul }}">
@@ -65,6 +76,15 @@
                                                 <span class="badge bg-warning">Dipinjam</span>
                                             @else
                                                 <span class="badge bg-success">Tersedia</span>
+                                            @endif
+                                        </p>
+
+                                    </li>
+                                    <li>
+                                        <h5 class="mb-1">Kategori</h5>
+                                        <p>
+                                            @if ($book->kategori)
+                                                <span class="">{{ findCategory($book->kategori, $categorys) }}</span>
                                             @endif
                                         </p>
 

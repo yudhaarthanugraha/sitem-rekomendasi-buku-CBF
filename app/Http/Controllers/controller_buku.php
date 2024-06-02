@@ -160,12 +160,12 @@ class controller_buku extends Controller
     // Pencariaan Menggunakan CBF
     public function search(Request $request)
     {
+        $categorys = M_kategori::all();
         $user = Auth::user();
         $title = 'Landing Page';
         $books = M_buku::orderBy('created_at', 'desc')->take(5)->get();
         $query = $request->input('query');
         $docBuku = M_buku::all();
-
         $documents = $docBuku->map(function ($book) {
             return $book->judul . ' ' . $book->sinopsis;
         })->toArray();
@@ -186,7 +186,7 @@ class controller_buku extends Controller
         // dd($cbf->tokenization($documents));
         $pengguna = M_user::paginate(200);
         $allBook = M_buku::paginate(1000);
-        return view('siswa.dashboard.index', compact('user', 'title', 'books', 'results', 'pengguna', 'allBook' ));
+        return view('siswa.dashboard.index', compact('user', 'title', 'books', 'results', 'pengguna', 'allBook', 'categorys' ));
     }
 
     public function suggest(Request $request)

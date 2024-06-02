@@ -13,6 +13,18 @@
             return implode(' ', $truncated) . '...';
         }
     @endphp
+    @php
+    function findCategory($id, $kategoris)
+    {
+        foreach ($kategoris as $kat) {
+            if ($kat->id_kategori == $id) {
+                return $kat->kategori;
+            }
+        }
+        return $id; // Mengembalikan ID jika kategori tidak ditemukan
+    }
+@endphp
+
     <section class="wrapper image-wrapper bg-cover bg-image bg-xs-none bg-gray" data-image-src="./assets/img/photos/bg37.jpg">
         <div class="container pt-17 pb-15 py-sm-17 py-xxl-20">
             <div class="row">
@@ -60,6 +72,7 @@
                     $filteredResults = array_filter($results, function ($book) {
                         return $book['similarity'] !== 0.0;
                     });
+
                 @endphp
 
                 @if (count($filteredResults) > 0)
@@ -92,7 +105,7 @@
                                                             <div class="post-header">
                                                                 <div class="post-category text-line">
                                                                     <a href="#" class="hover text-blue"
-                                                                        rel="category">{{ $book['book']->kategori }}</a>
+                                                                        rel="category">{{ findCategory($book['book']->kategori, $categorys) }}</a>
                                                                 </div>
                                                                 <h2 class="post-title h3 mt-1 mb-3">
                                                                     <a class="link-dark"
@@ -167,11 +180,12 @@
                                                                 <h5 class="from-top mb-0">Lihat detail</h5>
                                                             </figcaption>
                                                         </figure>
+                                                      
                                                         <div class="card-body">
                                                             <div class="post-header">
                                                                 <div class="post-category text-line">
                                                                     <a href="#" class="hover text-blue"
-                                                                        rel="category">{{ $book['book']->kategori }}</a>
+                                                                        rel="category">{{ findCategory( $book['book']->kategori ,$categorys) }}</a>
                                                                 </div>
                                                                 <h2 class="post-title h3 mt-1 mb-3">
                                                                     <a class="link-dark"
@@ -252,7 +266,7 @@
                                                     <div class="post-header">
                                                         <div class="post-category text-line">
                                                             <a href="#" class="hover text-blue"
-                                                                rel="category">{{ $book->kategori }}</a>
+                                                                rel="category">{{ findCategory($book->kategori, $categorys) }}</a>
                                                         </div>
                                                         <!-- /.post-category -->
                                                         <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark"

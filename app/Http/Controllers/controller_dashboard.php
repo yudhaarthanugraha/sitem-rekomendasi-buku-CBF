@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\M_buku;
+use App\Models\M_kategori;
 use App\Models\M_pinjam_buku;
 use App\Models\M_user;
 use Illuminate\Http\Request;
@@ -29,7 +30,9 @@ class controller_dashboard extends Controller
         $books = M_buku::orderBy('created_at', 'desc')->take(5)->get();
         $pengguna = M_user::paginate(200);
         $allBook = M_buku::paginate(1000);
-        return view('siswa.dashboard.index', compact('user', 'title', 'books', 'pengguna', 'allBook'));
+        $categorys = M_kategori::all();
+        // dd($kategoris);
+        return view('siswa.dashboard.index', compact('user', 'title', 'books', 'pengguna', 'allBook', 'categorys'));
     }
 
     // Siswa Books List
@@ -37,7 +40,7 @@ class controller_dashboard extends Controller
     {
         $user = Auth::user();
         $title = 'Daftar Buku';
-
+        $categorys = M_kategori::all();
         if (!$letter) {
             $letter = '#';
         }
@@ -50,7 +53,7 @@ class controller_dashboard extends Controller
                 ->paginate(9);
         }
 
-        return view('siswa.books.list_book', compact('user', 'title', 'books', 'letter'));
+        return view('siswa.books.list_book', compact('user', 'title', 'books', 'letter', 'categorys'));
     }
 
     // Siswa detail
@@ -59,7 +62,7 @@ class controller_dashboard extends Controller
 
         $user = Auth::user();
         $title = 'Detail Buku';
-
+        $categorys = M_kategori::all();
         $book = M_buku::find($id);
         $pinjam_buku = M_pinjam_buku::where('id_buku', $id)
             ->whereNull('tanggal_kembali')
@@ -71,6 +74,6 @@ class controller_dashboard extends Controller
             $username = null; // Atau nilai default lainnya sesuai kebutuhan Anda
         }
 
-        return view('siswa.books.detail_book', compact('user', 'title', 'book', 'username'));
+        return view('siswa.books.detail_book', compact('user', 'title', 'book', 'username', 'categorys'));
     }
 }
