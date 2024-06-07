@@ -72,7 +72,10 @@
                     $filteredResults = array_filter($results, function ($book) {
                         return $book['similarity'] !== 0.0;
                     });
-
+                    function formatNumber($number)
+                    {
+                        return sprintf('%.3f', $number);
+                    }
                 @endphp
 
                 @if (count($filteredResults) > 0)
@@ -106,6 +109,7 @@
                                                                 <div class="post-category text-line">
                                                                     <a href="#" class="hover text-blue"
                                                                         rel="category">{{ findCategory($book['book']->kategori, $categorys) }}</a>
+
                                                                 </div>
                                                                 <h2 class="post-title h3 mt-1 mb-3">
                                                                     <a class="link-dark"
@@ -119,7 +123,13 @@
                                                         </div>
                                                         <div class="card-footer">
                                                             <ul class="post-meta d-flex mb-0">
-                                                                <span>Terbitan</span>
+                                                                <li>Nilai Cosine similarity</li>
+                                                                <li class="text-blue"> {{ formatNumber( $book['similarity'] )}}</li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="card-footer">
+                                                            <ul class="post-meta d-flex mb-0">
+                                                                <li>Tahun terbit</li>
                                                                 <li class="post-date ms-auto text-dark">
                                                                     <i class="uil uil-calendar-alt"></i>
                                                                     <span>{{ \Carbon\Carbon::parse($book['book']->tahun_terbit)->format('d F Y') }}</span>
@@ -143,7 +153,8 @@
                     </div>
                 @else
                     <div class="w-100  md:my-20">
-                        <h2 class="alert alert-warning text-center" role="alert"> Tidak Ditemukan Buku Yang Sesuai
+                        <h2 class="alert alert-warning text-center" role="alert"> Tidak Ditemukan Buku
+                            Yang Sesuai
                             Pencarian.</h2>
                     </div>
                 @endif
@@ -157,7 +168,8 @@
                 @if (count($rekomenBook) > 0)
                     <!-- Section for results with similarity != 0.0 -->
                     <div class="position-relative">
-                        <h2 class=" text-uppercase text-primary text-center">Rekomendasi buku lainnya ...</h2>
+                        <h2 class=" text-uppercase text-primary text-center">Rekomendasi buku lainnya
+                            ...</h2>
                         <div class="shape bg-dot primary rellax w-17 h-20" data-rellax-speed="1"
                             style="top: 0; left: -1.7rem;">
                         </div>
@@ -177,7 +189,8 @@
                                                                     alt="{{ $book['book']->judul }}" />
                                                             </a>
                                                             <figcaption>
-                                                                <h5 class="from-top mb-0">Lihat detail</h5>
+                                                                <h5 class="from-top mb-0">Lihat detail
+                                                                </h5>
                                                             </figcaption>
                                                         </figure>
 
@@ -194,7 +207,8 @@
                                                             </div>
                                                             <div class="d-flex column"></div>
                                                             <div class="post-content">
-                                                                <p class="sinopsis">{{ $book['book']->sinopsis }}.</p>
+                                                                <p class="sinopsis">
+                                                                    {{ $book['book']->sinopsis }}.</p>
                                                             </div>
                                                         </div>
                                                         <div class="card-footer">
@@ -222,10 +236,11 @@
                         <!-- /.swiper-container -->
                     </div>
                 @else
-                    <div class="w-100  md:my-20">
-                        <h2 class="alert alert-warning text-center" role="alert"> Tidak Ditemukan Buku Yang
+                    {{-- <div class="w-100  md:my-20">
+                        <h2 class="alert alert-warning text-center" role="alert"> Tidak Ditemukan
+                            Buku Yang
                             Direkomendasikan.</h2>
-                    </div>
+                    </div> --}}
                 @endif
             </div>
             <!-- /.container -->

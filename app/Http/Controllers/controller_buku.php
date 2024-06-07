@@ -14,13 +14,18 @@ use Illuminate\Support\Facades\Storage;
 
 class controller_buku extends Controller
 {
-    //Menampilkan Buku
-    public function show()
+    protected $user;
+    protected $books;
+    protected $kategoris;
+    protected $genres;
+
+
+    public function __construct()
     {
-        $user = Auth::user();
-        $books = M_buku::paginate(10);
-        $title = 'Kelola Buku';
-        $genres = [
+        $this->user = Auth::user();
+        $this->kategoris = M_kategori::all();
+        $this->books =   M_buku::paginate(10);
+        $this->genres =  [
             (object) ['nama' => 'Horor'],
             (object) ['nama' => 'Romance'],
             (object) ['nama' => 'Edukasi'],
@@ -31,10 +36,16 @@ class controller_buku extends Controller
             (object) ['nama' => 'Biografi'],
             (object) ['nama' => 'Komedi'],
             (object) ['nama' => 'Drama'],
-            // Tambahkan genre lainnya sesuai kebutuhan
         ];
-        $kategoris = M_kategori::all();
-        // Mengembalikan view dengan data buku
+    }
+
+    public function show()
+    {
+        $user = $this->user;
+        $books = $this->books;
+        $title = 'Kelola Buku';
+        $genres = $this->genres;
+        $kategoris = $this->kategoris;
         return view('admin.buku.index', compact('books', 'user', 'title', 'genres', 'kategoris'));
     }
 
@@ -80,20 +91,8 @@ class controller_buku extends Controller
         $title = 'Master buku';
         $book = M_buku::findOrFail($id);
 
-        $genres = [
-            (object) ['nama' => 'Horor'],
-            (object) ['nama' => 'Romance'],
-            (object) ['nama' => 'Edukasi'],
-            (object) ['nama' => 'Fantasi'],
-            (object) ['nama' => 'Fiksi Ilmiah'],
-            (object) ['nama' => 'Misteri'],
-            (object) ['nama' => 'Sejarah'],
-            (object) ['nama' => 'Biografi'],
-            (object) ['nama' => 'Komedi'],
-            (object) ['nama' => 'Drama'],
-            // Tambahkan genre lainnya sesuai kebutuhan
-        ];
-        $kategoris = M_kategori::all();
+        $genres = $this->genres;
+        $kategoris = $this->kategoris;
         return view('admin.buku.edit', compact('title', 'book', 'genres', 'kategoris'));
     }
 
@@ -167,12 +166,12 @@ class controller_buku extends Controller
         $title = 'Landing Page';
         $books = M_buku::orderBy('created_at', 'desc')->take(5)->get();
         $query = $request->input('query');
+        // dd($query);
         $docBuku = M_buku::all();
-
         $documents = $docBuku->map(function ($book) {
             return $book->judul . ' ' . $book->sinopsis;
         })->toArray();
-
+        // dd($documents);
         $cbf = new CBFHelper();
         $similarities = $cbf->recommend($query, $documents);
 

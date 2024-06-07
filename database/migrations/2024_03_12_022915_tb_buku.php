@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('kategori');
             $table->string('kode_buku');
             $table->string('gambar')->nullable();
-            $table->boolean('status_pinjaman')->default(0);
+            $table->boolean('status_pinjaman')->default(0)->nullable();
             $table->timestamps();
         });
     }
