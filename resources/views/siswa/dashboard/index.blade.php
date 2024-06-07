@@ -124,7 +124,8 @@
                                                         <div class="card-footer">
                                                             <ul class="post-meta d-flex mb-0">
                                                                 <li>Nilai Cosine similarity</li>
-                                                                <li class="text-blue"> {{ formatNumber( $book['similarity'] )}}</li>
+                                                                <li class="text-blue">
+                                                                    {{ formatNumber($book['similarity']) }}</li>
                                                             </ul>
                                                         </div>
                                                         <div class="card-footer">

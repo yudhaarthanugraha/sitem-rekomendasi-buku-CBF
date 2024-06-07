@@ -41,8 +41,15 @@ class CBFHelper
         $n = count($documents);
 
         foreach ($documents as $docId => $document) {
-            $terms = explode(' ', $document);
-            $termCount = array_count_values($terms);
+            $terms = preg_split('/\s+/', $document);
+
+            $bigrams = [];
+            for ($i = 0; $i < count($terms) - 1; $i++) {
+                $bigrams[] = $terms[$i] . '-' . $terms[$i + 1];
+            }
+
+            $allTerms = array_merge($terms, $bigrams);
+            $termCount = array_count_values($allTerms);
             $tf[$docId] = $termCount;
 
             foreach ($termCount as $term => $count) {
@@ -100,10 +107,8 @@ class CBFHelper
         $tfidfQuery = $tfidfDocs[0];
 
         // test frasa ex:'gotong-royong'
-        dd($tfidfDocs);
-
+        // dd($tfidfDocs);
         array_shift($tfidfDocs);
-        dd($tfidfDocs);
 
         $similarities = [];
 
@@ -111,6 +116,7 @@ class CBFHelper
             $similarities[$docId] = $this->cosineSimilarity($tfidfQuery, $tfidfDoc);
         }
 
+        // dd($similarities);
         arsort($similarities);
 
         return $similarities;
@@ -123,7 +129,9 @@ class CBFHelper
         $suggestions = [];
 
         foreach ($documents as $document) {
-            $terms = explode(' ', $document);
+            $document = preg_replace('/[\n\r]/', ' ', $document);
+            $procDocs = $this->preprocess($document);
+            $terms = preg_split('/\s+/', $procDocs);
             foreach ($terms as $term) {
                 $term = trim(strtolower(str_replace(['.', ','], '', $term)));
                 if (str_contains($term, $processedQuery) && !in_array($term, $suggestions)) {

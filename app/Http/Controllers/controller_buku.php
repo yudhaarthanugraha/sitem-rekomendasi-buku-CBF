@@ -166,18 +166,18 @@ class controller_buku extends Controller
         $title = 'Landing Page';
         $books = M_buku::orderBy('created_at', 'desc')->take(5)->get();
         $query = $request->input('query');
-        // dd($query);
+
         $docBuku = M_buku::all();
         $documents = $docBuku->map(function ($book) {
             return $book->judul . ' ' . $book->sinopsis;
         })->toArray();
-        // dd($documents);
+
         $cbf = new CBFHelper();
         $similarities = $cbf->recommend($query, $documents);
 
         // ganti nilai 5 untuk jumlah rekomendasi
         $topMatches = array_slice(array_keys($similarities), 0, 5, true);
-        dd($similarities);
+        // dd($similarities);
 
         $results = [];
         foreach ($topMatches as $index) {
