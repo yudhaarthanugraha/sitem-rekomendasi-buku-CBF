@@ -49,17 +49,23 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 - **[byte5](https://byte5.de)**
 - **[OP.GG](https://op.gg)**
 
-## Contributing
+## Looks
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Landing Page
 
-## Code of Conduct
+![landing page perpus](https://github.com/betthink/sistem-rekomendasi-buku-perpustakaan/assets/80962857/9238be58-fb7a-42bc-a9ad-977237add1f7)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Collection Books
 
-## Security Vulnerabilities
+![list book](https://github.com/betthink/sistem-rekomendasi-buku-perpustakaan/assets/80962857/d9629169-41d2-485c-baa5-dd39fe181229)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Dashboard admin
+
+![Dashboard perpush](https://github.com/betthink/sistem-rekomendasi-buku-perpustakaan/assets/80962857/513e34fd-3c3e-405b-ba0f-88e5f7bcaf08)
+
+## Kelola buku 
+
+![kelola buku](https://github.com/betthink/sistem-rekomendasi-buku-perpustakaan/assets/80962857/9fbf2cbb-05a2-44d0-8aac-7a3161de95fe)
 
 ## License
 
