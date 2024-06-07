@@ -178,7 +178,7 @@ class controller_buku extends Controller
 
         // ganti nilai 5 untuk jumlah rekomendasi
         $topMatches = array_slice(array_keys($similarities), 0, 5, true);
-        // dd($topMatches);
+        dd($similarities);
 
         $results = [];
         foreach ($topMatches as $index) {
