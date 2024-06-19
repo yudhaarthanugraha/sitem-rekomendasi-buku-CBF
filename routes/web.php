@@ -21,12 +21,34 @@ use Illuminate\Support\Facades\Route;
 */
 
 // pengunjung routes
+
+
 Route::middleware(['checkDefault'])->group((
     function () {
-        Route::get('/', [controller_auth::class, 'show'])->name('login');
-        Route::post('/', [controller_auth::class, 'login'])->name('auth');
+        Route::get('/landing-page', [controller_dashboard::class, 'dashboardSiswa'])->name('landing_page');
+        Route::get('/login', [controller_auth::class, 'show'])->name('login');
+        Route::post('/login', [controller_auth::class, 'login'])->name('auth');
+        Route::get('/list_book/{letter?}', [controller_dashboard::class, 'booksList'])->name('list_book');
+        Route::get('/detail-book/{id}', [controller_dashboard::class, 'detailBook'])->name('detail');
+        Route::get('/search', [controller_buku::class, 'search'])->name('search');
     }
 ));
+
+// Siswa routes start
+// Route::middleware(['checkAuthSiswa'])->group(
+//     function () {
+
+Route::get('/', function () {
+    return redirect()->route('landing_page');
+});
+// Route::get('/list_book/{letter?}', [controller_dashboard::class, 'booksList'])->name('list_book');
+// Route::get('/detail-book/{id}', [controller_dashboard::class, 'detailBook'])->name('detail');
+// Route::get('/search', [controller_buku::class, 'search'])->name('search');
+// }
+// );
+// Siswa routes end
+
+
 Route::post('/logout', [controller_auth::class, 'logout'])->name('logout');
 
 // admin routes start
@@ -63,14 +85,3 @@ Route::middleware(['checkAuthAdmin'])->group(
     }
 );
 // Admin routes end
-
-// Siswa routes start
-Route::middleware(['checkAuthSiswa'])->group(
-    function () {
-        Route::get('/landing_page', [controller_dashboard::class, 'dashboardSiswa'])->name('landing_page');
-        Route::get('/list_book/{letter?}', [controller_dashboard::class, 'booksList'])->name('list_book');
-        Route::get('/detail-book/{id}', [controller_dashboard::class, 'detailBook'])->name('detail');
-        Route::get('/search', [controller_buku::class, 'search'])->name('search');
-    }
-);
-// Siswa routes end

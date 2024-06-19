@@ -59,7 +59,7 @@
 
                                         </li>
                                     @endif
-
+{{-- 
                                     <li>
                                         <h5 class="mb-1">Status</h5>
                                         <p>
@@ -70,7 +70,7 @@
                                             @endif
                                         </p>
 
-                                    </li>
+                                    </li> --}}
                                     <li>
                                         <h5 class="mb-1">Kategori</h5>
                                         <p>

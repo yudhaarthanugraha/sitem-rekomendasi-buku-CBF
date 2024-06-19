@@ -54,7 +54,7 @@
                           <span class="ml-4 {{ $title === 'Kelola kategori' ? 'dark:text-white' : '' }}">Kategori</span>
                       </a>
                   </li>
-                  <li class="relative px-6 py-3">
+                  {{-- <li class="relative px-6 py-3">
                       @if ($title === 'Kelola iswa')
                           <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
                               aria-hidden="true"></span>
@@ -68,7 +68,7 @@
                           </svg>
                           <span class="ml-4 {{ $title === 'Kelola Siswa' ? 'dark:text-white' : '' }}">Kesiswaan</span>
                       </a>
-                  </li>
+                  </li> --}}
 
                   {{-- <li class="relative px-6 py-3">
                       <button

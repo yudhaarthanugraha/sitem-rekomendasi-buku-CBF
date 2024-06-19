@@ -22,18 +22,24 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#about-us">About Us</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#"
-                                data-bs-toggle="dropdown">{{ $user->username }}</a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <form action="{{ route('logout') }}" method="POST">
-                                        @csrf
-                                        <button class="dropdown-item">Logout</button>
-                                    </form>
-                                </li>
-                            </ul>
-                        </li>
+                        @auth
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#"
+                                    data-bs-toggle="dropdown">{{ $user->username }}</a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item">
+                                        <form action="{{ route('logout') }}" method="POST">
+                                            @csrf
+                                            <button class="dropdown-item">Logout</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">Log in</a>
+                            </li>
+                        @endauth
                     </ul>
                     <!-- /.navbar-nav -->
                     <div class="offcanvas-footer d-lg-none">

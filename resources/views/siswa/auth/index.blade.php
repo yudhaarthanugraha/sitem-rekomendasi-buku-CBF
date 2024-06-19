@@ -19,7 +19,7 @@
                     <img aria-hidden="true" class="object-cover w-7 h-7 dark:hidden"
                         src="{{ asset('/assets/img/logo_smk.png') }}" alt="Office" />
                     <img aria-hidden="true" class="hidden object-cover w-full h-full dark:block"
-                        src="../assets/img/forgot-password-office-dark.jpeg" alt="Office" />
+                        src="{{ asset('/assets/img/logo_smk.png') }}" alt="Office" />
                 </div>
                 <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
                     <div class="w-full">

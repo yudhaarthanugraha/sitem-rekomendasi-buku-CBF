@@ -62,6 +62,6 @@ class controller_auth extends Controller
         $request->session()->regenerateToken();
 
         // Redirect ke halaman login dengan pesan sukses
-        return redirect()->route('login')->with('success', 'Anda telah berhasil logout.');
+        return redirect()->route('landing_page')->with('success', 'Anda telah berhasil logout.');
     }
 }
