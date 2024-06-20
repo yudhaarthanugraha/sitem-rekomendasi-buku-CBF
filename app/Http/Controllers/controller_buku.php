@@ -228,7 +228,8 @@ class controller_buku extends Controller
         // Hasil relevan
         $relevant = [20, 21, 13, 10, 4, 0, 24, 18, 5, 3, 14, 6, 2, 19]; // Contoh ID dokumen yang relevan
         $results = [];
-        $minimumSimilarities = [5, 10, 15, 20, 25, 30, 35, 40, 45];
+        $minimumSimilarities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        $totalDocuments = count($recommendations);
 
         foreach ($minimumSimilarities as $minSim) {
             $threshold = $minSim / 100;
@@ -245,11 +246,14 @@ class controller_buku extends Controller
             Log::info('Filtered Recommendations: ' . print_r($filteredRecommendations, true));
             Log::info('Relevant Retrieved: ' . print_r($relevantRetrieved, true));
 
-            $evaluation = $evaluationHelper->evaluate($relevantRetrieved, $retrieved, $relevant);
+            $evaluation = $evaluationHelper->evaluate($relevantRetrieved, $retrieved, $relevant, $totalDocuments);
+
+
 
             $results[] = [
                 'minSim' => $minSim,
                 'precision' => $evaluation['precision'],
+                'accuracy' => $evaluation['accuracy'],
                 'recall' => $evaluation['recall'],
                 'fMeasure' => $evaluation['fMeasure']
             ];
