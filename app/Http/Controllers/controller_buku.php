@@ -226,7 +226,20 @@ class controller_buku extends Controller
         $recommendations = $cbfHelper->recommend($query, $documents);
 
         // Hasil relevan
-        $relevant = [20, 21, 13, 10, 4, 0, 24, 18, 5, 3, 14, 6, 2, 19]; // Contoh ID dokumen yang relevan
+        $terms = preg_split('/\s+/', $cbfHelper->preprocess($query));
+        $queryBuild = M_buku::query();
+
+        foreach ($terms as $term) {
+            $queryBuild->orWhere(function ($q) use ($term) {
+                $q->where('judul', 'LIKE', '%' . $term . '%')
+                    ->orWhere('sinopsis', 'LIKE', '%' . $term . '%');
+            });
+        }
+
+        $relevant = $queryBuild->pluck('id_buku')->toArray();
+        /** data buku relevant */
+        // dd($terms, $queryBuild->get()->toArray());
+
         $results = [];
         $minimumSimilarities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         $totalDocuments = count($recommendations);
@@ -234,16 +247,18 @@ class controller_buku extends Controller
         foreach ($minimumSimilarities as $minSim) {
             $threshold = $minSim / 100;
             $filteredRecommendations = array_filter($recommendations, function ($value) use ($threshold) {
+                // Log::info("Value : " . $value);
                 return $value >= $threshold;
             });
 
             $retrieved = array_keys($filteredRecommendations);
             $relevantRetrieved = array_intersect($retrieved, $relevant);
+            // dd($relevantRetrieved);
 
             // Log untuk debugging
-            Log::info('retrived: ' . print_r($retrieved, true));
             Log::info('Threshold: ' . $threshold);
-            Log::info('Filtered Recommendations: ' . print_r($filteredRecommendations, true));
+            Log::info('Relevant : ' . print_r($relevant, true));
+            Log::info('Retrived: ' . print_r($retrieved, true));
             Log::info('Relevant Retrieved: ' . print_r($relevantRetrieved, true));
 
             $evaluation = $evaluationHelper->evaluate($relevantRetrieved, $retrieved, $relevant, $totalDocuments);
