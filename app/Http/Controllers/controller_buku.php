@@ -253,7 +253,7 @@ class controller_buku extends Controller
 
             $retrieved = array_keys($filteredRecommendations);
             $relevantRetrieved = array_intersect($retrieved, $relevant);
-            // dd($relevantRetrieved);
+            dd($relevantRetrieved);
 
             // Log untuk debugging
             Log::info('Threshold: ' . $threshold);

@@ -14,6 +14,7 @@ class controller_auth extends Controller
         return view('siswa.auth.index');
     }
 
+    
     public function login(Request $request)
     {
         // Validasi data yang diterima dari form login
