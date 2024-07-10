@@ -117,7 +117,7 @@ class CBFHelper
         $tfidfDocs = $this->calculateTfIdf($processedDocs); // Menghitung TF-IDF untuk semua dokumen dan query
 
         /** sesudah prosessing termasuk B-gram */
-        // dd($processedDocs, $tfidfDocs); // Debugging setelah memproses dokumen dan query
+        dd($processedDocs, $tfidfDocs); // Debugging setelah memproses dokumen dan query
 
         $tfidfQuery = $tfidfDocs[0]; // Mengambil TF-IDF dari query
         array_shift($tfidfDocs); // Menghapus query dari array dokumen
